@@ -1,0 +1,11 @@
+framework module CodableFirebase {
+  umbrella header "CodableFirebase.h"
+
+  export *
+  module * { export * }
+}
+
+module CodableFirebase.Swift {
+    header "CodableFirebase-Swift.h"
+    requires objc
+}

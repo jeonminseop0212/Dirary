@@ -1,0 +1,9 @@
+{
+  "commitish" : "3.0.0",
+  "iOS" : [
+    {
+      "name" : "PryntTrimmerView",
+      "hash" : "925bf200c649c4b626c92caf520162a6301fc49e02dda10b44cfa431807cd174"
+    }
+  ]
+}

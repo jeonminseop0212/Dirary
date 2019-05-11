@@ -1,0 +1,4 @@
+framework module NVActivityIndicatorView_iOS {
+  header "NVActivityIndicatorView_iOS-Swift.h"
+  requires objc
+}

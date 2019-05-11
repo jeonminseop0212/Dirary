@@ -1,0 +1,9 @@
+{
+  "commitish" : "1.0.1",
+  "iOS" : [
+    {
+      "name" : "ActiveLabel",
+      "hash" : "9180ee7436aff4cb17e889ee0cc891e05553ea9fba85ff76245d66cd3316e0e9"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "commitish" : "1.0.7",
+  "iOS" : [
+    {
+      "name" : "WCLShineButton",
+      "hash" : "da8c3ab475d864f2220d3dc43b33d1e04704c4ca76a830c80f8f1b86c1282669"
+    }
+  ]
+}

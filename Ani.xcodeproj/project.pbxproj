@@ -1,0 +1,2550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23BE6C66072673B423ABA35D /* Pods_Ani.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD08576705673419CEA26417 /* Pods_Ani.framework */; };
+		BFFABBAF01DF20A602B9BB7F /* Pods_AniUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DC98FBA0B2CCFDA47C5CD8 /* Pods_AniUITests.framework */; };
+		C5B62B81AC482FE993A03ABF /* Pods_AniTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA314F74AF3E318A20DDD5DB /* Pods_AniTests.framework */; };
+		CD033E4120D8D25E002FB770 /* ANISupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033E4020D8D25E002FB770 /* ANISupportViewController.swift */; };
+		CD033E4420D8D28D002FB770 /* ANISupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033E4320D8D28D002FB770 /* ANISupportView.swift */; };
+		CD033E4620DA14B3002FB770 /* ANISupportViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD033E4520DA14B3002FB770 /* ANISupportViewCell.swift */; };
+		CD0417D021BF865C0017571A /* ANIActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0417CF21BF865C0017571A /* ANIActivityIndicator.swift */; };
+		CD047EBE20C4E9A000248958 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD047EBD20C4E9A000248958 /* NVActivityIndicatorView.framework */; };
+		CD04F05521CB64C70084AE73 /* ANIVideoStoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04F05421CB64C70084AE73 /* ANIVideoStoryViewCell.swift */; };
+		CD04F05D21D0AB780084AE73 /* ANIStoryVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD04F05C21D0AB780084AE73 /* ANIStoryVideoView.swift */; };
+		CD08A72E20915BD700F0B72D /* ANIRecruitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08A72D20915BD700F0B72D /* ANIRecruitDetailView.swift */; };
+		CD08A73120915C2A00F0B72D /* ANIRecruitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08A73020915C2A00F0B72D /* ANIRecruitDetailViewController.swift */; };
+		CD08A7712091975500F0B72D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08A7702091975500F0B72D /* UIApplication.swift */; };
+		CD08B5DC2217E40C00C0913E /* ANIPopularUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08B5DB2217E40C00C0913E /* ANIPopularUsersView.swift */; };
+		CD08B5DE2217E63600C0913E /* ANIPopularUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08B5DD2217E63600C0913E /* ANIPopularUserCell.swift */; };
+		CD08B5E022184D0400C0913E /* ANIPopularUserHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08B5DF22184D0400C0913E /* ANIPopularUserHeaderCell.swift */; };
+		CD0BFF1020C6186500D5959B /* CodableFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0BFF0F20C6186500D5959B /* CodableFirebase.framework */; };
+		CD0BFF1220C624EC00D5959B /* FirebaseRecruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0BFF1120C624EC00D5959B /* FirebaseRecruit.swift */; };
+		CD0BFF1420C7619600D5959B /* FirebaseStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0BFF1320C7619600D5959B /* FirebaseStory.swift */; };
+		CD0BFF1620C7807F00D5959B /* FirebaseComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0BFF1520C7807F00D5959B /* FirebaseComment.swift */; };
+		CD0BFF1820C7AD9C00D5959B /* FirebaseQna.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0BFF1720C7AD9C00D5959B /* FirebaseQna.swift */; };
+		CD0FAD0A20BF8DFD00D8CD27 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0FAD0920BF8DFD00D8CD27 /* FirebaseUser.swift */; };
+		CD0FAD0E20BFC02E00D8CD27 /* ANISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0FAD0D20BFC02E00D8CD27 /* ANISessionManager.swift */; };
+		CD12739A217D587700539D54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD127399217D587600539D54 /* GoogleService-Info.plist */; };
+		CD12739C217D58CD00539D54 /* GoogleService-Info-release.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD12739B217D58CD00539D54 /* GoogleService-Info-release.plist */; };
+		CD1A97BD219945570008EC98 /* ANIBlockUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A97BC219945570008EC98 /* ANIBlockUserViewController.swift */; };
+		CD1A97C0219949770008EC98 /* ANIBlockUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A97BF219949770008EC98 /* ANIBlockUserView.swift */; };
+		CD1A97C221994AC60008EC98 /* ANIBlockUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1A97C121994AC60008EC98 /* ANIBlockUserViewCell.swift */; };
+		CD1C6A2C21C8E7C50075D651 /* AVAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C6A2B21C8E7C50075D651 /* AVAsset.swift */; };
+		CD1C6A2F21C9DEE40075D651 /* TrimmingVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C6A2E21C9DEE40075D651 /* TrimmingVideo.swift */; };
+		CD1C6A3121CA11350075D651 /* ANIContributionVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C6A3021CA11350075D651 /* ANIContributionVideoCell.swift */; };
+		CD1C829D21F5822400F4725F /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1C829C21F5822400F4725F /* TwitterKit.framework */; };
+		CD1C82A021F5875C00F4725F /* ANITwitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C829F21F5875C00F4725F /* ANITwitter.swift */; };
+		CD2C414520A556AE00581267 /* ANIRecruitContributionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C414420A556AE00581267 /* ANIRecruitContributionViewController.swift */; };
+		CD2C414820A5A23C00581267 /* ANIImageFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C414720A5A23C00581267 /* ANIImageFilterViewController.swift */; };
+		CD325F5921FEA5990044ADFD /* ANIHashtagListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD325F5821FEA5990044ADFD /* ANIHashtagListViewController.swift */; };
+		CD325F5C21FEA6810044ADFD /* ANIHashtagListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD325F5B21FEA6810044ADFD /* ANIHashtagListView.swift */; };
+		CD325F6021FFEE300044ADFD /* ANIEventPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD325F5F21FFEE300044ADFD /* ANIEventPopupViewController.swift */; };
+		CD325F6321FFF3540044ADFD /* ANIEventPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD325F6221FFF3540044ADFD /* ANIEventPopupView.swift */; };
+		CD325F6521FFFEE00044ADFD /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD325F6421FFFEE00044ADFD /* FirebaseEvent.swift */; };
+		CD334E8221421C7F001C6289 /* ANIReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD334E8121421C7F001C6289 /* ANIReloadView.swift */; };
+		CD33BEDE20F31F9A00D2A367 /* ANINotiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD33BEDD20F31F9A00D2A367 /* ANINotiDetailViewController.swift */; };
+		CD33BEE120F3212400D2A367 /* ANINotiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD33BEE020F3212400D2A367 /* ANINotiDetailView.swift */; };
+		CD3A64B9219FED500056ABA2 /* ANIRankingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A64B8219FED500056ABA2 /* ANIRankingViewCell.swift */; };
+		CD3A64BC219FF3640056ABA2 /* ANIStoryRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A64BB219FF3640056ABA2 /* ANIStoryRankingView.swift */; };
+		CD3A64BE219FF4D10056ABA2 /* ANIStoryRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A64BD219FF4D10056ABA2 /* ANIStoryRankingCell.swift */; };
+		CD3A64C021A287DC0056ABA2 /* ANICellButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A64BF21A287DC0056ABA2 /* ANICellButtonView.swift */; };
+		CD3DBF97215A31F50010A219 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3DBF96215A31F50010A219 /* Macros.swift */; };
+		CD47936B2186A5F7002643E2 /* ANIOpinionBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47936A2186A5F7002643E2 /* ANIOpinionBoxViewController.swift */; };
+		CD47936E2186A6E8002643E2 /* ANIOpinionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47936D2186A6E8002643E2 /* ANIOpinionBoxView.swift */; };
+		CD4793722187F1E6002643E2 /* ANIAutoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */; };
+		CD4793742187F256002643E2 /* ANIAutoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4793732187F256002643E2 /* ANIAutoLoginView.swift */; };
+		CD47937721896FD4002643E2 /* ANISplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47937621896FD3002643E2 /* ANISplashView.swift */; };
+		CD492A0121C72CAC00C5AF81 /* ANIVideoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0021C72CAB00C5AF81 /* ANIVideoFilterViewController.swift */; };
+		CD492A0321C740FE00C5AF81 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD492A0221C740FE00C5AF81 /* PryntTrimmerView.framework */; };
+		CD492A0721C749FF00C5AF81 /* ANIVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0621C749FF00C5AF81 /* ANIVideoView.swift */; };
+		CD492A0921C898DF00C5AF81 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0821C898DF00C5AF81 /* URL.swift */; };
+		CD492A0B21C8990300C5AF81 /* AVFileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0A21C8990300C5AF81 /* AVFileType.swift */; };
+		CD492A0D21C8999800C5AF81 /* AVAssetTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0C21C8999800C5AF81 /* AVAssetTrack.swift */; };
+		CD4CBFE721DB66690030C595 /* uploadProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4CBFE621DB66690030C595 /* uploadProgressView.swift */; };
+		CD4F0EF720F481030093C543 /* ANINotiCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4F0EF620F481030093C543 /* ANINotiCommentViewCell.swift */; };
+		CD50A46720EC6A2500CFF16F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD50A46620EC6A2500CFF16F /* UIImage.swift */; };
+		CD516FBE2161ED82002FF41C /* ANINotiHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD516FBD2161ED82002FF41C /* ANINotiHeaderViewCell.swift */; };
+		CD516FC021631D56002FF41C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD516FBF21631D56002FF41C /* UITableView.swift */; };
+		CD516FFE21659885002FF41C /* ANIChatActivityIndicatorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD516FFD21659885002FF41C /* ANIChatActivityIndicatorViewCell.swift */; };
+		CD529783213E17F7001609DB /* ANIPopupOptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD529782213E17F7001609DB /* ANIPopupOptionViewCell.swift */; };
+		CD6229DC20B64A6400E36875 /* ANISignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6229DB20B64A6400E36875 /* ANISignUpViewController.swift */; };
+		CD6229DE20B64B9900E36875 /* ANISignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6229DD20B64B9900E36875 /* ANISignUpView.swift */; };
+		CD6762DE20F8285E0098E033 /* InstantSearchClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6762DD20F8285E0098E033 /* InstantSearchClient.framework */; };
+		CD6762E020FD75AC0098E033 /* PickUpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6762DF20FD75AC0098E033 /* PickUpItem.swift */; };
+		CD6B675120A8844B009BF63D /* ANIRecruitContributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B675020A8844B009BF63D /* ANIRecruitContributionView.swift */; };
+		CD6B675420A90F8A009BF63D /* ANIPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B675320A90F8A009BF63D /* ANIPlaceholderTextView.swift */; };
+		CD7FD158221B988800BFEF11 /* ANIContributionCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7FD157221B988800BFEF11 /* ANIContributionCommentView.swift */; };
+		CD85F558215F547300AB9A0C /* AniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD85F557215F547300AB9A0C /* AniTests.swift */; };
+		CD92792220C0DCB400B1F006 /* ANIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92792120C0DCB400B1F006 /* ANIKey.swift */; };
+		CD9DB0C621AB955000091483 /* ANIRankingStoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9DB0C521AB955000091483 /* ANIRankingStoryDetailViewController.swift */; };
+		CD9E52B120921EB400715F50 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E52B020921EB400715F50 /* UIViewController.swift */; };
+		CD9E52B32094304700715F50 /* ANIRecruitDetailImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E52B22094304700715F50 /* ANIRecruitDetailImagesView.swift */; };
+		CD9E52B520943C9500715F50 /* ANIRecruitDetailImagesViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E52B420943C9500715F50 /* ANIRecruitDetailImagesViewFlowLayout.swift */; };
+		CD9E52B7209441C900715F50 /* ANIRecruitDetailImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E52B6209441C900715F50 /* ANIRecruitDetailImagesViewCell.swift */; };
+		CD9E52BB2094614400715F50 /* ANIAreaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E52BA2094614400715F50 /* ANIAreaButtonView.swift */; };
+		CD9E963320F2EF8600AD4F64 /* FirebaseNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E963220F2EF8600AD4F64 /* FirebaseNotification.swift */; };
+		CD9E963520F2FEB400AD4F64 /* ANIFollowNotiViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E963420F2FEB400AD4F64 /* ANIFollowNotiViewCell.swift */; };
+		CD9EEB30219E92E50079B50E /* ANIFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EEB2F219E92E50079B50E /* ANIFirebase.swift */; };
+		CD9EEB32219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EEB31219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift */; };
+		CDA32A1320A93422008A2AC1 /* ANIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A1220A93422008A2AC1 /* ANIScrollView.swift */; };
+		CDA32A2320AA6041008A2AC1 /* ANIPopupPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2220AA6041008A2AC1 /* ANIPopupPickerViewController.swift */; };
+		CDA32A2720AA6652008A2AC1 /* ANIPopupPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2620AA6652008A2AC1 /* ANIPopupPickerView.swift */; };
+		CDA32A2920ABBA21008A2AC1 /* ANIRecruitContributionImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2820ABBA21008A2AC1 /* ANIRecruitContributionImagesView.swift */; };
+		CDA32A2B20ABBC20008A2AC1 /* ANIRecruitContributionImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2A20ABBC20008A2AC1 /* ANIRecruitContributionImagesCell.swift */; };
+		CDA32A2D20ABCE5F008A2AC1 /* RecruitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2C20ABCE5F008A2AC1 /* RecruitInfo.swift */; };
+		CDA32A2F20ABD941008A2AC1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A2E20ABD941008A2AC1 /* String.swift */; };
+		CDA32A3520AC14C0008A2AC1 /* ANIContributionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A3420AC14C0008A2AC1 /* ANIContributionViewController.swift */; };
+		CDA32A3820AD1ED3008A2AC1 /* ANIContributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A3720AD1ED3008A2AC1 /* ANIContributionView.swift */; };
+		CDA32A3A20AD22E7008A2AC1 /* ANIContributionImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A3920AD22E7008A2AC1 /* ANIContributionImagesView.swift */; };
+		CDA32A3C20AD2520008A2AC1 /* ANIContributionImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A3B20AD2520008A2AC1 /* ANIContributionImagesCell.swift */; };
+		CDA32A7920AE6B17008A2AC1 /* ANIQnaImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A7820AE6B17008A2AC1 /* ANIQnaImagesView.swift */; };
+		CDA32A7B20AE7007008A2AC1 /* ANIQnaImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A7A20AE7007008A2AC1 /* ANIQnaImagesCell.swift */; };
+		CDA32A8320AE7B02008A2AC1 /* ANIImageBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A8220AE7B02008A2AC1 /* ANIImageBrowserViewController.swift */; };
+		CDA32A8620AE8DD4008A2AC1 /* ANIImageBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A8520AE8DD4008A2AC1 /* ANIImageBrowserCell.swift */; };
+		CDA32A8A20AEA7BC008A2AC1 /* ANIDraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA32A8920AEA7BC008A2AC1 /* ANIDraggableView.swift */; };
+		CDA97AC620AFF34C00F46DA4 /* ANIProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97AC520AFF34C00F46DA4 /* ANIProfileEditViewController.swift */; };
+		CDA97AC920AFFFEC00F46DA4 /* ANIProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97AC820AFFFEC00F46DA4 /* ANIProfileEditView.swift */; };
+		CDA97ACC20B000FF00F46DA4 /* ANIProfileEditFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97ACB20B000FF00F46DA4 /* ANIProfileEditFamilyView.swift */; };
+		CDA97ACE20B0018600F46DA4 /* ANIProfileEditFamilyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97ACD20B0018600F46DA4 /* ANIProfileEditFamilyCell.swift */; };
+		CDA97B5820B25F3B00F46DA4 /* ANICommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97B5720B25F3B00F46DA4 /* ANICommentViewController.swift */; };
+		CDA97B5A20B263B500F46DA4 /* ANICommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA97B5920B263B500F46DA4 /* ANICommentView.swift */; };
+		CDACB3F021ABA01C00274D88 /* ANIRankingStoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDACB3EF21ABA01C00274D88 /* ANIRankingStoryDetailView.swift */; };
+		CDAFD75720DC9B4D00AEDD83 /* ANIOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFD75620DC9B4D00AEDD83 /* ANIOptionViewController.swift */; };
+		CDAFD75B20DC9D0000AEDD83 /* ANIOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFD75A20DC9D0000AEDD83 /* ANIOptionView.swift */; };
+		CDAFD75D20DC9EE800AEDD83 /* ANIOptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFD75C20DC9EE800AEDD83 /* ANIOptionViewCell.swift */; };
+		CDAFD75F20DE1D1B00AEDD83 /* ANIRejectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAFD75E20DE1D1B00AEDD83 /* ANIRejectView.swift */; };
+		CDB68F6421E8624C0032AEA8 /* ANIDeleteCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB68F6321E8624B0032AEA8 /* ANIDeleteCommentCell.swift */; };
+		CDB68F6621EDA2E40032AEA8 /* ANINotiParentCommentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB68F6521EDA2E40032AEA8 /* ANINotiParentCommentViewCell.swift */; };
+		CDBAB5F121E57AE1007AADF9 /* ANIParentCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBAB5F021E57AE0007AADF9 /* ANIParentCommentCell.swift */; };
+		CDC6AE4120CF6E7900A836F6 /* ANIOtherProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6AE4020CF6E7900A836F6 /* ANIOtherProfileViewController.swift */; };
+		CDC6AE4420CF724700A836F6 /* ANIOtherProfileBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6AE4320CF724700A836F6 /* ANIOtherProfileBasicView.swift */; };
+		CDC6AE4820CF74C600A836F6 /* ANIOtherProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6AE4720CF74C600A836F6 /* ANIOtherProfileCell.swift */; };
+		CDC6AE4B20CF855A00A836F6 /* ANIOtherProfileTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6AE4A20CF855A00A836F6 /* ANIOtherProfileTopCell.swift */; };
+		CDD0550620A5CF2200BEF482 /* ANIImageFilterPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0550520A5CF2200BEF482 /* ANIImageFilterPreviewView.swift */; };
+		CDD0550820A5D07600BEF482 /* ANIImageFilterPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0550720A5D07600BEF482 /* ANIImageFilterPreviewCell.swift */; };
+		CDD0550C20A5D29900BEF482 /* ANIImageFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0550B20A5D29900BEF482 /* ANIImageFilterView.swift */; };
+		CDD0550E20A6B23B00BEF482 /* ANIImageFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0550D20A6B23B00BEF482 /* ANIImageFilterCell.swift */; };
+		CDD0551020A6C64300BEF482 /* ANIFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD0550F20A6C64300BEF482 /* ANIFilter.swift */; };
+		CDDC23B4210988AC00C9A8E5 /* ANIPopupOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC23B3210988AC00C9A8E5 /* ANIPopupOptionViewController.swift */; };
+		CDDC23B721098A6000C9A8E5 /* ANIPopupOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDC23B621098A6000C9A8E5 /* ANIPopupOptionView.swift */; };
+		CDDD04A620B26CD50094DBFA /* ANICommentContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04A520B26CD50094DBFA /* ANICommentContentCell.swift */; };
+		CDDD04A820B271090094DBFA /* ANICommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04A720B271090094DBFA /* ANICommentCell.swift */; };
+		CDDD04AC20B3B0AA0094DBFA /* ANICommentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04AB20B3B0AA0094DBFA /* ANICommentBar.swift */; };
+		CDDD04AF20B4F8130094DBFA /* GrowingTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDD04AE20B4F8130094DBFA /* GrowingTextView.framework */; };
+		CDDD04B320B50FEA0094DBFA /* ANIInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04B220B50FEA0094DBFA /* ANIInitialViewController.swift */; };
+		CDDD04BA20B538540094DBFA /* ANILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04B920B538540094DBFA /* ANILoginViewController.swift */; };
+		CDDD04C020B53A8B0094DBFA /* ANIInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04BF20B53A8B0094DBFA /* ANIInitialView.swift */; };
+		CDDD04C520B53C870094DBFA /* ANILoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD04C420B53C870094DBFA /* ANILoginView.swift */; };
+		CDDE4B5920DF7658005762A1 /* ANINeedLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B5820DF7658005762A1 /* ANINeedLoginView.swift */; };
+		CDDE4B5C20E079B8005762A1 /* ANIListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B5B20E079B8005762A1 /* ANIListViewController.swift */; };
+		CDDE4B6020E07B58005762A1 /* ANIListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B5F20E07B58005762A1 /* ANIListView.swift */; };
+		CDDE4B6320E0A985005762A1 /* ANIfunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B6220E0A985005762A1 /* ANIfunction.swift */; };
+		CDDE4B6720E20D3E005762A1 /* ANIFollowUserViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B6620E20D3E005762A1 /* ANIFollowUserViewContoller.swift */; };
+		CDDE4B6C20E31247005762A1 /* ANIFollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B6B20E31247005762A1 /* ANIFollowUserView.swift */; };
+		CDDE4B6E20E31390005762A1 /* ANIFollowUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE4B6D20E31390005762A1 /* ANIFollowUserViewCell.swift */; };
+		CDE2F3BA20E35268005E1DE1 /* ANIChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F3B920E35268005E1DE1 /* ANIChatViewController.swift */; };
+		CDE2F3BD20E35B33005E1DE1 /* ANIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F3BC20E35B33005E1DE1 /* ANIChatView.swift */; };
+		CDE2F3BF20E35CBF005E1DE1 /* ANIMyChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F3BE20E35CBF005E1DE1 /* ANIMyChatViewCell.swift */; };
+		CDE2F3C120E35CCE005E1DE1 /* ANIOtherChatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F3C020E35CCE005E1DE1 /* ANIOtherChatViewCell.swift */; };
+		CDE2F40F20E464D5005E1DE1 /* FirebaseChatGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F40E20E464D5005E1DE1 /* FirebaseChatGroup.swift */; };
+		CDE2F41120E4660E005E1DE1 /* FirebaseChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F41020E4660E005E1DE1 /* FirebaseChatMessage.swift */; };
+		CDE2F41520E47070005E1DE1 /* ANIChatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F41420E47070005E1DE1 /* ANIChatBar.swift */; };
+		CDF7F168208D772300254A0F /* ANINotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF7F167208D772300254A0F /* ANINotificationManager.swift */; };
+		CDF7F16E208F2BEF00254A0F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF7F16D208F2BEF00254A0F /* UIView.swift */; };
+		CDF7F171208F651E00254A0F /* ANIButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF7F170208F651E00254A0F /* ANIButtonView.swift */; };
+		CDF7F174208F658E00254A0F /* ANIImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF7F173208F658E00254A0F /* ANIImageButtonView.swift */; };
+		F51D221020767E62009D1B26 /* ANIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D220F20767E62009D1B26 /* ANIColor.swift */; };
+		F51D221220767F03009D1B26 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D221120767F03009D1B26 /* UIColor.swift */; };
+		F51D221520768B24009D1B26 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D221420768B24009D1B26 /* UISearchBar.swift */; };
+		F51D221920768E8D009D1B26 /* ANIRecuruitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51D221820768E8D009D1B26 /* ANIRecuruitView.swift */; };
+		F521184C207A4421000B12C2 /* ANIStoryImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521184B207A4421000B12C2 /* ANIStoryImagesView.swift */; };
+		F530AB1C207A45D900114E6B /* ANIStoryImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F530AB1B207A45D900114E6B /* ANIStoryImagesCell.swift */; };
+		F53E87B72084608000B19A2F /* ANIUserSearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87B62084608000B19A2F /* ANIUserSearchViewCell.swift */; };
+		F53E87BD2085AFC700B19A2F /* ANIProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87BC2085AFC700B19A2F /* ANIProfileViewController.swift */; };
+		F53E87C12085B19700B19A2F /* ANIFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87C02085B19700B19A2F /* ANIFamilyView.swift */; };
+		F53E87C32085B50900B19A2F /* ANIFamilyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87C22085B50900B19A2F /* ANIFamilyViewCell.swift */; };
+		F53E87C62085F13800B19A2F /* ANIProfileMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87C52085F13800B19A2F /* ANIProfileMenuBar.swift */; };
+		F53E87C82085F5FA00B19A2F /* ANIProfileMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87C72085F5FA00B19A2F /* ANIProfileMenuBarCell.swift */; };
+		F53E87D02086EF6600B19A2F /* ANIProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E87CF2086EF6600B19A2F /* ANIProfileCell.swift */; };
+		F566348320752656006CB81B /* ANIRecruitFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566348220752656006CB81B /* ANIRecruitFiltersView.swift */; };
+		F56634862075285D006CB81B /* ANIRecruitFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634852075285D006CB81B /* ANIRecruitFilterCell.swift */; };
+		F57F7D4A2081F43F008A2645 /* ANINotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D492081F43F008A2645 /* ANINotiViewController.swift */; };
+		F57F7D4F2081FC64008A2645 /* ANiNotiMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D4E2081FC64008A2645 /* ANiNotiMenuBar.swift */; };
+		F57F7D512081FC71008A2645 /* ANINotiMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D502081FC71008A2645 /* ANINotiMenuBarCell.swift */; };
+		F57F7D552081FEB2008A2645 /* ANINotiNotiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D542081FEB2008A2645 /* ANINotiNotiCell.swift */; };
+		F57F7D572081FEBF008A2645 /* ANINotiMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D562081FEBF008A2645 /* ANINotiMessageCell.swift */; };
+		F57F7D59208311C1008A2645 /* ANINotiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D58208311C1008A2645 /* ANINotiView.swift */; };
+		F57F7D5F208314DF008A2645 /* ANIBasicNotiViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D5E208314DF008A2645 /* ANIBasicNotiViewCell.swift */; };
+		F57F7D61208322D3008A2645 /* ANIMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D60208322D3008A2645 /* ANIMessageView.swift */; };
+		F57F7D652083250D008A2645 /* ANIMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D642083250D008A2645 /* ANIMessageViewCell.swift */; };
+		F57F7D8820844A90008A2645 /* ANISearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D8720844A8F008A2645 /* ANISearchViewController.swift */; };
+		F57F7D8C20844C41008A2645 /* ANISearchCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D8B20844C41008A2645 /* ANISearchCategoriesView.swift */; };
+		F57F7D8E20844C4E008A2645 /* ANISearchCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D8D20844C4E008A2645 /* ANISearchCategoryCell.swift */; };
+		F57F7D9120844DC2008A2645 /* ANISearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57F7D9020844DC2008A2645 /* ANISearchView.swift */; };
+		F5B1EF9120725964000CFB0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B1EF9020725964000CFB0B /* AppDelegate.swift */; };
+		F5B1EF9320725964000CFB0B /* ANIRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B1EF9220725964000CFB0B /* ANIRecruitViewController.swift */; };
+		F5B1EF9820725964000CFB0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5B1EF9720725964000CFB0B /* Assets.xcassets */; };
+		F5B1EF9B20725964000CFB0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5B1EF9920725964000CFB0B /* LaunchScreen.storyboard */; };
+		F5B1EFB120725964000CFB0B /* AniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B1EFB020725964000CFB0B /* AniUITests.swift */; };
+		F5B1EFC220725BDC000CFB0B /* ANITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B1EFC120725BDC000CFB0B /* ANITabBarController.swift */; };
+		F5B1EFC520726658000CFB0B /* TinyConstraints.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B1EFC420726658000CFB0B /* TinyConstraints.framework */; };
+		F5C381FD2079F73F000BBB8C /* ANICommunityStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C381FC2079F73F000BBB8C /* ANICommunityStoryCell.swift */; };
+		F5C381FF207A068D000BBB8C /* ANIQnaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C381FE207A068D000BBB8C /* ANIQnaView.swift */; };
+		F5DF835D207A17C200EA7FBE /* ANICommunityQnaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF835C207A17C200EA7FBE /* ANICommunityQnaCell.swift */; };
+		F5DF8365207A27DC00EA7FBE /* ANIStoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF8364207A27DC00EA7FBE /* ANIStoryViewCell.swift */; };
+		F5DF8367207A27E900EA7FBE /* ANIQnaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF8366207A27E900EA7FBE /* ANIQnaViewCell.swift */; };
+		F5E9E221207692C60021D4CC /* ANIRecruitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E220207692C60021D4CC /* ANIRecruitViewCell.swift */; };
+		F5E9E22F2079AEC30021D4CC /* ANIOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E22E2079AEC30021D4CC /* ANIOrientation.swift */; };
+		F5E9E2332079AFF40021D4CC /* ANICommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */; };
+		F5E9E2372079B1900021D4CC /* ANICommunityMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */; };
+		F5E9E2392079B9D20021D4CC /* ANICommunityMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */; };
+		F5E9E23D2079C10C0021D4CC /* ANIStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E23C2079C10C0021D4CC /* ANIStoryView.swift */; };
+		F5F5300C2088599D0076E938 /* ANIProfileBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F5300B2088599D0076E938 /* ANIProfileBasicView.swift */; };
+		F5F5300F20885E820076E938 /* ANIProfileTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F5300E20885E820076E938 /* ANIProfileTopCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD85F55A215F547300AB9A0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B1EF8520725963000CFB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5B1EF8C20725963000CFB0B;
+			remoteInfo = Ani;
+		};
+		F5B1EFAD20725964000CFB0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B1EF8520725963000CFB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5B1EF8C20725963000CFB0B;
+			remoteInfo = Ani;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17FAD9EDAE08B9FA7A60EDB8 /* Pods-AniTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AniTests/Pods-AniTests.release.xcconfig"; sourceTree = "<group>"; };
+		9F7E1F101C01F36DEDE88686 /* Pods-AniTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AniTests/Pods-AniTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA314F74AF3E318A20DDD5DB /* Pods_AniTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AniTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1141BC302D4697B8D251698 /* Pods-AniUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AniUITests/Pods-AniUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C5DC98FBA0B2CCFDA47C5CD8 /* Pods_AniUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AniUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD033E4020D8D25E002FB770 /* ANISupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISupportViewController.swift; sourceTree = "<group>"; };
+		CD033E4320D8D28D002FB770 /* ANISupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISupportView.swift; sourceTree = "<group>"; };
+		CD033E4520DA14B3002FB770 /* ANISupportViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISupportViewCell.swift; sourceTree = "<group>"; };
+		CD0417CF21BF865C0017571A /* ANIActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIActivityIndicator.swift; sourceTree = "<group>"; };
+		CD047EBD20C4E9A000248958 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		CD04F05421CB64C70084AE73 /* ANIVideoStoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIVideoStoryViewCell.swift; sourceTree = "<group>"; };
+		CD04F05C21D0AB780084AE73 /* ANIStoryVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryVideoView.swift; sourceTree = "<group>"; };
+		CD08A72D20915BD700F0B72D /* ANIRecruitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitDetailView.swift; sourceTree = "<group>"; };
+		CD08A73020915C2A00F0B72D /* ANIRecruitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitDetailViewController.swift; sourceTree = "<group>"; };
+		CD08A7702091975500F0B72D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		CD08B5DB2217E40C00C0913E /* ANIPopularUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopularUsersView.swift; sourceTree = "<group>"; };
+		CD08B5DD2217E63600C0913E /* ANIPopularUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopularUserCell.swift; sourceTree = "<group>"; };
+		CD08B5DF22184D0400C0913E /* ANIPopularUserHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopularUserHeaderCell.swift; sourceTree = "<group>"; };
+		CD0BFF0F20C6186500D5959B /* CodableFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CodableFirebase.framework; path = Carthage/Build/iOS/CodableFirebase.framework; sourceTree = "<group>"; };
+		CD0BFF1120C624EC00D5959B /* FirebaseRecruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRecruit.swift; sourceTree = "<group>"; };
+		CD0BFF1320C7619600D5959B /* FirebaseStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStory.swift; sourceTree = "<group>"; };
+		CD0BFF1520C7807F00D5959B /* FirebaseComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseComment.swift; sourceTree = "<group>"; };
+		CD0BFF1720C7AD9C00D5959B /* FirebaseQna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseQna.swift; sourceTree = "<group>"; };
+		CD0FAD0920BF8DFD00D8CD27 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		CD0FAD0D20BFC02E00D8CD27 /* ANISessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISessionManager.swift; sourceTree = "<group>"; };
+		CD127399217D587600539D54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Ani/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CD12739B217D58CD00539D54 /* GoogleService-Info-release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-release.plist"; sourceTree = "<group>"; };
+		CD12739D217D74A500539D54 /* d_MYAU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = d_MYAU.entitlements; sourceTree = "<group>"; };
+		CD1A97BC219945570008EC98 /* ANIBlockUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIBlockUserViewController.swift; sourceTree = "<group>"; };
+		CD1A97BF219949770008EC98 /* ANIBlockUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIBlockUserView.swift; sourceTree = "<group>"; };
+		CD1A97C121994AC60008EC98 /* ANIBlockUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIBlockUserViewCell.swift; sourceTree = "<group>"; };
+		CD1C6A2B21C8E7C50075D651 /* AVAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAsset.swift; sourceTree = "<group>"; };
+		CD1C6A2E21C9DEE40075D651 /* TrimmingVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimmingVideo.swift; sourceTree = "<group>"; };
+		CD1C6A3021CA11350075D651 /* ANIContributionVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionVideoCell.swift; sourceTree = "<group>"; };
+		CD1C829C21F5822400F4725F /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = Carthage/Build/iOS/TwitterKit.framework; sourceTree = "<group>"; };
+		CD1C829F21F5875C00F4725F /* ANITwitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANITwitter.swift; sourceTree = "<group>"; };
+		CD2C414420A556AE00581267 /* ANIRecruitContributionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitContributionViewController.swift; sourceTree = "<group>"; };
+		CD2C414720A5A23C00581267 /* ANIImageFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageFilterViewController.swift; sourceTree = "<group>"; };
+		CD325F5821FEA5990044ADFD /* ANIHashtagListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIHashtagListViewController.swift; sourceTree = "<group>"; };
+		CD325F5B21FEA6810044ADFD /* ANIHashtagListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIHashtagListView.swift; sourceTree = "<group>"; };
+		CD325F5F21FFEE300044ADFD /* ANIEventPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIEventPopupViewController.swift; sourceTree = "<group>"; };
+		CD325F6221FFF3540044ADFD /* ANIEventPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIEventPopupView.swift; sourceTree = "<group>"; };
+		CD325F6421FFFEE00044ADFD /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
+		CD334E8121421C7F001C6289 /* ANIReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIReloadView.swift; sourceTree = "<group>"; };
+		CD33BEDD20F31F9A00D2A367 /* ANINotiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiDetailViewController.swift; sourceTree = "<group>"; };
+		CD33BEE020F3212400D2A367 /* ANINotiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiDetailView.swift; sourceTree = "<group>"; };
+		CD3A64B8219FED500056ABA2 /* ANIRankingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRankingViewCell.swift; sourceTree = "<group>"; };
+		CD3A64BB219FF3640056ABA2 /* ANIStoryRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryRankingView.swift; sourceTree = "<group>"; };
+		CD3A64BD219FF4D10056ABA2 /* ANIStoryRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryRankingCell.swift; sourceTree = "<group>"; };
+		CD3A64BF21A287DC0056ABA2 /* ANICellButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICellButtonView.swift; sourceTree = "<group>"; };
+		CD3DBF96215A31F50010A219 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
+		CD47936A2186A5F7002643E2 /* ANIOpinionBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOpinionBoxViewController.swift; sourceTree = "<group>"; };
+		CD47936D2186A6E8002643E2 /* ANIOpinionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOpinionBoxView.swift; sourceTree = "<group>"; };
+		CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIAutoLoginViewController.swift; sourceTree = "<group>"; };
+		CD4793732187F256002643E2 /* ANIAutoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIAutoLoginView.swift; sourceTree = "<group>"; };
+		CD47937621896FD3002643E2 /* ANISplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISplashView.swift; sourceTree = "<group>"; };
+		CD492A0021C72CAB00C5AF81 /* ANIVideoFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIVideoFilterViewController.swift; sourceTree = "<group>"; };
+		CD492A0221C740FE00C5AF81 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
+		CD492A0621C749FF00C5AF81 /* ANIVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIVideoView.swift; sourceTree = "<group>"; };
+		CD492A0821C898DF00C5AF81 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		CD492A0A21C8990300C5AF81 /* AVFileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFileType.swift; sourceTree = "<group>"; };
+		CD492A0C21C8999800C5AF81 /* AVAssetTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAssetTrack.swift; sourceTree = "<group>"; };
+		CD4CBFE621DB66690030C595 /* uploadProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadProgressView.swift; sourceTree = "<group>"; };
+		CD4F0EF620F481030093C543 /* ANINotiCommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiCommentViewCell.swift; sourceTree = "<group>"; };
+		CD50A46620EC6A2500CFF16F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		CD50A46820EC89BD00CFF16F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CD516FBD2161ED82002FF41C /* ANINotiHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiHeaderViewCell.swift; sourceTree = "<group>"; };
+		CD516FBF21631D56002FF41C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		CD516FFD21659885002FF41C /* ANIChatActivityIndicatorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIChatActivityIndicatorViewCell.swift; sourceTree = "<group>"; };
+		CD529782213E17F7001609DB /* ANIPopupOptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopupOptionViewCell.swift; sourceTree = "<group>"; };
+		CD5CA18E21801A1200F15F39 /* MYAU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MYAU.entitlements; sourceTree = "<group>"; };
+		CD6229DB20B64A6400E36875 /* ANISignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISignUpViewController.swift; sourceTree = "<group>"; };
+		CD6229DD20B64B9900E36875 /* ANISignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISignUpView.swift; sourceTree = "<group>"; };
+		CD6762DD20F8285E0098E033 /* InstantSearchClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InstantSearchClient.framework; path = Carthage/Build/iOS/InstantSearchClient.framework; sourceTree = "<group>"; };
+		CD6762DF20FD75AC0098E033 /* PickUpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpItem.swift; sourceTree = "<group>"; };
+		CD6B675020A8844B009BF63D /* ANIRecruitContributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitContributionView.swift; sourceTree = "<group>"; };
+		CD6B675320A90F8A009BF63D /* ANIPlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPlaceholderTextView.swift; sourceTree = "<group>"; };
+		CD7FD157221B988800BFEF11 /* ANIContributionCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionCommentView.swift; sourceTree = "<group>"; };
+		CD85F555215F547200AB9A0C /* AniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD85F557215F547300AB9A0C /* AniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniTests.swift; sourceTree = "<group>"; };
+		CD85F559215F547300AB9A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD92792120C0DCB400B1F006 /* ANIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIKey.swift; sourceTree = "<group>"; };
+		CD9DB0C521AB955000091483 /* ANIRankingStoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRankingStoryDetailViewController.swift; sourceTree = "<group>"; };
+		CD9E52B020921EB400715F50 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CD9E52B22094304700715F50 /* ANIRecruitDetailImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitDetailImagesView.swift; sourceTree = "<group>"; };
+		CD9E52B420943C9500715F50 /* ANIRecruitDetailImagesViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitDetailImagesViewFlowLayout.swift; sourceTree = "<group>"; };
+		CD9E52B6209441C900715F50 /* ANIRecruitDetailImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitDetailImagesViewCell.swift; sourceTree = "<group>"; };
+		CD9E52BA2094614400715F50 /* ANIAreaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIAreaButtonView.swift; sourceTree = "<group>"; };
+		CD9E963220F2EF8600AD4F64 /* FirebaseNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNotification.swift; sourceTree = "<group>"; };
+		CD9E963420F2FEB400AD4F64 /* ANIFollowNotiViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFollowNotiViewCell.swift; sourceTree = "<group>"; };
+		CD9EEB2F219E92E50079B50E /* ANIFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFirebase.swift; sourceTree = "<group>"; };
+		CD9EEB31219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFirebaseRemoteConfigManager.swift; sourceTree = "<group>"; };
+		CDA32A1220A93422008A2AC1 /* ANIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIScrollView.swift; sourceTree = "<group>"; };
+		CDA32A2220AA6041008A2AC1 /* ANIPopupPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopupPickerViewController.swift; sourceTree = "<group>"; };
+		CDA32A2620AA6652008A2AC1 /* ANIPopupPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopupPickerView.swift; sourceTree = "<group>"; };
+		CDA32A2820ABBA21008A2AC1 /* ANIRecruitContributionImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitContributionImagesView.swift; sourceTree = "<group>"; };
+		CDA32A2A20ABBC20008A2AC1 /* ANIRecruitContributionImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitContributionImagesCell.swift; sourceTree = "<group>"; };
+		CDA32A2C20ABCE5F008A2AC1 /* RecruitInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruitInfo.swift; sourceTree = "<group>"; };
+		CDA32A2E20ABD941008A2AC1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CDA32A3420AC14C0008A2AC1 /* ANIContributionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionViewController.swift; sourceTree = "<group>"; };
+		CDA32A3720AD1ED3008A2AC1 /* ANIContributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionView.swift; sourceTree = "<group>"; };
+		CDA32A3920AD22E7008A2AC1 /* ANIContributionImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionImagesView.swift; sourceTree = "<group>"; };
+		CDA32A3B20AD2520008A2AC1 /* ANIContributionImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIContributionImagesCell.swift; sourceTree = "<group>"; };
+		CDA32A7820AE6B17008A2AC1 /* ANIQnaImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIQnaImagesView.swift; sourceTree = "<group>"; };
+		CDA32A7A20AE7007008A2AC1 /* ANIQnaImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIQnaImagesCell.swift; sourceTree = "<group>"; };
+		CDA32A8220AE7B02008A2AC1 /* ANIImageBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageBrowserViewController.swift; sourceTree = "<group>"; };
+		CDA32A8520AE8DD4008A2AC1 /* ANIImageBrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageBrowserCell.swift; sourceTree = "<group>"; };
+		CDA32A8920AEA7BC008A2AC1 /* ANIDraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIDraggableView.swift; sourceTree = "<group>"; };
+		CDA97AC520AFF34C00F46DA4 /* ANIProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileEditViewController.swift; sourceTree = "<group>"; };
+		CDA97AC820AFFFEC00F46DA4 /* ANIProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileEditView.swift; sourceTree = "<group>"; };
+		CDA97ACB20B000FF00F46DA4 /* ANIProfileEditFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileEditFamilyView.swift; sourceTree = "<group>"; };
+		CDA97ACD20B0018600F46DA4 /* ANIProfileEditFamilyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileEditFamilyCell.swift; sourceTree = "<group>"; };
+		CDA97B5320B2497200F46DA4 /* WCLShineButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WCLShineButton.framework; path = Carthage/Build/iOS/WCLShineButton.framework; sourceTree = "<group>"; };
+		CDA97B5720B25F3B00F46DA4 /* ANICommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommentViewController.swift; sourceTree = "<group>"; };
+		CDA97B5920B263B500F46DA4 /* ANICommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommentView.swift; sourceTree = "<group>"; };
+		CDACB3EF21ABA01C00274D88 /* ANIRankingStoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRankingStoryDetailView.swift; sourceTree = "<group>"; };
+		CDAFD75620DC9B4D00AEDD83 /* ANIOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOptionViewController.swift; sourceTree = "<group>"; };
+		CDAFD75A20DC9D0000AEDD83 /* ANIOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOptionView.swift; sourceTree = "<group>"; };
+		CDAFD75C20DC9EE800AEDD83 /* ANIOptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOptionViewCell.swift; sourceTree = "<group>"; };
+		CDAFD75E20DE1D1B00AEDD83 /* ANIRejectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRejectView.swift; sourceTree = "<group>"; };
+		CDB68F6321E8624B0032AEA8 /* ANIDeleteCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIDeleteCommentCell.swift; sourceTree = "<group>"; };
+		CDB68F6521EDA2E40032AEA8 /* ANINotiParentCommentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiParentCommentViewCell.swift; sourceTree = "<group>"; };
+		CDBAB5EC21DDAD2F007AADF9 /* ActiveLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActiveLabel.framework; path = Carthage/Build/iOS/ActiveLabel.framework; sourceTree = "<group>"; };
+		CDBAB5F021E57AE0007AADF9 /* ANIParentCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIParentCommentCell.swift; sourceTree = "<group>"; };
+		CDC6AE4020CF6E7900A836F6 /* ANIOtherProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOtherProfileViewController.swift; sourceTree = "<group>"; };
+		CDC6AE4320CF724700A836F6 /* ANIOtherProfileBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOtherProfileBasicView.swift; sourceTree = "<group>"; };
+		CDC6AE4720CF74C600A836F6 /* ANIOtherProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOtherProfileCell.swift; sourceTree = "<group>"; };
+		CDC6AE4A20CF855A00A836F6 /* ANIOtherProfileTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOtherProfileTopCell.swift; sourceTree = "<group>"; };
+		CDD0550520A5CF2200BEF482 /* ANIImageFilterPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageFilterPreviewView.swift; sourceTree = "<group>"; };
+		CDD0550720A5D07600BEF482 /* ANIImageFilterPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageFilterPreviewCell.swift; sourceTree = "<group>"; };
+		CDD0550B20A5D29900BEF482 /* ANIImageFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageFilterView.swift; sourceTree = "<group>"; };
+		CDD0550D20A6B23B00BEF482 /* ANIImageFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageFilterCell.swift; sourceTree = "<group>"; };
+		CDD0550F20A6C64300BEF482 /* ANIFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFilter.swift; sourceTree = "<group>"; };
+		CDDC23B3210988AC00C9A8E5 /* ANIPopupOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopupOptionViewController.swift; sourceTree = "<group>"; };
+		CDDC23B621098A6000C9A8E5 /* ANIPopupOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIPopupOptionView.swift; sourceTree = "<group>"; };
+		CDDD04A520B26CD50094DBFA /* ANICommentContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommentContentCell.swift; sourceTree = "<group>"; };
+		CDDD04A720B271090094DBFA /* ANICommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommentCell.swift; sourceTree = "<group>"; };
+		CDDD04AB20B3B0AA0094DBFA /* ANICommentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommentBar.swift; sourceTree = "<group>"; };
+		CDDD04AE20B4F8130094DBFA /* GrowingTextView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GrowingTextView.framework; path = Carthage/Build/iOS/GrowingTextView.framework; sourceTree = "<group>"; };
+		CDDD04B220B50FEA0094DBFA /* ANIInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIInitialViewController.swift; sourceTree = "<group>"; };
+		CDDD04B920B538540094DBFA /* ANILoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANILoginViewController.swift; sourceTree = "<group>"; };
+		CDDD04BF20B53A8B0094DBFA /* ANIInitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIInitialView.swift; sourceTree = "<group>"; };
+		CDDD04C420B53C870094DBFA /* ANILoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANILoginView.swift; sourceTree = "<group>"; };
+		CDDE4B5820DF7658005762A1 /* ANINeedLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINeedLoginView.swift; sourceTree = "<group>"; };
+		CDDE4B5B20E079B8005762A1 /* ANIListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIListViewController.swift; sourceTree = "<group>"; };
+		CDDE4B5F20E07B58005762A1 /* ANIListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIListView.swift; sourceTree = "<group>"; };
+		CDDE4B6220E0A985005762A1 /* ANIfunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIfunction.swift; sourceTree = "<group>"; };
+		CDDE4B6620E20D3E005762A1 /* ANIFollowUserViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFollowUserViewContoller.swift; sourceTree = "<group>"; };
+		CDDE4B6B20E31247005762A1 /* ANIFollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFollowUserView.swift; sourceTree = "<group>"; };
+		CDDE4B6D20E31390005762A1 /* ANIFollowUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFollowUserViewCell.swift; sourceTree = "<group>"; };
+		CDE2F3B920E35268005E1DE1 /* ANIChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIChatViewController.swift; sourceTree = "<group>"; };
+		CDE2F3BC20E35B33005E1DE1 /* ANIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIChatView.swift; sourceTree = "<group>"; };
+		CDE2F3BE20E35CBF005E1DE1 /* ANIMyChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIMyChatViewCell.swift; sourceTree = "<group>"; };
+		CDE2F3C020E35CCE005E1DE1 /* ANIOtherChatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOtherChatViewCell.swift; sourceTree = "<group>"; };
+		CDE2F40E20E464D5005E1DE1 /* FirebaseChatGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatGroup.swift; sourceTree = "<group>"; };
+		CDE2F41020E4660E005E1DE1 /* FirebaseChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatMessage.swift; sourceTree = "<group>"; };
+		CDE2F41420E47070005E1DE1 /* ANIChatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIChatBar.swift; sourceTree = "<group>"; };
+		CDF7F167208D772300254A0F /* ANINotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotificationManager.swift; sourceTree = "<group>"; };
+		CDF7F16D208F2BEF00254A0F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		CDF7F170208F651E00254A0F /* ANIButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIButtonView.swift; sourceTree = "<group>"; };
+		CDF7F173208F658E00254A0F /* ANIImageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIImageButtonView.swift; sourceTree = "<group>"; };
+		F1C7C5FF61E6DE40085AB66D /* Pods-AniUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AniUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AniUITests/Pods-AniUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F1F77997FC894BF232AA6788 /* Pods-Ani.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ani.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ani/Pods-Ani.debug.xcconfig"; sourceTree = "<group>"; };
+		F51D220F20767E62009D1B26 /* ANIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIColor.swift; sourceTree = "<group>"; };
+		F51D221120767F03009D1B26 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		F51D221420768B24009D1B26 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		F51D221820768E8D009D1B26 /* ANIRecuruitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecuruitView.swift; sourceTree = "<group>"; };
+		F521184B207A4421000B12C2 /* ANIStoryImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryImagesView.swift; sourceTree = "<group>"; };
+		F530AB1B207A45D900114E6B /* ANIStoryImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryImagesCell.swift; sourceTree = "<group>"; };
+		F53E87B62084608000B19A2F /* ANIUserSearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIUserSearchViewCell.swift; sourceTree = "<group>"; };
+		F53E87BC2085AFC700B19A2F /* ANIProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileViewController.swift; sourceTree = "<group>"; };
+		F53E87C02085B19700B19A2F /* ANIFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFamilyView.swift; sourceTree = "<group>"; };
+		F53E87C22085B50900B19A2F /* ANIFamilyViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIFamilyViewCell.swift; sourceTree = "<group>"; };
+		F53E87C52085F13800B19A2F /* ANIProfileMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileMenuBar.swift; sourceTree = "<group>"; };
+		F53E87C72085F5FA00B19A2F /* ANIProfileMenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileMenuBarCell.swift; sourceTree = "<group>"; };
+		F53E87CF2086EF6600B19A2F /* ANIProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileCell.swift; sourceTree = "<group>"; };
+		F566348220752656006CB81B /* ANIRecruitFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitFiltersView.swift; sourceTree = "<group>"; };
+		F56634852075285D006CB81B /* ANIRecruitFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitFilterCell.swift; sourceTree = "<group>"; };
+		F57F7D492081F43F008A2645 /* ANINotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiViewController.swift; sourceTree = "<group>"; };
+		F57F7D4E2081FC64008A2645 /* ANiNotiMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANiNotiMenuBar.swift; sourceTree = "<group>"; };
+		F57F7D502081FC71008A2645 /* ANINotiMenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiMenuBarCell.swift; sourceTree = "<group>"; };
+		F57F7D542081FEB2008A2645 /* ANINotiNotiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiNotiCell.swift; sourceTree = "<group>"; };
+		F57F7D562081FEBF008A2645 /* ANINotiMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiMessageCell.swift; sourceTree = "<group>"; };
+		F57F7D58208311C1008A2645 /* ANINotiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANINotiView.swift; sourceTree = "<group>"; };
+		F57F7D5E208314DF008A2645 /* ANIBasicNotiViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIBasicNotiViewCell.swift; sourceTree = "<group>"; };
+		F57F7D60208322D3008A2645 /* ANIMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIMessageView.swift; sourceTree = "<group>"; };
+		F57F7D642083250D008A2645 /* ANIMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIMessageViewCell.swift; sourceTree = "<group>"; };
+		F57F7D8720844A8F008A2645 /* ANISearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISearchViewController.swift; sourceTree = "<group>"; };
+		F57F7D8B20844C41008A2645 /* ANISearchCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISearchCategoriesView.swift; sourceTree = "<group>"; };
+		F57F7D8D20844C4E008A2645 /* ANISearchCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISearchCategoryCell.swift; sourceTree = "<group>"; };
+		F57F7D9020844DC2008A2645 /* ANISearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISearchView.swift; sourceTree = "<group>"; };
+		F5B1EF8D20725963000CFB0B /* d_MYAU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = d_MYAU.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B1EF9020725964000CFB0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5B1EF9220725964000CFB0B /* ANIRecruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitViewController.swift; sourceTree = "<group>"; };
+		F5B1EF9720725964000CFB0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5B1EF9A20725964000CFB0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5B1EF9C20725964000CFB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5B1EFAC20725964000CFB0B /* AniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B1EFB020725964000CFB0B /* AniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniUITests.swift; sourceTree = "<group>"; };
+		F5B1EFB220725964000CFB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5B1EFC120725BDC000CFB0B /* ANITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANITabBarController.swift; sourceTree = "<group>"; };
+		F5B1EFC420726658000CFB0B /* TinyConstraints.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinyConstraints.framework; path = Carthage/Build/iOS/TinyConstraints.framework; sourceTree = "<group>"; };
+		F5C381FC2079F73F000BBB8C /* ANICommunityStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityStoryCell.swift; sourceTree = "<group>"; };
+		F5C381FE207A068D000BBB8C /* ANIQnaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIQnaView.swift; sourceTree = "<group>"; };
+		F5DF835C207A17C200EA7FBE /* ANICommunityQnaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityQnaCell.swift; sourceTree = "<group>"; };
+		F5DF8364207A27DC00EA7FBE /* ANIStoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryViewCell.swift; sourceTree = "<group>"; };
+		F5DF8366207A27E900EA7FBE /* ANIQnaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIQnaViewCell.swift; sourceTree = "<group>"; };
+		F5E9E220207692C60021D4CC /* ANIRecruitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIRecruitViewCell.swift; sourceTree = "<group>"; };
+		F5E9E22E2079AEC30021D4CC /* ANIOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOrientation.swift; sourceTree = "<group>"; };
+		F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityViewController.swift; sourceTree = "<group>"; };
+		F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityMenuBar.swift; sourceTree = "<group>"; };
+		F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityMenuBarCell.swift; sourceTree = "<group>"; };
+		F5E9E23C2079C10C0021D4CC /* ANIStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryView.swift; sourceTree = "<group>"; };
+		F5F5300B2088599D0076E938 /* ANIProfileBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileBasicView.swift; sourceTree = "<group>"; };
+		F5F5300E20885E820076E938 /* ANIProfileTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIProfileTopCell.swift; sourceTree = "<group>"; };
+		F8BF8D21240D7035E50361DD /* Pods-Ani.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ani.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ani/Pods-Ani.release.xcconfig"; sourceTree = "<group>"; };
+		FD08576705673419CEA26417 /* Pods_Ani.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ani.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD85F552215F547200AB9A0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5B62B81AC482FE993A03ABF /* Pods_AniTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EF8A20725963000CFB0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1C829D21F5822400F4725F /* TwitterKit.framework in Frameworks */,
+				CD492A0321C740FE00C5AF81 /* PryntTrimmerView.framework in Frameworks */,
+				CD6762DE20F8285E0098E033 /* InstantSearchClient.framework in Frameworks */,
+				CD0BFF1020C6186500D5959B /* CodableFirebase.framework in Frameworks */,
+				CD047EBE20C4E9A000248958 /* NVActivityIndicatorView.framework in Frameworks */,
+				CDDD04AF20B4F8130094DBFA /* GrowingTextView.framework in Frameworks */,
+				F5B1EFC520726658000CFB0B /* TinyConstraints.framework in Frameworks */,
+				23BE6C66072673B423ABA35D /* Pods_Ani.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EFA920725964000CFB0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFFABBAF01DF20A602B9BB7F /* Pods_AniUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		45824576DBA272D1C4D63B2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1F77997FC894BF232AA6788 /* Pods-Ani.debug.xcconfig */,
+				F8BF8D21240D7035E50361DD /* Pods-Ani.release.xcconfig */,
+				9F7E1F101C01F36DEDE88686 /* Pods-AniTests.debug.xcconfig */,
+				17FAD9EDAE08B9FA7A60EDB8 /* Pods-AniTests.release.xcconfig */,
+				F1C7C5FF61E6DE40085AB66D /* Pods-AniUITests.debug.xcconfig */,
+				B1141BC302D4697B8D251698 /* Pods-AniUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD033E3F20D8D219002FB770 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				CD033E4320D8D28D002FB770 /* ANISupportView.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		CD033E4220D8D263002FB770 /* SupportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD033E4020D8D25E002FB770 /* ANISupportViewController.swift */,
+			);
+			path = SupportViewController;
+			sourceTree = "<group>";
+		};
+		CD0417CE21BF86400017571A /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				CD0417CF21BF865C0017571A /* ANIActivityIndicator.swift */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		CD08A72C20915BB400F0B72D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CD08A72D20915BD700F0B72D /* ANIRecruitDetailView.swift */,
+				CD9E52B22094304700715F50 /* ANIRecruitDetailImagesView.swift */,
+				CD9E52B6209441C900715F50 /* ANIRecruitDetailImagesViewCell.swift */,
+				CD9E52B420943C9500715F50 /* ANIRecruitDetailImagesViewFlowLayout.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		CD08A72F20915BDF00F0B72D /* RecruitDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD08A73020915C2A00F0B72D /* ANIRecruitDetailViewController.swift */,
+			);
+			path = RecruitDetailViewController;
+			sourceTree = "<group>";
+		};
+		CD08B5DA2217E3D200C0913E /* PopularUsers */ = {
+			isa = PBXGroup;
+			children = (
+				CD08B5DB2217E40C00C0913E /* ANIPopularUsersView.swift */,
+				CD08B5DD2217E63600C0913E /* ANIPopularUserCell.swift */,
+				CD08B5DF22184D0400C0913E /* ANIPopularUserHeaderCell.swift */,
+			);
+			path = PopularUsers;
+			sourceTree = "<group>";
+		};
+		CD1A97BB219945370008EC98 /* BlockUserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD1A97BC219945570008EC98 /* ANIBlockUserViewController.swift */,
+			);
+			path = BlockUserViewController;
+			sourceTree = "<group>";
+		};
+		CD1A97BE2199495D0008EC98 /* BlockUserView */ = {
+			isa = PBXGroup;
+			children = (
+				CD1A97BF219949770008EC98 /* ANIBlockUserView.swift */,
+				CD1A97C121994AC60008EC98 /* ANIBlockUserViewCell.swift */,
+			);
+			path = BlockUserView;
+			sourceTree = "<group>";
+		};
+		CD1C829E21F5874900F4725F /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				CD1C829F21F5875C00F4725F /* ANITwitter.swift */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		CD2C414320A5566B00581267 /* RecruitContributionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD2C414420A556AE00581267 /* ANIRecruitContributionViewController.swift */,
+			);
+			path = RecruitContributionViewController;
+			sourceTree = "<group>";
+		};
+		CD2C414620A5A1FF00581267 /* ImageFilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD2C414720A5A23C00581267 /* ANIImageFilterViewController.swift */,
+			);
+			path = ImageFilterViewController;
+			sourceTree = "<group>";
+		};
+		CD325F5721FEA57A0044ADFD /* HashtagListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD325F5821FEA5990044ADFD /* ANIHashtagListViewController.swift */,
+			);
+			path = HashtagListViewController;
+			sourceTree = "<group>";
+		};
+		CD325F5A21FEA66B0044ADFD /* HashtagListView */ = {
+			isa = PBXGroup;
+			children = (
+				CD325F5B21FEA6810044ADFD /* ANIHashtagListView.swift */,
+			);
+			path = HashtagListView;
+			sourceTree = "<group>";
+		};
+		CD325F5E21FFEDEA0044ADFD /* EventPopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD325F5F21FFEE300044ADFD /* ANIEventPopupViewController.swift */,
+			);
+			path = EventPopupViewController;
+			sourceTree = "<group>";
+		};
+		CD325F6121FFF3360044ADFD /* EventPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				CD325F6221FFF3540044ADFD /* ANIEventPopupView.swift */,
+			);
+			path = EventPopupView;
+			sourceTree = "<group>";
+		};
+		CD334E8021421C5F001C6289 /* ReloadView */ = {
+			isa = PBXGroup;
+			children = (
+				CD334E8121421C7F001C6289 /* ANIReloadView.swift */,
+			);
+			path = ReloadView;
+			sourceTree = "<group>";
+		};
+		CD33BEDB20F31F4C00D2A367 /* Noti */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D482081F3A1008A2645 /* NotiViewController */,
+				CD33BEDC20F31F6000D2A367 /* NotiDetailViewController */,
+			);
+			path = Noti;
+			sourceTree = "<group>";
+		};
+		CD33BEDC20F31F6000D2A367 /* NotiDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD33BEDD20F31F9A00D2A367 /* ANINotiDetailViewController.swift */,
+			);
+			path = NotiDetailViewController;
+			sourceTree = "<group>";
+		};
+		CD33BEDF20F3211500D2A367 /* NotiDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CD33BEE020F3212400D2A367 /* ANINotiDetailView.swift */,
+				CD516FBD2161ED82002FF41C /* ANINotiHeaderViewCell.swift */,
+				CD4F0EF620F481030093C543 /* ANINotiCommentViewCell.swift */,
+				CDB68F6521EDA2E40032AEA8 /* ANINotiParentCommentViewCell.swift */,
+				CDB68F6321E8624B0032AEA8 /* ANIDeleteCommentCell.swift */,
+			);
+			path = NotiDetail;
+			sourceTree = "<group>";
+		};
+		CD3A64BA219FF3480056ABA2 /* rankingView */ = {
+			isa = PBXGroup;
+			children = (
+				CD3A64BB219FF3640056ABA2 /* ANIStoryRankingView.swift */,
+				CD3A64BD219FF4D10056ABA2 /* ANIStoryRankingCell.swift */,
+			);
+			path = rankingView;
+			sourceTree = "<group>";
+		};
+		CD4793692186A5D2002643E2 /* opinionBoxViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD47936A2186A5F7002643E2 /* ANIOpinionBoxViewController.swift */,
+			);
+			path = opinionBoxViewController;
+			sourceTree = "<group>";
+		};
+		CD47936C2186A6C3002643E2 /* opinionBoxView */ = {
+			isa = PBXGroup;
+			children = (
+				CD47936D2186A6E8002643E2 /* ANIOpinionBoxView.swift */,
+			);
+			path = opinionBoxView;
+			sourceTree = "<group>";
+		};
+		CD47936F2187F148002643E2 /* autoLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				CD4793732187F256002643E2 /* ANIAutoLoginView.swift */,
+			);
+			path = autoLoginView;
+			sourceTree = "<group>";
+		};
+		CD4793702187F161002643E2 /* AutoLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */,
+			);
+			path = AutoLoginViewController;
+			sourceTree = "<group>";
+		};
+		CD47937521896FC1002643E2 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CD47937621896FD3002643E2 /* ANISplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		CD4929FF21C72C8800C5AF81 /* VideoFilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD492A0021C72CAB00C5AF81 /* ANIVideoFilterViewController.swift */,
+			);
+			path = VideoFilterViewController;
+			sourceTree = "<group>";
+		};
+		CD492A0421C749D600C5AF81 /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				CD492A0621C749FF00C5AF81 /* ANIVideoView.swift */,
+			);
+			path = VideoView;
+			sourceTree = "<group>";
+		};
+		CD492A0521C749EA00C5AF81 /* VideoFilter */ = {
+			isa = PBXGroup;
+			children = (
+				CD492A0421C749D600C5AF81 /* VideoView */,
+			);
+			path = VideoFilter;
+			sourceTree = "<group>";
+		};
+		CD4CBFE521DB665E0030C595 /* uploadProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CBFE621DB66690030C595 /* uploadProgressView.swift */,
+			);
+			path = uploadProgressView;
+			sourceTree = "<group>";
+		};
+		CD66F49020C4C0CD00FF563C /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				F51D220F20767E62009D1B26 /* ANIColor.swift */,
+				F5E9E22E2079AEC30021D4CC /* ANIOrientation.swift */,
+				CDF7F167208D772300254A0F /* ANINotificationManager.swift */,
+				CD0FAD0D20BFC02E00D8CD27 /* ANISessionManager.swift */,
+				CD92792120C0DCB400B1F006 /* ANIKey.swift */,
+				CDDE4B6220E0A985005762A1 /* ANIfunction.swift */,
+				CDD0550F20A6C64300BEF482 /* ANIFilter.swift */,
+				CD3DBF96215A31F50010A219 /* Macros.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		CD6B674F20A88420009BF63D /* RecruitContributionView */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B675020A8844B009BF63D /* ANIRecruitContributionView.swift */,
+				CDA32A2820ABBA21008A2AC1 /* ANIRecruitContributionImagesView.swift */,
+				CDA32A2A20ABBC20008A2AC1 /* ANIRecruitContributionImagesCell.swift */,
+			);
+			path = RecruitContributionView;
+			sourceTree = "<group>";
+		};
+		CD6B675220A90F78009BF63D /* PlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B675320A90F8A009BF63D /* ANIPlaceholderTextView.swift */,
+			);
+			path = PlaceholderTextView;
+			sourceTree = "<group>";
+		};
+		CD7FD156221B986300BFEF11 /* ContributionCommentView */ = {
+			isa = PBXGroup;
+			children = (
+				CD7FD157221B988800BFEF11 /* ANIContributionCommentView.swift */,
+			);
+			path = ContributionCommentView;
+			sourceTree = "<group>";
+		};
+		CD85F556215F547200AB9A0C /* AniTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD85F557215F547300AB9A0C /* AniTests.swift */,
+				CD85F559215F547300AB9A0C /* Info.plist */,
+			);
+			path = AniTests;
+			sourceTree = "<group>";
+		};
+		CD9DB0C721AB969C00091483 /* RankingStoryDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DB0C521AB955000091483 /* ANIRankingStoryDetailViewController.swift */,
+			);
+			path = RankingStoryDetailViewController;
+			sourceTree = "<group>";
+		};
+		CD9EEB2E219E92D60079B50E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CD9EEB2F219E92E50079B50E /* ANIFirebase.swift */,
+				CD9EEB31219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		CDA32A1420A9347A008A2AC1 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A1220A93422008A2AC1 /* ANIScrollView.swift */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		CDA32A2020AA6029008A2AC1 /* PopupPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A2220AA6041008A2AC1 /* ANIPopupPickerViewController.swift */,
+			);
+			path = PopupPickerViewController;
+			sourceTree = "<group>";
+		};
+		CDA32A2120AA6041008A2AC1 /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD2C414320A5566B00581267 /* RecruitContributionViewController */,
+				CD033E4220D8D263002FB770 /* SupportViewController */,
+				CDA32A2020AA6029008A2AC1 /* PopupPickerViewController */,
+				CDA32A3320AC1491008A2AC1 /* ContributeViewController */,
+				CDA32A8120AE7AE2008A2AC1 /* ImageBrowserViewController */,
+				CDA97AC420AFF33200F46DA4 /* ProfileEditViewController */,
+				CDDC23B22109888B00C9A8E5 /* PopupOptionViewController */,
+				CD325F5E21FFEDEA0044ADFD /* EventPopupViewController */,
+			);
+			path = ModalViewController;
+			sourceTree = "<group>";
+		};
+		CDA32A2420AA661A008A2AC1 /* ModalVIew */ = {
+			isa = PBXGroup;
+			children = (
+				CD6B674F20A88420009BF63D /* RecruitContributionView */,
+				CD033E3F20D8D219002FB770 /* Support */,
+				CDA32A2520AA6630008A2AC1 /* PopupPickerView */,
+				CDA32A3620AD1E8F008A2AC1 /* ContributionView */,
+				CDA32A8420AE8DBC008A2AC1 /* ImageBrowserView */,
+				CDA97AC720AFFFD200F46DA4 /* ProfileEditView */,
+				CDDC23B521098A4000C9A8E5 /* PopupOption */,
+				CD325F6121FFF3360044ADFD /* EventPopupView */,
+			);
+			path = ModalVIew;
+			sourceTree = "<group>";
+		};
+		CDA32A2520AA6630008A2AC1 /* PopupPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A2620AA6652008A2AC1 /* ANIPopupPickerView.swift */,
+			);
+			path = PopupPickerView;
+			sourceTree = "<group>";
+		};
+		CDA32A3320AC1491008A2AC1 /* ContributeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A3420AC14C0008A2AC1 /* ANIContributionViewController.swift */,
+			);
+			path = ContributeViewController;
+			sourceTree = "<group>";
+		};
+		CDA32A3620AD1E8F008A2AC1 /* ContributionView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A3720AD1ED3008A2AC1 /* ANIContributionView.swift */,
+				CDA32A3920AD22E7008A2AC1 /* ANIContributionImagesView.swift */,
+				CDA32A3B20AD2520008A2AC1 /* ANIContributionImagesCell.swift */,
+				CD1C6A3021CA11350075D651 /* ANIContributionVideoCell.swift */,
+			);
+			path = ContributionView;
+			sourceTree = "<group>";
+		};
+		CDA32A7720AE6B03008A2AC1 /* ImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A7820AE6B17008A2AC1 /* ANIQnaImagesView.swift */,
+				CDA32A7A20AE7007008A2AC1 /* ANIQnaImagesCell.swift */,
+			);
+			path = ImagesView;
+			sourceTree = "<group>";
+		};
+		CDA32A8120AE7AE2008A2AC1 /* ImageBrowserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A8220AE7B02008A2AC1 /* ANIImageBrowserViewController.swift */,
+			);
+			name = ImageBrowserViewController;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		CDA32A8420AE8DBC008A2AC1 /* ImageBrowserView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA32A8520AE8DD4008A2AC1 /* ANIImageBrowserCell.swift */,
+				CDA32A8920AEA7BC008A2AC1 /* ANIDraggableView.swift */,
+			);
+			path = ImageBrowserView;
+			sourceTree = "<group>";
+		};
+		CDA97AC420AFF33200F46DA4 /* ProfileEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97AC520AFF34C00F46DA4 /* ANIProfileEditViewController.swift */,
+			);
+			path = ProfileEditViewController;
+			sourceTree = "<group>";
+		};
+		CDA97AC720AFFFD200F46DA4 /* ProfileEditView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97AC820AFFFEC00F46DA4 /* ANIProfileEditView.swift */,
+				CDA97ACA20B000D800F46DA4 /* ProfileEditFamilyView */,
+			);
+			path = ProfileEditView;
+			sourceTree = "<group>";
+		};
+		CDA97ACA20B000D800F46DA4 /* ProfileEditFamilyView */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97ACB20B000FF00F46DA4 /* ANIProfileEditFamilyView.swift */,
+				CDA97ACD20B0018600F46DA4 /* ANIProfileEditFamilyCell.swift */,
+			);
+			path = ProfileEditFamilyView;
+			sourceTree = "<group>";
+		};
+		CDA97B5620B25F2000F46DA4 /* CommentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97B5720B25F3B00F46DA4 /* ANICommentViewController.swift */,
+			);
+			path = CommentViewController;
+			sourceTree = "<group>";
+		};
+		CDA97B5B20B263BE00F46DA4 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04AA20B3B09C0094DBFA /* Comment */,
+				CDDD04AD20B3B0AF0094DBFA /* CommentBar */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
+		CDACB3EE21AB9FFC00274D88 /* RankingStoryDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				CDACB3EF21ABA01C00274D88 /* ANIRankingStoryDetailView.swift */,
+			);
+			path = RankingStoryDetailView;
+			sourceTree = "<group>";
+		};
+		CDAFD75820DC9B5B00AEDD83 /* OptionViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFD75620DC9B4D00AEDD83 /* ANIOptionViewController.swift */,
+			);
+			path = OptionViewContoller;
+			sourceTree = "<group>";
+		};
+		CDAFD75920DC9CEB00AEDD83 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B5E20E07B4D005762A1 /* Option */,
+				CDDE4B6120E07B5C005762A1 /* List */,
+				CD1A97BE2199495D0008EC98 /* BlockUserView */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
+		CDAFD76020DE1D2100AEDD83 /* RejectView */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFD75E20DE1D1B00AEDD83 /* ANIRejectView.swift */,
+			);
+			path = RejectView;
+			sourceTree = "<group>";
+		};
+		CDC6AE3F20CF6E5C00A836F6 /* OtherProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6AE4020CF6E7900A836F6 /* ANIOtherProfileViewController.swift */,
+			);
+			path = OtherProfileViewController;
+			sourceTree = "<group>";
+		};
+		CDC6AE4220CF723000A836F6 /* OtherProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6AE4320CF724700A836F6 /* ANIOtherProfileBasicView.swift */,
+				CDC6AE4920CF854700A836F6 /* Top */,
+				CDC6AE4520CF74AB00A836F6 /* Contents */,
+			);
+			path = OtherProfile;
+			sourceTree = "<group>";
+		};
+		CDC6AE4520CF74AB00A836F6 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6AE4620CF74B600A836F6 /* Profile */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		CDC6AE4620CF74B600A836F6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6AE4720CF74C600A836F6 /* ANIOtherProfileCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CDC6AE4920CF854700A836F6 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6AE4A20CF855A00A836F6 /* ANIOtherProfileTopCell.swift */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		CDD0550420A5CF0100BEF482 /* ImageFilter */ = {
+			isa = PBXGroup;
+			children = (
+				CDD0550920A5D27300BEF482 /* Preview */,
+				CDD0550A20A5D28100BEF482 /* Filter */,
+			);
+			path = ImageFilter;
+			sourceTree = "<group>";
+		};
+		CDD0550920A5D27300BEF482 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				CDD0550520A5CF2200BEF482 /* ANIImageFilterPreviewView.swift */,
+				CDD0550720A5D07600BEF482 /* ANIImageFilterPreviewCell.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		CDD0550A20A5D28100BEF482 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				CDD0550B20A5D29900BEF482 /* ANIImageFilterView.swift */,
+				CDD0550D20A6B23B00BEF482 /* ANIImageFilterCell.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		CDDC23B22109888B00C9A8E5 /* PopupOptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDDC23B3210988AC00C9A8E5 /* ANIPopupOptionViewController.swift */,
+			);
+			path = PopupOptionViewController;
+			sourceTree = "<group>";
+		};
+		CDDC23B521098A4000C9A8E5 /* PopupOption */ = {
+			isa = PBXGroup;
+			children = (
+				CDDC23B621098A6000C9A8E5 /* ANIPopupOptionView.swift */,
+				CD529782213E17F7001609DB /* ANIPopupOptionViewCell.swift */,
+			);
+			path = PopupOption;
+			sourceTree = "<group>";
+		};
+		CDDD04AA20B3B09C0094DBFA /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				CDA97B5920B263B500F46DA4 /* ANICommentView.swift */,
+				CDDD04A520B26CD50094DBFA /* ANICommentContentCell.swift */,
+				CDDD04A720B271090094DBFA /* ANICommentCell.swift */,
+				CDBAB5F021E57AE0007AADF9 /* ANIParentCommentCell.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		CDDD04AD20B3B0AF0094DBFA /* CommentBar */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04AB20B3B0AA0094DBFA /* ANICommentBar.swift */,
+			);
+			path = CommentBar;
+			sourceTree = "<group>";
+		};
+		CDDD04B120B50FCE0094DBFA /* InitialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04B220B50FEA0094DBFA /* ANIInitialViewController.swift */,
+			);
+			path = InitialViewController;
+			sourceTree = "<group>";
+		};
+		CDDD04B520B5381B0094DBFA /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04B120B50FCE0094DBFA /* InitialViewController */,
+				CDDD04B820B538400094DBFA /* LoginViewController */,
+				CDDD04BB20B539EE0094DBFA /* SignUpViewController */,
+				CD4793702187F161002643E2 /* AutoLoginViewController */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		CDDD04B720B5382D0094DBFA /* Recruit */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EFBF20725B79000CFB0B /* RecruitViewController */,
+				CD08A72F20915BDF00F0B72D /* RecruitDetailViewController */,
+			);
+			path = Recruit;
+			sourceTree = "<group>";
+		};
+		CDDD04B820B538400094DBFA /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04B920B538540094DBFA /* ANILoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		CDDD04BB20B539EE0094DBFA /* SignUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD6229DB20B64A6400E36875 /* ANISignUpViewController.swift */,
+			);
+			path = SignUpViewController;
+			sourceTree = "<group>";
+		};
+		CDDD04BE20B53A7C0094DBFA /* InitialView */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04BF20B53A8B0094DBFA /* ANIInitialView.swift */,
+			);
+			path = InitialView;
+			sourceTree = "<group>";
+		};
+		CDDD04C120B53C110094DBFA /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04BE20B53A7C0094DBFA /* InitialView */,
+				CDDD04C220B53C1A0094DBFA /* LoginView */,
+				CDDD04C320B53C760094DBFA /* SignUpView */,
+				CD47936F2187F148002643E2 /* autoLoginView */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		CDDD04C220B53C1A0094DBFA /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04C420B53C870094DBFA /* ANILoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		CDDD04C320B53C760094DBFA /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				CD6229DD20B64B9900E36875 /* ANISignUpView.swift */,
+			);
+			path = SignUpView;
+			sourceTree = "<group>";
+		};
+		CDDE4B5720DF7636005762A1 /* NeedLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B5820DF7658005762A1 /* ANINeedLoginView.swift */,
+			);
+			path = NeedLoginView;
+			sourceTree = "<group>";
+		};
+		CDDE4B5A20E079A5005762A1 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFD75820DC9B5B00AEDD83 /* OptionViewContoller */,
+				CDDE4B5D20E079BC005762A1 /* ListViewController */,
+				CD1A97BB219945370008EC98 /* BlockUserViewController */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
+		CDDE4B5D20E079BC005762A1 /* ListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B5B20E079B8005762A1 /* ANIListViewController.swift */,
+			);
+			path = ListViewController;
+			sourceTree = "<group>";
+		};
+		CDDE4B5E20E07B4D005762A1 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				CDAFD75A20DC9D0000AEDD83 /* ANIOptionView.swift */,
+				CDAFD75C20DC9EE800AEDD83 /* ANIOptionViewCell.swift */,
+			);
+			path = Option;
+			sourceTree = "<group>";
+		};
+		CDDE4B6120E07B5C005762A1 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B5F20E07B58005762A1 /* ANIListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		CDDE4B6420E20D19005762A1 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B6620E20D3E005762A1 /* ANIFollowUserViewContoller.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		CDDE4B6A20E3122B005762A1 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				CDDE4B6B20E31247005762A1 /* ANIFollowUserView.swift */,
+				CDDE4B6D20E31390005762A1 /* ANIFollowUserViewCell.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		CDE2F3B820E3524F005E1DE1 /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDE2F3B920E35268005E1DE1 /* ANIChatViewController.swift */,
+			);
+			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		CDE2F3BB20E35B20005E1DE1 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				CDE2F41220E4704D005E1DE1 /* Chat */,
+				CDE2F41320E47056005E1DE1 /* ChatBar */,
+			);
+			path = ChatView;
+			sourceTree = "<group>";
+		};
+		CDE2F41220E4704D005E1DE1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CDE2F3BC20E35B33005E1DE1 /* ANIChatView.swift */,
+				CDE2F3BE20E35CBF005E1DE1 /* ANIMyChatViewCell.swift */,
+				CDE2F3C020E35CCE005E1DE1 /* ANIOtherChatViewCell.swift */,
+				CD516FFD21659885002FF41C /* ANIChatActivityIndicatorViewCell.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		CDE2F41320E47056005E1DE1 /* ChatBar */ = {
+			isa = PBXGroup;
+			children = (
+				CDE2F41420E47070005E1DE1 /* ANIChatBar.swift */,
+			);
+			path = ChatBar;
+			sourceTree = "<group>";
+		};
+		CDF7F16F208F650600254A0F /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				CDF7F170208F651E00254A0F /* ANIButtonView.swift */,
+				CD3A64BF21A287DC0056ABA2 /* ANICellButtonView.swift */,
+				CDF7F173208F658E00254A0F /* ANIImageButtonView.swift */,
+				CD9E52BA2094614400715F50 /* ANIAreaButtonView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		F51D220E20767E49009D1B26 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CD1C829E21F5874900F4725F /* Twitter */,
+				CD9EEB2E219E92D60079B50E /* Firebase */,
+				CDA32A1420A9347A008A2AC1 /* ScrollView */,
+				CD6B675220A90F78009BF63D /* PlaceholderTextView */,
+				CDF7F16F208F650600254A0F /* Button */,
+				F51D221320768B01009D1B26 /* Extensioin */,
+				CD66F49020C4C0CD00FF563C /* Supporting */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		F51D221320768B01009D1B26 /* Extensioin */ = {
+			isa = PBXGroup;
+			children = (
+				F51D221120767F03009D1B26 /* UIColor.swift */,
+				F51D221420768B24009D1B26 /* UISearchBar.swift */,
+				CDF7F16D208F2BEF00254A0F /* UIView.swift */,
+				CD08A7702091975500F0B72D /* UIApplication.swift */,
+				CD9E52B020921EB400715F50 /* UIViewController.swift */,
+				CDA32A2E20ABD941008A2AC1 /* String.swift */,
+				CD50A46620EC6A2500CFF16F /* UIImage.swift */,
+				CD516FBF21631D56002FF41C /* UITableView.swift */,
+				CD492A0821C898DF00C5AF81 /* URL.swift */,
+				CD492A0A21C8990300C5AF81 /* AVFileType.swift */,
+				CD492A0C21C8999800C5AF81 /* AVAssetTrack.swift */,
+				CD1C6A2B21C8E7C50075D651 /* AVAsset.swift */,
+			);
+			path = Extensioin;
+			sourceTree = "<group>";
+		};
+		F51D221620768E53009D1B26 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				F566348220752656006CB81B /* ANIRecruitFiltersView.swift */,
+				F56634852075285D006CB81B /* ANIRecruitFilterCell.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		F51D221720768E5F009D1B26 /* Recruit */ = {
+			isa = PBXGroup;
+			children = (
+				F51D221820768E8D009D1B26 /* ANIRecuruitView.swift */,
+				F5E9E220207692C60021D4CC /* ANIRecruitViewCell.swift */,
+				CD08A72C20915BB400F0B72D /* Detail */,
+			);
+			path = Recruit;
+			sourceTree = "<group>";
+		};
+		F521184D207A4428000B12C2 /* ImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				F521184B207A4421000B12C2 /* ANIStoryImagesView.swift */,
+				F530AB1B207A45D900114E6B /* ANIStoryImagesCell.swift */,
+			);
+			path = ImagesView;
+			sourceTree = "<group>";
+		};
+		F53E87BB2085AF9D00B19A2F /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F53E87BC2085AFC700B19A2F /* ANIProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		F53E87BE2085B14A00B19A2F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F5F5300B2088599D0076E938 /* ANIProfileBasicView.swift */,
+				F5F5300D20885E670076E938 /* Top */,
+				F53E87C920861A4D00B19A2F /* Contents */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F53E87BF2085B15900B19A2F /* Family */ = {
+			isa = PBXGroup;
+			children = (
+				F53E87C02085B19700B19A2F /* ANIFamilyView.swift */,
+				F53E87C22085B50900B19A2F /* ANIFamilyViewCell.swift */,
+			);
+			path = Family;
+			sourceTree = "<group>";
+		};
+		F53E87C42085D0DF00B19A2F /* ProfileMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				F53E87C52085F13800B19A2F /* ANIProfileMenuBar.swift */,
+				F53E87C72085F5FA00B19A2F /* ANIProfileMenuBarCell.swift */,
+			);
+			path = ProfileMenuBar;
+			sourceTree = "<group>";
+		};
+		F53E87C920861A4D00B19A2F /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				F53E87CA20861A5B00B19A2F /* Profile */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		F53E87CA20861A5B00B19A2F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F53E87CF2086EF6600B19A2F /* ANIProfileCell.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F56634842075265E006CB81B /* RecruitView */ = {
+			isa = PBXGroup;
+			children = (
+				F51D221620768E53009D1B26 /* Filter */,
+				F51D221720768E5F009D1B26 /* Recruit */,
+			);
+			path = RecruitView;
+			sourceTree = "<group>";
+		};
+		F57F7D482081F3A1008A2645 /* NotiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D492081F43F008A2645 /* ANINotiViewController.swift */,
+			);
+			path = NotiViewController;
+			sourceTree = "<group>";
+		};
+		F57F7D4B2081FC26008A2645 /* NotiView */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D4C2081FC3D008A2645 /* NotiMenuBar */,
+				F57F7D4D2081FC47008A2645 /* Noti */,
+			);
+			path = NotiView;
+			sourceTree = "<group>";
+		};
+		F57F7D4C2081FC3D008A2645 /* NotiMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D4E2081FC64008A2645 /* ANiNotiMenuBar.swift */,
+				F57F7D502081FC71008A2645 /* ANINotiMenuBarCell.swift */,
+			);
+			path = NotiMenuBar;
+			sourceTree = "<group>";
+		};
+		F57F7D4D2081FC47008A2645 /* Noti */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D522081FC8B008A2645 /* Noti */,
+				F57F7D532081FC9A008A2645 /* Message */,
+				CD33BEDF20F3211500D2A367 /* NotiDetail */,
+			);
+			path = Noti;
+			sourceTree = "<group>";
+		};
+		F57F7D522081FC8B008A2645 /* Noti */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D542081FEB2008A2645 /* ANINotiNotiCell.swift */,
+				F57F7D58208311C1008A2645 /* ANINotiView.swift */,
+				F57F7D5E208314DF008A2645 /* ANIBasicNotiViewCell.swift */,
+				CD9E963420F2FEB400AD4F64 /* ANIFollowNotiViewCell.swift */,
+			);
+			path = Noti;
+			sourceTree = "<group>";
+		};
+		F57F7D532081FC9A008A2645 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D562081FEBF008A2645 /* ANINotiMessageCell.swift */,
+				F57F7D60208322D3008A2645 /* ANIMessageView.swift */,
+				F57F7D642083250D008A2645 /* ANIMessageViewCell.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		F57F7D8620844A62008A2645 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D8720844A8F008A2645 /* ANISearchViewController.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		F57F7D8920844BD4008A2645 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D8A20844C0C008A2645 /* SearchCategory */,
+				F57F7D8F20844D8C008A2645 /* Search */,
+				CD08B5DA2217E3D200C0913E /* PopularUsers */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		F57F7D8A20844C0C008A2645 /* SearchCategory */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D8B20844C41008A2645 /* ANISearchCategoriesView.swift */,
+				F57F7D8D20844C4E008A2645 /* ANISearchCategoryCell.swift */,
+			);
+			path = SearchCategory;
+			sourceTree = "<group>";
+		};
+		F57F7D8F20844D8C008A2645 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F57F7D9020844DC2008A2645 /* ANISearchView.swift */,
+				F53E87B62084608000B19A2F /* ANIUserSearchViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F5B1EF8420725963000CFB0B = {
+			isa = PBXGroup;
+			children = (
+				F5B1EF8F20725963000CFB0B /* Ani */,
+				F5B1EFAF20725964000CFB0B /* AniUITests */,
+				CD85F556215F547200AB9A0C /* AniTests */,
+				F5B1EF8E20725963000CFB0B /* Products */,
+				F5B1EFC320726657000CFB0B /* Frameworks */,
+				45824576DBA272D1C4D63B2A /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		F5B1EF8E20725963000CFB0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EF8D20725963000CFB0B /* d_MYAU.app */,
+				F5B1EFAC20725964000CFB0B /* AniUITests.xctest */,
+				CD85F555215F547200AB9A0C /* AniTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5B1EF8F20725963000CFB0B /* Ani */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EFBE20725B6C000CFB0B /* Supporting */,
+				F5E9E222207696060021D4CC /* Model */,
+				F5B1EFC020725B86000CFB0B /* TabbarController */,
+				F5E9E2302079AF8C0021D4CC /* ViewController */,
+				F5E9E2342079B1660021D4CC /* View */,
+				F51D220E20767E49009D1B26 /* Utility */,
+				CD12739D217D74A500539D54 /* d_MYAU.entitlements */,
+				CD5CA18E21801A1200F15F39 /* MYAU.entitlements */,
+				F5B1EF9C20725964000CFB0B /* Info.plist */,
+				CD127399217D587600539D54 /* GoogleService-Info.plist */,
+				CD12739B217D58CD00539D54 /* GoogleService-Info-release.plist */,
+			);
+			path = Ani;
+			sourceTree = "<group>";
+		};
+		F5B1EFAF20725964000CFB0B /* AniUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EFB020725964000CFB0B /* AniUITests.swift */,
+				F5B1EFB220725964000CFB0B /* Info.plist */,
+			);
+			path = AniUITests;
+			sourceTree = "<group>";
+		};
+		F5B1EFBE20725B6C000CFB0B /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EF9020725964000CFB0B /* AppDelegate.swift */,
+				F5B1EF9720725964000CFB0B /* Assets.xcassets */,
+				F5B1EF9920725964000CFB0B /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		F5B1EFBF20725B79000CFB0B /* RecruitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EF9220725964000CFB0B /* ANIRecruitViewController.swift */,
+			);
+			path = RecruitViewController;
+			sourceTree = "<group>";
+		};
+		F5B1EFC020725B86000CFB0B /* TabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				F5B1EFC120725BDC000CFB0B /* ANITabBarController.swift */,
+			);
+			path = TabbarController;
+			sourceTree = "<group>";
+		};
+		F5B1EFC320726657000CFB0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD1C829C21F5822400F4725F /* TwitterKit.framework */,
+				CDBAB5EC21DDAD2F007AADF9 /* ActiveLabel.framework */,
+				CD492A0221C740FE00C5AF81 /* PryntTrimmerView.framework */,
+				CD6762DD20F8285E0098E033 /* InstantSearchClient.framework */,
+				CD0BFF0F20C6186500D5959B /* CodableFirebase.framework */,
+				CD047EBD20C4E9A000248958 /* NVActivityIndicatorView.framework */,
+				CDDD04AE20B4F8130094DBFA /* GrowingTextView.framework */,
+				CDA97B5320B2497200F46DA4 /* WCLShineButton.framework */,
+				F5B1EFC420726658000CFB0B /* TinyConstraints.framework */,
+				FD08576705673419CEA26417 /* Pods_Ani.framework */,
+				AA314F74AF3E318A20DDD5DB /* Pods_AniTests.framework */,
+				C5DC98FBA0B2CCFDA47C5CD8 /* Pods_AniUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5DF835E207A1CA300EA7FBE /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				F5C381FC2079F73F000BBB8C /* ANICommunityStoryCell.swift */,
+				F5E9E23C2079C10C0021D4CC /* ANIStoryView.swift */,
+				F5DF8364207A27DC00EA7FBE /* ANIStoryViewCell.swift */,
+				CD04F05421CB64C70084AE73 /* ANIVideoStoryViewCell.swift */,
+				CD04F05C21D0AB780084AE73 /* ANIStoryVideoView.swift */,
+				CD033E4520DA14B3002FB770 /* ANISupportViewCell.swift */,
+				CD3A64B8219FED500056ABA2 /* ANIRankingViewCell.swift */,
+				F521184D207A4428000B12C2 /* ImagesView */,
+				CD3A64BA219FF3480056ABA2 /* rankingView */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		F5DF835F207A1CB000EA7FBE /* Qna */ = {
+			isa = PBXGroup;
+			children = (
+				F5DF835C207A17C200EA7FBE /* ANICommunityQnaCell.swift */,
+				F5C381FE207A068D000BBB8C /* ANIQnaView.swift */,
+				F5DF8366207A27E900EA7FBE /* ANIQnaViewCell.swift */,
+				CDA32A7720AE6B03008A2AC1 /* ImagesView */,
+			);
+			path = Qna;
+			sourceTree = "<group>";
+		};
+		F5E9E222207696060021D4CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD1C6A2E21C9DEE40075D651 /* TrimmingVideo.swift */,
+				CD6762DF20FD75AC0098E033 /* PickUpItem.swift */,
+				CDA32A2C20ABCE5F008A2AC1 /* RecruitInfo.swift */,
+				CD0FAD0920BF8DFD00D8CD27 /* FirebaseUser.swift */,
+				CD0BFF1120C624EC00D5959B /* FirebaseRecruit.swift */,
+				CD0BFF1320C7619600D5959B /* FirebaseStory.swift */,
+				CD0BFF1720C7AD9C00D5959B /* FirebaseQna.swift */,
+				CD0BFF1520C7807F00D5959B /* FirebaseComment.swift */,
+				CD9E963220F2EF8600AD4F64 /* FirebaseNotification.swift */,
+				CDE2F40E20E464D5005E1DE1 /* FirebaseChatGroup.swift */,
+				CDE2F41020E4660E005E1DE1 /* FirebaseChatMessage.swift */,
+				CD325F6421FFFEE00044ADFD /* FirebaseEvent.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F5E9E2302079AF8C0021D4CC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDDD04B520B5381B0094DBFA /* Initial */,
+				CDDD04B720B5382D0094DBFA /* Recruit */,
+				F5E9E2312079AFA40021D4CC /* CommunityViewController */,
+				CD9DB0C721AB969C00091483 /* RankingStoryDetailViewController */,
+				CD33BEDB20F31F4C00D2A367 /* Noti */,
+				F57F7D8620844A62008A2645 /* SearchViewController */,
+				F53E87BB2085AF9D00B19A2F /* ProfileViewController */,
+				CDC6AE3F20CF6E5C00A836F6 /* OtherProfileViewController */,
+				CD325F5721FEA57A0044ADFD /* HashtagListViewController */,
+				CDDE4B5A20E079A5005762A1 /* Option */,
+				CD2C414620A5A1FF00581267 /* ImageFilterViewController */,
+				CD4929FF21C72C8800C5AF81 /* VideoFilterViewController */,
+				CDDE4B6420E20D19005762A1 /* Follow */,
+				CDA97B5620B25F2000F46DA4 /* CommentViewController */,
+				CDE2F3B820E3524F005E1DE1 /* ChatViewController */,
+				CD4793692186A5D2002643E2 /* opinionBoxViewController */,
+				CDA32A2120AA6041008A2AC1 /* ModalViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F5E9E2312079AFA40021D4CC /* CommunityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */,
+			);
+			path = CommunityViewController;
+			sourceTree = "<group>";
+		};
+		F5E9E2342079B1660021D4CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD4CBFE521DB665E0030C595 /* uploadProgressView */,
+				CD47937521896FC1002643E2 /* Splash */,
+				CDDD04C120B53C110094DBFA /* Initial */,
+				F56634842075265E006CB81B /* RecruitView */,
+				F5E9E2352079B16F0021D4CC /* CommunityView */,
+				CDACB3EE21AB9FFC00274D88 /* RankingStoryDetailView */,
+				F57F7D4B2081FC26008A2645 /* NotiView */,
+				F57F7D8920844BD4008A2645 /* SearchView */,
+				F53E87BE2085B14A00B19A2F /* Profile */,
+				CDC6AE4220CF723000A836F6 /* OtherProfile */,
+				CD325F5A21FEA66B0044ADFD /* HashtagListView */,
+				CDAFD75920DC9CEB00AEDD83 /* Option */,
+				CDD0550420A5CF0100BEF482 /* ImageFilter */,
+				CD492A0521C749EA00C5AF81 /* VideoFilter */,
+				CDDE4B6A20E3122B005762A1 /* Follow */,
+				CDA97B5B20B263BE00F46DA4 /* CommentView */,
+				CDE2F3BB20E35B20005E1DE1 /* ChatView */,
+				CD47936C2186A6C3002643E2 /* opinionBoxView */,
+				CDA32A2420AA661A008A2AC1 /* ModalVIew */,
+				CDAFD76020DE1D2100AEDD83 /* RejectView */,
+				CDDE4B5720DF7636005762A1 /* NeedLoginView */,
+				CD334E8021421C5F001C6289 /* ReloadView */,
+				CD0417CE21BF86400017571A /* ActivityIndicator */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F5E9E2352079B16F0021D4CC /* CommunityView */ = {
+			isa = PBXGroup;
+			children = (
+				F5E9E23A2079C0B00021D4CC /* CoummunityMenuBar */,
+				F5E9E23B2079C0BD0021D4CC /* Community */,
+			);
+			path = CommunityView;
+			sourceTree = "<group>";
+		};
+		F5E9E23A2079C0B00021D4CC /* CoummunityMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */,
+				F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */,
+			);
+			path = CoummunityMenuBar;
+			sourceTree = "<group>";
+		};
+		F5E9E23B2079C0BD0021D4CC /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				F5DF835E207A1CA300EA7FBE /* Story */,
+				F5DF835F207A1CB000EA7FBE /* Qna */,
+				CD7FD156221B986300BFEF11 /* ContributionCommentView */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		F5F5300D20885E670076E938 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				F5F5300E20885E820076E938 /* ANIProfileTopCell.swift */,
+				F53E87BF2085B15900B19A2F /* Family */,
+				F53E87C42085D0DF00B19A2F /* ProfileMenuBar */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD85F554215F547200AB9A0C /* AniTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD85F55C215F547300AB9A0C /* Build configuration list for PBXNativeTarget "AniTests" */;
+			buildPhases = (
+				78C67DAF09396DA89D1A6BC1 /* [CP] Check Pods Manifest.lock */,
+				CD85F551215F547200AB9A0C /* Sources */,
+				CD85F552215F547200AB9A0C /* Frameworks */,
+				CD85F553215F547200AB9A0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD85F55B215F547300AB9A0C /* PBXTargetDependency */,
+			);
+			name = AniTests;
+			productName = AniTests;
+			productReference = CD85F555215F547200AB9A0C /* AniTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F5B1EF8C20725963000CFB0B /* Ani */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5B1EFB520725964000CFB0B /* Build configuration list for PBXNativeTarget "Ani" */;
+			buildPhases = (
+				62BE84D0F0E3D26B0AF0897B /* [CP] Check Pods Manifest.lock */,
+				F5B1EF8920725963000CFB0B /* Sources */,
+				F5B1EF8A20725963000CFB0B /* Frameworks */,
+				F5B1EF8B20725963000CFB0B /* Resources */,
+				F5B1EFC62072666A000CFB0B /* ShellScript */,
+				D8894B36BCEAEA49086B4D2B /* [CP] Embed Pods Frameworks */,
+				CD3DBF9A215A67B90010A219 /* ShellScript */,
+				1852DCF3BEA6DD8EA8E3082F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ani;
+			productName = Ani;
+			productReference = F5B1EF8D20725963000CFB0B /* d_MYAU.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5B1EFAB20725964000CFB0B /* AniUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5B1EFBB20725964000CFB0B /* Build configuration list for PBXNativeTarget "AniUITests" */;
+			buildPhases = (
+				A0744A8CD183542E9D046630 /* [CP] Check Pods Manifest.lock */,
+				F5B1EFA820725964000CFB0B /* Sources */,
+				F5B1EFA920725964000CFB0B /* Frameworks */,
+				F5B1EFAA20725964000CFB0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5B1EFAE20725964000CFB0B /* PBXTargetDependency */,
+			);
+			name = AniUITests;
+			productName = AniUITests;
+			productReference = F5B1EFAC20725964000CFB0B /* AniUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5B1EF8520725963000CFB0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = JeonMinseop;
+				TargetAttributes = {
+					CD85F554215F547200AB9A0C = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F5B1EF8C20725963000CFB0B;
+					};
+					F5B1EF8C20725963000CFB0B = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					F5B1EFAB20725964000CFB0B = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F5B1EF8C20725963000CFB0B;
+					};
+				};
+			};
+			buildConfigurationList = F5B1EF8820725963000CFB0B /* Build configuration list for PBXProject "Ani" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = F5B1EF8420725963000CFB0B;
+			productRefGroup = F5B1EF8E20725963000CFB0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5B1EF8C20725963000CFB0B /* Ani */,
+				CD85F554215F547200AB9A0C /* AniTests */,
+				F5B1EFAB20725964000CFB0B /* AniUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD85F553215F547200AB9A0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EF8B20725963000CFB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B1EF9B20725964000CFB0B /* LaunchScreen.storyboard in Resources */,
+				F5B1EF9820725964000CFB0B /* Assets.xcassets in Resources */,
+				CD12739C217D58CD00539D54 /* GoogleService-Info-release.plist in Resources */,
+				CD12739A217D587700539D54 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EFAA20725964000CFB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1852DCF3BEA6DD8EA8E3082F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ani/Pods-Ani-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ani/Pods-Ani-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62BE84D0F0E3D26B0AF0897B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ani-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78C67DAF09396DA89D1A6BC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AniTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0744A8CD183542E9D046630 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AniUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD3DBF9A215A67B90010A219 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Release\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/GoogleService-Info-release.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Production GoogleService-Info copied.\"\nelse\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Development GoogleService-Info copied.\"\nfi\n";
+		};
+		D8894B36BCEAEA49086B4D2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ani/Pods-Ani-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/Gallery/Gallery.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gallery.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ani/Pods-Ani-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5B1EFC62072666A000CFB0B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TinyConstraints.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GrowingTextView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CodableFirebase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/InstantSearchClient.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PryntTrimmerView.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TwitterKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD85F551215F547200AB9A0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD85F558215F547300AB9A0C /* AniTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EF8920725963000CFB0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD9DB0C621AB955000091483 /* ANIRankingStoryDetailViewController.swift in Sources */,
+				CD08A7712091975500F0B72D /* UIApplication.swift in Sources */,
+				F56634862075285D006CB81B /* ANIRecruitFilterCell.swift in Sources */,
+				F57F7D4A2081F43F008A2645 /* ANINotiViewController.swift in Sources */,
+				F51D221220767F03009D1B26 /* UIColor.swift in Sources */,
+				CD33BEDE20F31F9A00D2A367 /* ANINotiDetailViewController.swift in Sources */,
+				CDE2F3BD20E35B33005E1DE1 /* ANIChatView.swift in Sources */,
+				F57F7D59208311C1008A2645 /* ANINotiView.swift in Sources */,
+				CDDE4B5C20E079B8005762A1 /* ANIListViewController.swift in Sources */,
+				CD04F05521CB64C70084AE73 /* ANIVideoStoryViewCell.swift in Sources */,
+				F5C381FD2079F73F000BBB8C /* ANICommunityStoryCell.swift in Sources */,
+				F5F5300F20885E820076E938 /* ANIProfileTopCell.swift in Sources */,
+				CD492A0921C898DF00C5AF81 /* URL.swift in Sources */,
+				CD1C6A2F21C9DEE40075D651 /* TrimmingVideo.swift in Sources */,
+				F5B1EFC220725BDC000CFB0B /* ANITabBarController.swift in Sources */,
+				F53E87B72084608000B19A2F /* ANIUserSearchViewCell.swift in Sources */,
+				CD47937721896FD4002643E2 /* ANISplashView.swift in Sources */,
+				CDE2F40F20E464D5005E1DE1 /* FirebaseChatGroup.swift in Sources */,
+				CD9E963320F2EF8600AD4F64 /* FirebaseNotification.swift in Sources */,
+				CD516FFE21659885002FF41C /* ANIChatActivityIndicatorViewCell.swift in Sources */,
+				CD6B675420A90F8A009BF63D /* ANIPlaceholderTextView.swift in Sources */,
+				CD1C6A2C21C8E7C50075D651 /* AVAsset.swift in Sources */,
+				CD3A64BE219FF4D10056ABA2 /* ANIStoryRankingCell.swift in Sources */,
+				CD3DBF97215A31F50010A219 /* Macros.swift in Sources */,
+				CDA32A2720AA6652008A2AC1 /* ANIPopupPickerView.swift in Sources */,
+				CDDD04AC20B3B0AA0094DBFA /* ANICommentBar.swift in Sources */,
+				CDD0550620A5CF2200BEF482 /* ANIImageFilterPreviewView.swift in Sources */,
+				CDDD04C520B53C870094DBFA /* ANILoginView.swift in Sources */,
+				CDA97AC620AFF34C00F46DA4 /* ANIProfileEditViewController.swift in Sources */,
+				CD92792220C0DCB400B1F006 /* ANIKey.swift in Sources */,
+				F5DF835D207A17C200EA7FBE /* ANICommunityQnaCell.swift in Sources */,
+				CDD0550C20A5D29900BEF482 /* ANIImageFilterView.swift in Sources */,
+				CDDE4B6320E0A985005762A1 /* ANIfunction.swift in Sources */,
+				CD2C414520A556AE00581267 /* ANIRecruitContributionViewController.swift in Sources */,
+				CD9E52B32094304700715F50 /* ANIRecruitDetailImagesView.swift in Sources */,
+				F57F7D652083250D008A2645 /* ANIMessageViewCell.swift in Sources */,
+				CDC6AE4120CF6E7900A836F6 /* ANIOtherProfileViewController.swift in Sources */,
+				F51D221920768E8D009D1B26 /* ANIRecuruitView.swift in Sources */,
+				F53E87D02086EF6600B19A2F /* ANIProfileCell.swift in Sources */,
+				CDAFD75B20DC9D0000AEDD83 /* ANIOptionView.swift in Sources */,
+				CD08B5DC2217E40C00C0913E /* ANIPopularUsersView.swift in Sources */,
+				CDA97ACE20B0018600F46DA4 /* ANIProfileEditFamilyCell.swift in Sources */,
+				CDDC23B721098A6000C9A8E5 /* ANIPopupOptionView.swift in Sources */,
+				CDA32A8620AE8DD4008A2AC1 /* ANIImageBrowserCell.swift in Sources */,
+				CDF7F171208F651E00254A0F /* ANIButtonView.swift in Sources */,
+				F57F7D8E20844C4E008A2645 /* ANISearchCategoryCell.swift in Sources */,
+				CDC6AE4420CF724700A836F6 /* ANIOtherProfileBasicView.swift in Sources */,
+				F53E87C12085B19700B19A2F /* ANIFamilyView.swift in Sources */,
+				CD0BFF1220C624EC00D5959B /* FirebaseRecruit.swift in Sources */,
+				CD9E52B520943C9500715F50 /* ANIRecruitDetailImagesViewFlowLayout.swift in Sources */,
+				F5C381FF207A068D000BBB8C /* ANIQnaView.swift in Sources */,
+				CDBAB5F121E57AE1007AADF9 /* ANIParentCommentCell.swift in Sources */,
+				CDF7F168208D772300254A0F /* ANINotificationManager.swift in Sources */,
+				CDA32A8320AE7B02008A2AC1 /* ANIImageBrowserViewController.swift in Sources */,
+				F5DF8367207A27E900EA7FBE /* ANIQnaViewCell.swift in Sources */,
+				CDA97B5A20B263B500F46DA4 /* ANICommentView.swift in Sources */,
+				F57F7D5F208314DF008A2645 /* ANIBasicNotiViewCell.swift in Sources */,
+				F57F7D552081FEB2008A2645 /* ANINotiNotiCell.swift in Sources */,
+				F521184C207A4421000B12C2 /* ANIStoryImagesView.swift in Sources */,
+				CD2C414820A5A23C00581267 /* ANIImageFilterViewController.swift in Sources */,
+				F53E87C32085B50900B19A2F /* ANIFamilyViewCell.swift in Sources */,
+				CDA32A3C20AD2520008A2AC1 /* ANIContributionImagesCell.swift in Sources */,
+				CD6B675120A8844B009BF63D /* ANIRecruitContributionView.swift in Sources */,
+				F57F7D4F2081FC64008A2645 /* ANiNotiMenuBar.swift in Sources */,
+				F57F7D512081FC71008A2645 /* ANINotiMenuBarCell.swift in Sources */,
+				CDA32A3820AD1ED3008A2AC1 /* ANIContributionView.swift in Sources */,
+				CDB68F6421E8624C0032AEA8 /* ANIDeleteCommentCell.swift in Sources */,
+				CD492A0D21C8999800C5AF81 /* AVAssetTrack.swift in Sources */,
+				CDD0550E20A6B23B00BEF482 /* ANIImageFilterCell.swift in Sources */,
+				CD1A97BD219945570008EC98 /* ANIBlockUserViewController.swift in Sources */,
+				CDA32A2320AA6041008A2AC1 /* ANIPopupPickerViewController.swift in Sources */,
+				CDAFD75D20DC9EE800AEDD83 /* ANIOptionViewCell.swift in Sources */,
+				CDE2F3BA20E35268005E1DE1 /* ANIChatViewController.swift in Sources */,
+				CDDE4B6C20E31247005762A1 /* ANIFollowUserView.swift in Sources */,
+				CD516FC021631D56002FF41C /* UITableView.swift in Sources */,
+				F566348320752656006CB81B /* ANIRecruitFiltersView.swift in Sources */,
+				CDAFD75720DC9B4D00AEDD83 /* ANIOptionViewController.swift in Sources */,
+				CD6229DC20B64A6400E36875 /* ANISignUpViewController.swift in Sources */,
+				CD325F6021FFEE300044ADFD /* ANIEventPopupViewController.swift in Sources */,
+				CDA32A2B20ABBC20008A2AC1 /* ANIRecruitContributionImagesCell.swift in Sources */,
+				CDACB3F021ABA01C00274D88 /* ANIRankingStoryDetailView.swift in Sources */,
+				CD325F6321FFF3540044ADFD /* ANIEventPopupView.swift in Sources */,
+				CDF7F174208F658E00254A0F /* ANIImageButtonView.swift in Sources */,
+				CD08A72E20915BD700F0B72D /* ANIRecruitDetailView.swift in Sources */,
+				CDA32A7B20AE7007008A2AC1 /* ANIQnaImagesCell.swift in Sources */,
+				CD4793722187F1E6002643E2 /* ANIAutoLoginViewController.swift in Sources */,
+				CD334E8221421C7F001C6289 /* ANIReloadView.swift in Sources */,
+				F5DF8365207A27DC00EA7FBE /* ANIStoryViewCell.swift in Sources */,
+				CD47936B2186A5F7002643E2 /* ANIOpinionBoxViewController.swift in Sources */,
+				F5E9E22F2079AEC30021D4CC /* ANIOrientation.swift in Sources */,
+				CDDD04B320B50FEA0094DBFA /* ANIInitialViewController.swift in Sources */,
+				F5E9E2372079B1900021D4CC /* ANICommunityMenuBar.swift in Sources */,
+				CDA32A3A20AD22E7008A2AC1 /* ANIContributionImagesView.swift in Sources */,
+				CDA32A3520AC14C0008A2AC1 /* ANIContributionViewController.swift in Sources */,
+				F53E87BD2085AFC700B19A2F /* ANIProfileViewController.swift in Sources */,
+				CD33BEE120F3212400D2A367 /* ANINotiDetailView.swift in Sources */,
+				F5B1EF9320725964000CFB0B /* ANIRecruitViewController.swift in Sources */,
+				CD0417D021BF865C0017571A /* ANIActivityIndicator.swift in Sources */,
+				F51D221520768B24009D1B26 /* UISearchBar.swift in Sources */,
+				CD7FD158221B988800BFEF11 /* ANIContributionCommentView.swift in Sources */,
+				F5E9E2392079B9D20021D4CC /* ANICommunityMenuBarCell.swift in Sources */,
+				CD1A97C0219949770008EC98 /* ANIBlockUserView.swift in Sources */,
+				CD492A0B21C8990300C5AF81 /* AVFileType.swift in Sources */,
+				CD325F5C21FEA6810044ADFD /* ANIHashtagListView.swift in Sources */,
+				CD0FAD0E20BFC02E00D8CD27 /* ANISessionManager.swift in Sources */,
+				F5E9E23D2079C10C0021D4CC /* ANIStoryView.swift in Sources */,
+				CDA32A2D20ABCE5F008A2AC1 /* RecruitInfo.swift in Sources */,
+				CD529783213E17F7001609DB /* ANIPopupOptionViewCell.swift in Sources */,
+				CD4793742187F256002643E2 /* ANIAutoLoginView.swift in Sources */,
+				F53E87C82085F5FA00B19A2F /* ANIProfileMenuBarCell.swift in Sources */,
+				CD04F05D21D0AB780084AE73 /* ANIStoryVideoView.swift in Sources */,
+				F57F7D572081FEBF008A2645 /* ANINotiMessageCell.swift in Sources */,
+				CDA97ACC20B000FF00F46DA4 /* ANIProfileEditFamilyView.swift in Sources */,
+				CDE2F41120E4660E005E1DE1 /* FirebaseChatMessage.swift in Sources */,
+				CDB68F6621EDA2E40032AEA8 /* ANINotiParentCommentViewCell.swift in Sources */,
+				CDC6AE4820CF74C600A836F6 /* ANIOtherProfileCell.swift in Sources */,
+				CDE2F3BF20E35CBF005E1DE1 /* ANIMyChatViewCell.swift in Sources */,
+				CD325F5921FEA5990044ADFD /* ANIHashtagListViewController.swift in Sources */,
+				CD492A0121C72CAC00C5AF81 /* ANIVideoFilterViewController.swift in Sources */,
+				CD516FBE2161ED82002FF41C /* ANINotiHeaderViewCell.swift in Sources */,
+				F530AB1C207A45D900114E6B /* ANIStoryImagesCell.swift in Sources */,
+				CD6762E020FD75AC0098E033 /* PickUpItem.swift in Sources */,
+				CD50A46720EC6A2500CFF16F /* UIImage.swift in Sources */,
+				CD47936E2186A6E8002643E2 /* ANIOpinionBoxView.swift in Sources */,
+				CDE2F41520E47070005E1DE1 /* ANIChatBar.swift in Sources */,
+				CD6229DE20B64B9900E36875 /* ANISignUpView.swift in Sources */,
+				CDF7F16E208F2BEF00254A0F /* UIView.swift in Sources */,
+				CDDE4B5920DF7658005762A1 /* ANINeedLoginView.swift in Sources */,
+				CDA32A7920AE6B17008A2AC1 /* ANIQnaImagesView.swift in Sources */,
+				CDD0550820A5D07600BEF482 /* ANIImageFilterPreviewCell.swift in Sources */,
+				CD033E4620DA14B3002FB770 /* ANISupportViewCell.swift in Sources */,
+				CD3A64B9219FED500056ABA2 /* ANIRankingViewCell.swift in Sources */,
+				CD9E963520F2FEB400AD4F64 /* ANIFollowNotiViewCell.swift in Sources */,
+				F57F7D8820844A90008A2645 /* ANISearchViewController.swift in Sources */,
+				CDA97B5820B25F3B00F46DA4 /* ANICommentViewController.swift in Sources */,
+				CDA32A1320A93422008A2AC1 /* ANIScrollView.swift in Sources */,
+				CDC6AE4B20CF855A00A836F6 /* ANIOtherProfileTopCell.swift in Sources */,
+				CDD0551020A6C64300BEF482 /* ANIFilter.swift in Sources */,
+				CD0BFF1420C7619600D5959B /* FirebaseStory.swift in Sources */,
+				CD0FAD0A20BF8DFD00D8CD27 /* FirebaseUser.swift in Sources */,
+				CDDD04BA20B538540094DBFA /* ANILoginViewController.swift in Sources */,
+				F57F7D9120844DC2008A2645 /* ANISearchView.swift in Sources */,
+				CDDE4B6E20E31390005762A1 /* ANIFollowUserViewCell.swift in Sources */,
+				CDAFD75F20DE1D1B00AEDD83 /* ANIRejectView.swift in Sources */,
+				CD0BFF1820C7AD9C00D5959B /* FirebaseQna.swift in Sources */,
+				CD4CBFE721DB66690030C595 /* uploadProgressView.swift in Sources */,
+				CD9E52B7209441C900715F50 /* ANIRecruitDetailImagesViewCell.swift in Sources */,
+				CD9EEB32219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift in Sources */,
+				CDDD04A820B271090094DBFA /* ANICommentCell.swift in Sources */,
+				CD08B5E022184D0400C0913E /* ANIPopularUserHeaderCell.swift in Sources */,
+				CDDE4B6020E07B58005762A1 /* ANIListView.swift in Sources */,
+				F5E9E2332079AFF40021D4CC /* ANICommunityViewController.swift in Sources */,
+				F5F5300C2088599D0076E938 /* ANIProfileBasicView.swift in Sources */,
+				CD033E4120D8D25E002FB770 /* ANISupportViewController.swift in Sources */,
+				CD9E52BB2094614400715F50 /* ANIAreaButtonView.swift in Sources */,
+				CDDE4B6720E20D3E005762A1 /* ANIFollowUserViewContoller.swift in Sources */,
+				CD325F6521FFFEE00044ADFD /* FirebaseEvent.swift in Sources */,
+				CDDD04C020B53A8B0094DBFA /* ANIInitialView.swift in Sources */,
+				CD4F0EF720F481030093C543 /* ANINotiCommentViewCell.swift in Sources */,
+				CD9EEB30219E92E50079B50E /* ANIFirebase.swift in Sources */,
+				CDA32A2920ABBA21008A2AC1 /* ANIRecruitContributionImagesView.swift in Sources */,
+				CD1C6A3121CA11350075D651 /* ANIContributionVideoCell.swift in Sources */,
+				CD1C82A021F5875C00F4725F /* ANITwitter.swift in Sources */,
+				CD08A73120915C2A00F0B72D /* ANIRecruitDetailViewController.swift in Sources */,
+				F53E87C62085F13800B19A2F /* ANIProfileMenuBar.swift in Sources */,
+				CD1A97C221994AC60008EC98 /* ANIBlockUserViewCell.swift in Sources */,
+				CD0BFF1620C7807F00D5959B /* FirebaseComment.swift in Sources */,
+				CDA97AC920AFFFEC00F46DA4 /* ANIProfileEditView.swift in Sources */,
+				CD3A64BC219FF3640056ABA2 /* ANIStoryRankingView.swift in Sources */,
+				CD3A64C021A287DC0056ABA2 /* ANICellButtonView.swift in Sources */,
+				CD492A0721C749FF00C5AF81 /* ANIVideoView.swift in Sources */,
+				F57F7D61208322D3008A2645 /* ANIMessageView.swift in Sources */,
+				CD9E52B120921EB400715F50 /* UIViewController.swift in Sources */,
+				CD033E4420D8D28D002FB770 /* ANISupportView.swift in Sources */,
+				CDE2F3C120E35CCE005E1DE1 /* ANIOtherChatViewCell.swift in Sources */,
+				CDA32A2F20ABD941008A2AC1 /* String.swift in Sources */,
+				F51D221020767E62009D1B26 /* ANIColor.swift in Sources */,
+				CD08B5DE2217E63600C0913E /* ANIPopularUserCell.swift in Sources */,
+				F5E9E221207692C60021D4CC /* ANIRecruitViewCell.swift in Sources */,
+				F5B1EF9120725964000CFB0B /* AppDelegate.swift in Sources */,
+				CDA32A8A20AEA7BC008A2AC1 /* ANIDraggableView.swift in Sources */,
+				CDDD04A620B26CD50094DBFA /* ANICommentContentCell.swift in Sources */,
+				CDDC23B4210988AC00C9A8E5 /* ANIPopupOptionViewController.swift in Sources */,
+				F57F7D8C20844C41008A2645 /* ANISearchCategoriesView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5B1EFA820725964000CFB0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B1EFB120725964000CFB0B /* AniUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD85F55B215F547300AB9A0C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5B1EF8C20725963000CFB0B /* Ani */;
+			targetProxy = CD85F55A215F547300AB9A0C /* PBXContainerItemProxy */;
+		};
+		F5B1EFAE20725964000CFB0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5B1EF8C20725963000CFB0B /* Ani */;
+			targetProxy = F5B1EFAD20725964000CFB0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F5B1EF9920725964000CFB0B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B1EF9A20725964000CFB0B /* Base */,
+				CD50A46820EC89BD00CFF16F /* ja */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD85F55D215F547300AB9A0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F7E1F101C01F36DEDE88686 /* Pods-AniTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WMX7DJ97Q;
+				INFOPLIST_FILE = AniTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.AniTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/d_Ani.app/d_Ani";
+			};
+			name = Debug;
+		};
+		CD85F55E215F547300AB9A0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17FAD9EDAE08B9FA7A60EDB8 /* Pods-AniTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7WMX7DJ97Q;
+				INFOPLIST_FILE = AniTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.AniTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/d_Ani.app/d_Ani";
+			};
+			name = Release;
+		};
+		F5B1EFB320725964000CFB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F5B1EFB420725964000CFB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5B1EFB620725964000CFB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1F77997FC894BF232AA6788 /* Pods-Ani.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ani/d_MYAU.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BY8G5B9E3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GOOGLE_REVERSED_CLIENT_ID = "com.googleusercontent.apps.614974892806-8r2t2thki1ld04imfq1c27os327hsblg";
+				INFOPLIST_FILE = Ani/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.MYAU.dev";
+				PRODUCT_NAME = d_MYAU;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TWITTER_API_KEY = "twitterkit-xCegpToqU9e5izA21PcDinUYa";
+			};
+			name = Debug;
+		};
+		F5B1EFB720725964000CFB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8BF8D21240D7035E50361DD /* Pods-Ani.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ani/MYAU.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BY8G5B9E3U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GOOGLE_REVERSED_CLIENT_ID = "com.googleusercontent.apps.504196481868-jn48am95m7l79njke5asvhtqf8ouj6ru";
+				INFOPLIST_FILE = Ani/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.MYAU";
+				PRODUCT_NAME = MYAU;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TWITTER_API_KEY = "twitterkit-DxesnPxqOKgHw7cYOmo7u6l9I";
+			};
+			name = Release;
+		};
+		F5B1EFBC20725964000CFB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1C7C5FF61E6DE40085AB66D /* Pods-AniUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BY8G5B9E3U;
+				INFOPLIST_FILE = AniUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.AniUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ani;
+			};
+			name = Debug;
+		};
+		F5B1EFBD20725964000CFB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1141BC302D4697B8D251698 /* Pods-AniUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BY8G5B9E3U;
+				INFOPLIST_FILE = AniUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-jeonminsopdev.AniUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Ani;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD85F55C215F547300AB9A0C /* Build configuration list for PBXNativeTarget "AniTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD85F55D215F547300AB9A0C /* Debug */,
+				CD85F55E215F547300AB9A0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5B1EF8820725963000CFB0B /* Build configuration list for PBXProject "Ani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B1EFB320725964000CFB0B /* Debug */,
+				F5B1EFB420725964000CFB0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5B1EFB520725964000CFB0B /* Build configuration list for PBXNativeTarget "Ani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B1EFB620725964000CFB0B /* Debug */,
+				F5B1EFB720725964000CFB0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5B1EFBB20725964000CFB0B /* Build configuration list for PBXNativeTarget "AniUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B1EFBC20725964000CFB0B /* Debug */,
+				F5B1EFBD20725964000CFB0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5B1EF8520725963000CFB0B /* Project object */;
+}
