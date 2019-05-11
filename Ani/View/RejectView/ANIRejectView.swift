@@ -24,7 +24,7 @@ class ANIRejectView: UIView {
   private func setup() {
     //rejectView
     let rejectView = UIView()
-    rejectView.backgroundColor = ANIColor.emerald
+    rejectView.backgroundColor = ANIColor.darkGray
     addSubview(rejectView)
     rejectView.edgesToSuperview()
     rejectView.height(UIViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT)

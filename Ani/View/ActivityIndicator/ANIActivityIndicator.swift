@@ -92,13 +92,15 @@ class ANIActivityIndicator: UIView {
   }
   
   func stopAnimating() {
-    if let backgrounView = self.backgrounView {
-      backgrounView.alpha = 0.0
+    DispatchQueue.main.async {
+      if let backgrounView = self.backgrounView {
+        backgrounView.alpha = 0.0
+      }
+      
+      self.isAnimating = false
+      
+      self.isHidden = true
     }
-    
-    isAnimating = false
-
-    self.isHidden = true
   }
   
   private func animation(index: Int, completion:(()->())?) {

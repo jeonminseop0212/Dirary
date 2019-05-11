@@ -15,13 +15,7 @@ class ANICommunityQnaCell: UICollectionViewCell {
     didSet {
       guard let qnaView = self.qnaView else { return }
       
-      qnaView.isCellSelected = isCellSelected
     }
-  }
-
-  var delegate: ANIQnaViewDelegate? {
-    get { return self.qnaView?.delegate }
-    set(v) { self.qnaView?.delegate = v }
   }
   
   override init(frame: CGRect) {
@@ -37,7 +31,6 @@ class ANICommunityQnaCell: UICollectionViewCell {
     self.backgroundColor = ANIColor.bg
     
     let qnaView = ANIQnaView()
-    ANIQnaView.shared = qnaView
     addSubview(qnaView)
     qnaView.edgesToSuperview()
     self.qnaView = qnaView
