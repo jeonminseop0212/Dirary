@@ -12,11 +12,9 @@ import TinyConstraints
 import FirebaseStorage
 import FirebaseFirestore
 import CodableFirebase
-import InstantSearchClient
 import AVKit
 import Photos
 import ActiveLabel
-import TwitterKit
 
 protocol ANIContributionViewControllerDelegate {
   func loadThumnailImage(thumbnailImage: UIImage?)
@@ -519,8 +517,6 @@ class ANIContributionViewController: UIViewController {
         }
         
         self.delegate?.updateProgress(progress: 1.0)
-        
-        self.postTwitter(story: story)
       }
     } catch let error {
       DLog(error)
@@ -538,95 +534,10 @@ class ANIContributionViewController: UIViewController {
           return
         }
         
-        self.pushDataAlgolia(data: data as [String : AnyObject])
-        
         self.delegate?.updateProgress(progress: 1.0)
-        
-        self.postTwitter(qna: qna)
       }
     } catch let error {
       DLog(error)
-    }
-  }
-  
-  private func pushDataAlgolia(data: [String: AnyObject]) {
-    guard let selectedContributionMode = self.selectedContributionMode else { return }
-    
-    var index: Index?
-    switch selectedContributionMode {
-    case .story:
-      index = ANISessionManager.shared.client.index(withName: KEY_STORIES_INDEX)
-    case .qna:
-      index = ANISessionManager.shared.client.index(withName: KEY_QNAS_INDEX)
-    }
-    
-    var newData = data
-    if let objectId = data[KEY_ID] {
-      newData.updateValue(objectId, forKey: KEY_OBJECT_ID)
-    }
-    
-    DispatchQueue.global().async {
-      index?.addObject(newData, completionHandler: { (content, error) -> Void in
-        if error == nil {
-          DLog("Object IDs: \(content!)")
-        }
-      })
-    }
-  }
-  
-  private func postTwitter(story: FirebaseStory? = nil, qna: FirebaseQna? = nil) {
-    if let story = story {
-      if story.storyImageUrls != nil {
-        if !self.contentImages.isEmpty, let image = self.contentImages[0] {
-          TWTRAPIClient.withCurrentUser().sendTweet(withText: story.story, image: image) { (tweet, error) in
-            if let error = error {
-              DLog("image story post twitter error \(error)")
-              DLog(error.localizedDescription)
-              return
-            }
-            
-            DLog("image story post twitter success")
-          }
-        }
-      } else if let storyVideoUrl = story.storyVideoUrl {
-        if let url = URL(string: storyVideoUrl), let videoData = try? Data(contentsOf: url) {
-          TWTRAPIClient.withCurrentUser().sendTweet(withText: story.story, videoData: videoData) { (tweet, error) in
-            if let error = error {
-              DLog("video story post twitter error \(error)")
-              DLog(error.localizedDescription)
-              return
-            }
-            
-            DLog("video story post twitter success")
-          }
-        }
-      }
-    }
-    
-    if let qna = qna {
-      if qna.qnaImageUrls != nil {
-        if !self.contentImages.isEmpty, let image = self.contentImages[0] {
-          TWTRAPIClient.withCurrentUser().sendTweet(withText: qna.qna, image: image) { (tweet, error) in
-            if let error = error {
-              DLog("image qna post twitter error \(error)")
-              DLog(error.localizedDescription)
-              return
-            }
-            
-            DLog("image qna post twitter success")
-          }
-        }
-      }  else {
-        TWTRAPIClient.withCurrentUser().sendTweet(withText: qna.qna) { (tweet, error) in
-          if let error = error {
-            DLog("qna post twitter error \(error)")
-            DLog(error.localizedDescription)
-            return
-          }
-          
-          DLog("qna post twitter success")
-        }
-      }
     }
   }
   
@@ -817,35 +728,6 @@ extension ANIContributionViewController: ANIContributionViewDelegate {
       contributionButton.isEnabled = false
       contributionButtonBG.alpha = 0.5
     }
-  }
-  
-  func twitterLink() {
-    guard let activityIndicatorView = self.activityIndicatorView else { return }
-    
-    let alertController = UIAlertController(title: "Twitter連携が必要です", message: "アカウントをTwitterに連携しますか？", preferredStyle: .alert)
-    
-    let deleteAction = UIAlertAction(title: "連携", style: .default) { (action) in
-      activityIndicatorView.startAnimating()
-      
-      ANITwitter.login(isLink: true, completion: { (success, errorMessage) in
-        if !success, let errorMessage = errorMessage {
-          self.reject(notiText: errorMessage)
-          activityIndicatorView.stopAnimating()
-          return
-        }
-        
-        activityIndicatorView.stopAnimating()
-        if let contriButionView = self.contriButionView {
-          contriButionView.twitterShareToggle()
-        }
-      })
-    }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-    
-    alertController.addAction(deleteAction)
-    alertController.addAction(cancelAction)
-    
-    self.present(alertController, animated: true, completion: nil)
   }
 }
 

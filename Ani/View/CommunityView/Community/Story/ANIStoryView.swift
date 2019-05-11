@@ -14,11 +14,8 @@ import UserNotifications
 import TinyConstraints
 
 protocol ANIStoryViewDelegate {
-  func didSelectStoryViewCell(selectedStory: FirebaseStory, user: FirebaseUser)
-  func supportCellRecruitTapped(recruit: FirebaseRecruit, user: FirebaseUser)
   func reject()
   func popupOptionView(isMe: Bool, contentType: ContentType, id: String)
-  func didSelectRankingCell(rankingStory: FirebaseStory, ranking: Int)
   func showEvent(event: FirebaseEvent)
 }
 
@@ -40,9 +37,7 @@ class ANIStoryView: UIView {
   private weak var activityIndicatorView: ANIActivityIndicator?
   
   private var stories = [FirebaseStory]()
-  private var supportRecruits = [String: FirebaseRecruit?]()
   private var storyVideoAssets = [String: AVAsset]()
-  private var rankingStories = [FirebaseStory]()
   private var users = [FirebaseUser]()
   
   private var isLastStoryPage: Bool = false
@@ -50,14 +45,9 @@ class ANIStoryView: UIView {
   private var isLoading: Bool = false
   private let COUNT_LAST_CELL: Int = 4
   
-  private var lastRankingStory: QueryDocumentSnapshot?
-  
   private var isLoadedFirstData: Bool = false
   private var isNewStory: Bool = false
   private var isShowNewStoryButton: Bool = false
-  
-  private var isLoadedStoryComment: Bool = false
-  private var isLoadedRankingStoryComment: Bool = false
   
   private var scrollBeginingPoint: CGPoint?
   
@@ -119,10 +109,6 @@ class ANIStoryView: UIView {
     tableView.register(ANIStoryViewCell.self, forCellReuseIdentifier: storyCellId)
     let videoStoryCellId = NSStringFromClass(ANIVideoStoryViewCell.self)
     tableView.register(ANIVideoStoryViewCell.self, forCellReuseIdentifier: videoStoryCellId)
-    let supportCellId = NSStringFromClass(ANISupportViewCell.self)
-    tableView.register(ANISupportViewCell.self, forCellReuseIdentifier: supportCellId)
-    let rankingCellId = NSStringFromClass(ANIRankingViewCell.self)
-    tableView.register(ANIRankingViewCell.self, forCellReuseIdentifier: rankingCellId)
     tableView.separatorStyle = .none
     tableView.backgroundColor = ANIColor.bg
     tableView.dataSource = self
@@ -269,11 +255,7 @@ class ANIStoryView: UIView {
         if !stories.isEmpty {
           storyTableView.beginUpdates()
           var indexPath: IndexPath = [0, 0]
-          if rankingStories.isEmpty {
-            indexPath = [0, index]
-          } else {
-            indexPath = [0, index + 1]
-          }
+          indexPath = [0, index]
           storyTableView.deleteRows(at: [indexPath], with: .automatic)
           storyTableView.endUpdates()
         } else {
@@ -391,316 +373,61 @@ class ANIStoryView: UIView {
 //MARK: UITableViewDataSource
 extension ANIStoryView: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if rankingStories.isEmpty {
-      return stories.count
-    } else {
-      return stories.count + 1
-    }
+    return stories.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if rankingStories.isEmpty {
-      if !stories.isEmpty && stories.count > indexPath.row {
-        if let recruitId = stories[indexPath.row].recruitId {
-          let supportCellId = NSStringFromClass(ANISupportViewCell.self)
-          let cell = tableView.dequeueReusableCell(withIdentifier: supportCellId, for: indexPath) as! ANISupportViewCell
-          cell.delegate = self
-
-          if let supportRecruit = supportRecruits[recruitId] {
-            if let supportRecruit = supportRecruit {
-              cell.recruit = supportRecruit
-              cell.isDeleteRecruit = false
-            } else {
-              cell.recruit = nil
-              cell.isDeleteRecruit = true
-            }
-          } else {
-            cell.recruit = nil
-            cell.isDeleteRecruit = nil
-          }
-          
-          if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
-            for user in users {
-              if stories[indexPath.row].userId == user.uid {
-                cell.user = user
-                break
-              }
-            }
-          } else {
-            cell.user = nil
-          }
-          
-          if let comments = stories[indexPath.row].comments {
-            var commentUsersTemp = [FirebaseUser?]()
-            for comment in comments {
-              if users.contains(where: { $0.uid == comment.userId }) {
-                for user in users {
-                  if comment.userId == user.uid {
-                    commentUsersTemp.append(user)
-                    break
-                  }
-                }
-              } else {
-                commentUsersTemp.append(nil)
-              }
-            }
-            
-            cell.commentUsers = commentUsersTemp
-          } else {
-            cell.commentUsers = nil
-          }
-          
-          cell.indexPath = indexPath.row
-          cell.story = stories[indexPath.row]
-          
-          return cell
-        } else if stories[indexPath.row].thumbnailImageUrl != nil {
-          let videoStoryCellId = NSStringFromClass(ANIVideoStoryViewCell.self)
-          let cell = tableView.dequeueReusableCell(withIdentifier: videoStoryCellId, for: indexPath) as! ANIVideoStoryViewCell
-          cell.delegate = self
-          
-          if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
-            for user in users {
-              if stories[indexPath.row].userId == user.uid {
-                cell.user = user
-                break
-              }
-            }
-          } else {
-            cell.user = nil
-          }
-          
-          if let storyVideoUrl = stories[indexPath.row].storyVideoUrl,
-            storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
-            cell.videoAsset = storyVideoAssets[storyVideoUrl]
-          } else {
-            cell.videoAsset = nil
-          }
-          
-          if let comments = stories[indexPath.row].comments {
-            var commentUsersTemp = [FirebaseUser?]()
-            for comment in comments {
-              if users.contains(where: { $0.uid == comment.userId }) {
-                for user in users {
-                  if comment.userId == user.uid {
-                    commentUsersTemp.append(user)
-                    break
-                  }
-                }
-              } else {
-                commentUsersTemp.append(nil)
-              }
-            }
-            
-            cell.commentUsers = commentUsersTemp
-          } else {
-            cell.commentUsers = nil
-          }
-          
-          cell.indexPath = indexPath.row
-          cell.story = stories[indexPath.row]
-          
-          return cell
-        } else {
-          let storyCellId = NSStringFromClass(ANIStoryViewCell.self)
-          let cell = tableView.dequeueReusableCell(withIdentifier: storyCellId, for: indexPath) as! ANIStoryViewCell
-          cell.delegate = self
-          
-          if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
-            for user in users {
-              if stories[indexPath.row].userId == user.uid {
-                cell.user = user
-                break
-              }
-            }
-          } else {
-            cell.user = nil
-          }
-          
-          if let comments = stories[indexPath.row].comments {
-            var commentUsersTemp = [FirebaseUser?]()
-            for comment in comments {
-              if users.contains(where: { $0.uid == comment.userId }) {
-                for user in users {
-                  if comment.userId == user.uid {
-                    commentUsersTemp.append(user)
-                    break
-                  }
-                }
-              } else {
-                commentUsersTemp.append(nil)
-              }
-            }
-            
-            cell.commentUsers = commentUsersTemp
-          } else {
-            cell.commentUsers = nil
-          }
-          
-          cell.indexPath = indexPath.row
-          cell.story = stories[indexPath.row]
-          
-          return cell
-        }
-      } else {
-        return UITableViewCell()
-      }
-    } else {
-      if indexPath.row == 0 {
-        let rankingCellId = NSStringFromClass(ANIRankingViewCell.self)
-        let cell = tableView.dequeueReusableCell(withIdentifier: rankingCellId, for: indexPath) as! ANIRankingViewCell
+    if !stories.isEmpty && stories.count > indexPath.row {
+      if stories[indexPath.row].thumbnailImageUrl != nil {
+        let videoStoryCellId = NSStringFromClass(ANIVideoStoryViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: videoStoryCellId, for: indexPath) as! ANIVideoStoryViewCell
         cell.delegate = self
         
-        cell.rankingStories = rankingStories
+        if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
+          for user in users {
+            if stories[indexPath.row].userId == user.uid {
+              cell.user = user
+              break
+            }
+          }
+        } else {
+          cell.user = nil
+        }
+        
+        if let storyVideoUrl = stories[indexPath.row].storyVideoUrl,
+          storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
+          cell.videoAsset = storyVideoAssets[storyVideoUrl]
+        } else {
+          cell.videoAsset = nil
+        }
+        
+        cell.indexPath = indexPath.row
+        cell.story = stories[indexPath.row]
         
         return cell
       } else {
-        if !stories.isEmpty && stories.count > indexPath.row - 1 {
-          if let recruitId = stories[indexPath.row - 1].recruitId {
-            let supportCellId = NSStringFromClass(ANISupportViewCell.self)
-            let cell = tableView.dequeueReusableCell(withIdentifier: supportCellId, for: indexPath) as! ANISupportViewCell
-            cell.delegate = self
-
-            if let supportRecruit = supportRecruits[recruitId] {
-              if let supportRecruit = supportRecruit {
-                cell.recruit = supportRecruit
-                cell.isDeleteRecruit = false
-              } else {
-                cell.recruit = nil
-                cell.isDeleteRecruit = true
-              }
-            } else {
-              cell.recruit = nil
-              cell.isDeleteRecruit = nil
+        let storyCellId = NSStringFromClass(ANIStoryViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: storyCellId, for: indexPath) as! ANIStoryViewCell
+        cell.delegate = self
+        
+        if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
+          for user in users {
+            if stories[indexPath.row].userId == user.uid {
+              cell.user = user
+              break
             }
-            
-            if users.contains(where: { $0.uid == stories[indexPath.row - 1].userId }) {
-              for user in users {
-                if stories[indexPath.row - 1].userId == user.uid {
-                  cell.user = user
-                  break
-                }
-              }
-            } else {
-              cell.user = nil
-            }
-            
-            if let comments = stories[indexPath.row - 1].comments {
-              var commentUsersTemp = [FirebaseUser?]()
-              for comment in comments {
-                if users.contains(where: { $0.uid == comment.userId }) {
-                  for user in users {
-                    if comment.userId == user.uid {
-                      commentUsersTemp.append(user)
-                      break
-                    }
-                  }
-                } else {
-                  commentUsersTemp.append(nil)
-                }
-              }
-              
-              cell.commentUsers = commentUsersTemp
-            } else {
-              cell.commentUsers = nil
-            }
-            
-            cell.indexPath = indexPath.row - 1
-            cell.story = stories[indexPath.row - 1]
-            
-            return cell
-          } else if stories[indexPath.row - 1].thumbnailImageUrl != nil {
-            let videoStoryCellId = NSStringFromClass(ANIVideoStoryViewCell.self)
-            let cell = tableView.dequeueReusableCell(withIdentifier: videoStoryCellId, for: indexPath) as! ANIVideoStoryViewCell
-            cell.delegate = self
-            
-            if users.contains(where: { $0.uid == stories[indexPath.row - 1].userId }) {
-              for user in users {
-                if stories[indexPath.row - 1].userId == user.uid {
-                  cell.user = user
-                  break
-                }
-              }
-            } else {
-              cell.user = nil
-            }
-            
-            if let comments = stories[indexPath.row - 1].comments {
-              var commentUsersTemp = [FirebaseUser?]()
-              for comment in comments {
-                if users.contains(where: { $0.uid == comment.userId }) {
-                  for user in users {
-                    if comment.userId == user.uid {
-                      commentUsersTemp.append(user)
-                      break
-                    }
-                  }
-                } else {
-                  commentUsersTemp.append(nil)
-                }
-              }
-              
-              cell.commentUsers = commentUsersTemp
-            } else {
-              cell.commentUsers = nil
-            }
-            
-            if let storyVideoUrl = stories[indexPath.row - 1].storyVideoUrl,
-              storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
-              cell.videoAsset = storyVideoAssets[storyVideoUrl]
-            } else {
-              cell.videoAsset = nil
-            }
-            
-            cell.indexPath = indexPath.row - 1
-            cell.story = stories[indexPath.row - 1]
-            
-            return cell
-          } else {
-            let storyCellId = NSStringFromClass(ANIStoryViewCell.self)
-            let cell = tableView.dequeueReusableCell(withIdentifier: storyCellId, for: indexPath) as! ANIStoryViewCell
-            cell.delegate = self
-
-            if users.contains(where: { $0.uid == stories[indexPath.row - 1].userId }) {
-              for user in users {
-                if stories[indexPath.row - 1].userId == user.uid {
-                  cell.user = user
-                  break
-                }
-              }
-            } else {
-              cell.user = nil
-            }
-            
-            if let comments = stories[indexPath.row - 1].comments {
-              var commentUsersTemp = [FirebaseUser?]()
-              for comment in comments {
-                if users.contains(where: { $0.uid == comment.userId }) {
-                  for user in users {
-                    if comment.userId == user.uid {
-                      commentUsersTemp.append(user)
-                      break
-                    }
-                  }
-                } else {
-                  commentUsersTemp.append(nil)
-                }
-              }
-              
-              cell.commentUsers = commentUsersTemp
-            } else {
-              cell.commentUsers = nil
-            }
-            
-            cell.indexPath = indexPath.row - 1
-            cell.story = stories[indexPath.row - 1]
-            
-            return cell
           }
         } else {
-          return UITableViewCell()
+          cell.user = nil
         }
+        
+        cell.indexPath = indexPath.row
+        cell.story = stories[indexPath.row]
+        
+        return cell
       }
+    } else {
+      return UITableViewCell()
     }
   }
 }
@@ -708,54 +435,27 @@ extension ANIStoryView: UITableViewDataSource {
 //MARK: UITableViewDelegate
 extension ANIStoryView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    if rankingStories.isEmpty {
-      if !stories.isEmpty && stories.count > indexPath.row {
-        if stories[indexPath.row].recruitId != nil, let cell = cell as? ANISupportViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-        } else if stories[indexPath.row].thumbnailImageUrl != nil, let cell = cell as? ANIVideoStoryViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-          cell.storyVideoView?.removeReachEndObserver()
-          cell.storyVideoView?.stop()
-        } else if let cell = cell as? ANIStoryViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-        }
-      }
-    } else {
-      if indexPath.row != 0, !stories.isEmpty && stories.count > indexPath.row - 1 {
-        if stories[indexPath.row - 1].recruitId != nil, let cell = cell as? ANISupportViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-        } else if stories[indexPath.row - 1].thumbnailImageUrl != nil, let cell = cell as? ANIVideoStoryViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-          cell.storyVideoView?.removeReachEndObserver()
-          cell.storyVideoView?.stop()
-        } else if let cell = cell as? ANIStoryViewCell {
-          cell.unobserveLove()
-          cell.unobserveComment()
-        }
+    if !stories.isEmpty && stories.count > indexPath.row {
+      if stories[indexPath.row].recruitId != nil, let cell = cell as? ANISupportViewCell {
+        cell.unobserveLove()
+        cell.unobserveComment()
+      } else if stories[indexPath.row].thumbnailImageUrl != nil, let cell = cell as? ANIVideoStoryViewCell {
+        cell.unobserveLove()
+        cell.unobserveComment()
+        cell.storyVideoView?.removeReachEndObserver()
+        cell.storyVideoView?.stop()
+      } else if let cell = cell as? ANIStoryViewCell {
+        cell.unobserveLove()
+        cell.unobserveComment()
       }
     }
   }
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    if rankingStories.isEmpty {
-      let element = self.stories.count - COUNT_LAST_CELL
-      
-      if !isLoading, indexPath.row >= element {
-        loadMoreStory(sender: nil)
-      }
-    } else {
-      if indexPath.row != 0 {
-        let element = self.stories.count - COUNT_LAST_CELL
-        
-        if !isLoading, indexPath.row - 1 >= element {
-          loadMoreStory(sender: nil)
-        }
-      }
+    let element = self.stories.count - COUNT_LAST_CELL
+    
+    if !isLoading, indexPath.row >= element {
+      loadMoreStory(sender: nil)
     }
     
     self.cellHeight[indexPath] = cell.frame.size.height
@@ -818,7 +518,7 @@ extension ANIStoryView: UITableViewDelegate {
 //MARK: ANIStoryViewCellDelegate, ANIVideoStoryViewCellDelegate
 extension ANIStoryView: ANIStoryViewCellDelegate, ANIVideoStoryViewCellDelegate {
   func storyCellTapped(story: FirebaseStory, user: FirebaseUser) {
-    self.delegate?.didSelectStoryViewCell(selectedStory: story, user: user)
+    
   }
   
   func reject() {
@@ -843,28 +543,6 @@ extension ANIStoryView: ANIStoryViewCellDelegate, ANIVideoStoryViewCellDelegate 
   
   func loadedVideo(urlString: String, asset: AVAsset) {
     storyVideoAssets[urlString] = asset
-  }
-}
-
-//MARK: ANISupportViewCellDelegate
-extension ANIStoryView: ANISupportViewCellDelegate {
-  func supportCellTapped(story: FirebaseStory, user: FirebaseUser) {
-    self.delegate?.didSelectStoryViewCell(selectedStory: story, user: user)
-  }
-  
-  func supportCellRecruitTapped(recruit: FirebaseRecruit, user: FirebaseUser) {
-    self.delegate?.supportCellRecruitTapped(recruit: recruit, user: user)
-  }
-  
-  func loadedRecruit(recruitId: String, recruit: FirebaseRecruit?) {
-    self.supportRecruits[recruitId] = recruit
-  }
-}
-
-//MARK: ANIRankingViewCellDelegate
-extension ANIStoryView: ANIRankingViewCellDelegate {
-  func didSelectRankingCell(rankingStory: FirebaseStory, ranking: Int) {
-    self.delegate?.didSelectRankingCell(rankingStory: rankingStory, ranking: ranking)
   }
 }
 
@@ -908,15 +586,8 @@ extension ANIStoryView {
     if !self.stories.isEmpty {
       self.stories.removeAll()
     }
-    if !self.supportRecruits.isEmpty {
-      self.supportRecruits.removeAll()
-    }
     if !self.users.isEmpty {
       self.users.removeAll()
-    }
-    if !self.rankingStories.isEmpty {
-      self.rankingStories.removeAll()
-      ANINotificationManager.postReloadRankingStory()
     }
     
     if sender == nil {
@@ -981,62 +652,11 @@ extension ANIStoryView {
       })
     }
     
-    //ranking story
-    if !self.rankingStories.isEmpty {
-      self.rankingStories.removeAll()
-    }
-    
-    let today = ANIFunction.shared.getToday(format: "yyyy/MM/dd")
-    
-    group.enter()
-    DispatchQueue(label: "story").async {
-      database.collection(KEY_STORIES).whereField(KEY_DAY, isEqualTo: today).order(by: KEY_LOVE_COUNT, descending: true).order(by: KEY_DATE, descending: true).limit(to: 3).getDocuments { (snapshot, error) in
-        if let error = error {
-          DLog("Error get document: \(error)")
-          group.leave()
-          
-          return
-        }
-        
-        guard let snapshot = snapshot else { return }
-        if let lastRankingStory = snapshot.documents.last {
-          self.lastRankingStory = lastRankingStory
-          
-          for (index, document) in snapshot.documents.enumerated() {
-            do {
-              let story = try FirestoreDecoder().decode(FirebaseStory.self, from: document.data())
-              self.rankingStories.append(story)
-              
-              DispatchQueue.main.async {
-                if index + 1 == snapshot.documents.count {
-                  group.leave()
-                }
-              }
-            } catch let error {
-              DLog(error)
-              group.leave()
-            }
-          }
-        } else {
-          group.leave()
-        }
-      }
-    }
-    
     group.notify(queue: DispatchQueue(label: "story")) {
       if self.lastStory != nil {
-        if self.stories.isEmpty {
-          self.loadMoreStory(sender: sender)
-        } else {
-          self.loadStoryComment(stories: self.stories, sender: sender)
-        }
+        self.loadMoreStory(sender: sender)
         
-        if self.rankingStories.isEmpty {
-          self.isLoadedRankingStoryComment = true
-          self.loadDone(sender: sender)
-        } else {
-          self.loadRankingStoryComment(rankingStories: self.rankingStories, sender: sender)
-        }
+        self.loadDone(sender: sender)
       } else {
         self.showReloadView(sender: sender)
       }
@@ -1095,7 +715,7 @@ extension ANIStoryView {
                 if self.stories.isEmpty {
                   self.loadMoreStory(sender: sender)
                 } else {
-                  self.loadStoryComment(stories: self.stories, sender: sender)
+                  self.loadDone(sender: sender)
                 }
               }
             }
@@ -1108,231 +728,9 @@ extension ANIStoryView {
     }
   }
   
-  private func loadStoryComment(stories: [FirebaseStory], sender: UIRefreshControl?) {
-    isLoadedStoryComment = false
-    
-    let database = Firestore.firestore()
-    
-    var count = 0
-    
-    for (index, story) in stories.enumerated() {
-      var commentsTemp = [FirebaseComment]()
-      
-      guard let storyId = story.id else { return }
-      
-      database.collection(KEY_STORIES).document(storyId).collection(KEY_COMMENTS).order(by: KEY_DATE, descending: true).limit(to: 2).getDocuments { (snapshot, error) in
-        if let error = error {
-          DLog("Error get document: \(error)")
-          self.isLoading = false
-          
-          return
-        }
-        
-        guard let snapshot = snapshot else { return }
-        
-        var isParentComment = false
-        
-        for (commentIndex, document) in snapshot.documents.enumerated() {
-          do {
-            let comment = try FirestoreDecoder().decode(FirebaseComment.self, from: document.data())
-            
-            if commentIndex == 0, let parentCommentId = comment.parentCommentId {
-              isParentComment = true
-              
-              database.collection(KEY_STORIES).document(storyId).collection(KEY_COMMENTS).document(parentCommentId).getDocument(completion: { (parentCommentSnapshot, parentCommentError) in
-                if let parentCommentError = parentCommentError {
-                  DLog("Error get document: \(parentCommentError)")
-                  self.isLoading = false
-                  
-                  return
-                }
-                
-                if let parentCommentSnapshot = parentCommentSnapshot, let data = parentCommentSnapshot.data() {
-                  do {
-                    let parentComment = try FirestoreDecoder().decode(FirebaseComment.self, from: data)
-                    
-                    commentsTemp.append(parentComment)
-                    commentsTemp.append(comment)
-                    
-                    var storyTemp = story
-                    storyTemp.comments = commentsTemp
-                    self.stories[index] = storyTemp
-                    
-                    count = count + 1
-
-                    if count == stories.count {
-                      self.isLoadedStoryComment = true
-                      self.loadDone(sender: sender)
-                    }
-                  } catch let error {
-                    DLog(error)
-                  }
-                } else {
-                  let parentComment = FirebaseComment(id: "", userId: "", comment: "", date: "", isLoved: nil, parentCommentId: nil, parentCommentUserId: nil)
-                  
-                  commentsTemp.append(parentComment)
-                  commentsTemp.append(comment)
-                  
-                  var storyTemp = story
-                  storyTemp.comments = commentsTemp
-                  self.stories[index] = storyTemp
-                  
-                  count = count + 1
-                  
-                  if count == stories.count {
-                    self.isLoadedStoryComment = true
-                    self.loadDone(sender: sender)
-                  }
-                }
-              })
-            } else if !isParentComment {
-              commentsTemp.append(comment)
-  
-              if snapshot.documents.count == commentsTemp.count {
-                var storyTemp = story
-                storyTemp.comments = commentsTemp.reversed()
-                self.stories[index] = storyTemp
-  
-                count = count + 1
-  
-                if count == stories.count {
-                  self.isLoadedStoryComment = true
-                  self.loadDone(sender: sender)
-                }
-              }
-            }
-          } catch let error {
-            DLog(error)
-          }
-        }
-        
-        if snapshot.documents.isEmpty {
-          count = count + 1
-          
-          if count == stories.count {
-            self.isLoadedStoryComment = true
-            self.loadDone(sender: sender)
-          }
-        }
-      }
-    }
-  }
-  
-  private func loadRankingStoryComment(rankingStories: [FirebaseStory], sender: UIRefreshControl?) {
-    isLoadedRankingStoryComment = false
-
-    let database = Firestore.firestore()
-    
-    var count = 0
-    
-    for (index, story) in rankingStories.enumerated() {
-      var commentsTemp = [FirebaseComment]()
-      
-      guard let storyId = story.id else { return }
-      
-      database.collection(KEY_STORIES).document(storyId).collection(KEY_COMMENTS).order(by: KEY_DATE, descending: true).limit(to: 2).getDocuments { (snapshot, error) in
-        if let error = error {
-          DLog("Error get document: \(error)")
-          self.isLoading = false
-          
-          return
-        }
-        
-        guard let snapshot = snapshot else { return }
-        
-        var isParentComment = false
-        
-        for (commentIndex, document) in snapshot.documents.enumerated() {
-          do {
-            let comment = try FirestoreDecoder().decode(FirebaseComment.self, from: document.data())
-            
-            if commentIndex == 0, let parentCommentId = comment.parentCommentId {
-              isParentComment = true
-              
-              database.collection(KEY_STORIES).document(storyId).collection(KEY_COMMENTS).document(parentCommentId).getDocument(completion: { (parentCommentSnapshot, parentCommentError) in
-                if let parentCommentError = parentCommentError {
-                  DLog("Error get document: \(parentCommentError)")
-                  self.isLoading = false
-                  
-                  return
-                }
-                
-                if let parentCommentSnapshot = parentCommentSnapshot, let data = parentCommentSnapshot.data() {
-                  do {
-                    let parentComment = try FirestoreDecoder().decode(FirebaseComment.self, from: data)
-                    
-                    commentsTemp.append(parentComment)
-                    commentsTemp.append(comment)
-                    
-                    var storyTemp = story
-                    storyTemp.comments = commentsTemp
-                    self.rankingStories[index] = storyTemp
-                    
-                    count = count + 1
-                    
-                    if count == rankingStories.count {
-                      self.isLoadedRankingStoryComment = true
-                      self.loadDone(sender: sender)
-                    }
-                  } catch let error {
-                    DLog(error)
-                  }
-                } else {
-                  let parentComment = FirebaseComment(id: "", userId: "", comment: "", date: "", isLoved: nil, parentCommentId: nil, parentCommentUserId: nil)
-                  
-                  commentsTemp.append(parentComment)
-                  commentsTemp.append(comment)
-                  
-                  var storyTemp = story
-                  storyTemp.comments = commentsTemp
-                  self.rankingStories[index] = storyTemp
-                  
-                  count = count + 1
-                  
-                  if count == rankingStories.count {
-                    self.isLoadedRankingStoryComment = true
-                    self.loadDone(sender: sender)
-                  }
-                }
-              })
-            } else if !isParentComment {
-              commentsTemp.append(comment)
-              
-              if snapshot.documents.count == commentsTemp.count {
-                var storyTemp = story
-                storyTemp.comments = commentsTemp.reversed()
-                self.rankingStories[index] = storyTemp
-                
-                count = count + 1
-                
-                if count == rankingStories.count {
-                  self.isLoadedRankingStoryComment = true
-                  self.loadDone(sender: sender)
-                }
-              }
-            }
-          } catch let error {
-            DLog(error)
-          }
-        }
-        
-        if snapshot.documents.isEmpty {
-          count = count + 1
-          
-          if count == rankingStories.count {
-            self.isLoadedRankingStoryComment = true
-            self.loadDone(sender: sender)
-          }
-        }
-      }
-    }
-  }
-  
   private func loadDone(sender: UIRefreshControl?) {
     guard let storyTableView = self.storyTableView,
-          let activityIndicatorView = self.activityIndicatorView,
-          isLoadedStoryComment,
-          isLoadedRankingStoryComment else { return }
+          let activityIndicatorView = self.activityIndicatorView else { return }
     
     DispatchQueue.main.async {
       self.isLoading = false

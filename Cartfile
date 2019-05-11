@@ -2,7 +2,4 @@ github "roberthein/TinyConstraints"
 github "KennethTsang/GrowingTextView" ~> 0.5
 github "ninjaprox/NVActivityIndicatorView"
 github "alickbass/CodableFirebase"
-github "algolia/algoliasearch-client-swift"
 github "HHK1/PryntTrimmerView"
-binary "https://ton.twimg.com/syndication/twitterkit/ios/TwitterKit.json"
-binary "https://ton.twimg.com/syndication/twitterkit/ios/TwitterCore.json"

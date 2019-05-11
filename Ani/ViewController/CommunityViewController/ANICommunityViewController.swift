@@ -11,8 +11,16 @@ import TinyConstraints
 import FirebaseFirestore
 import CodableFirebase
 import FirebaseStorage
-import InstantSearchClient
 import AVKit
+
+enum ContentType: Int {
+  case profile;
+  case story;
+  case qna;
+  case recruit;
+  case user;
+  case comment;
+}
 
 class ANICommunityViewController: UIViewController {
   
@@ -240,28 +248,10 @@ class ANICommunityViewController: UIViewController {
   private func setupNotifications() {
     removeNotifications()
     ANINotificationManager.receive(imageCellTapped: self, selector: #selector(presentImageBrowser(_:)))
-    ANINotificationManager.receive(profileImageViewTapped: self, selector: #selector(pushOtherProfile))
-    ANINotificationManager.receive(tapHashtag: self, selector: #selector(pushHashtagList))
   }
   
   private func removeNotifications() {
     ANINotificationManager.remove(self)
-  }
-  
-  @objc private func pushOtherProfile(_ notification: NSNotification) {
-    guard let userId = notification.object as? String else { return }
-    
-    if let currentUserUid = ANISessionManager.shared.currentUserUid, currentUserUid == userId {
-      let profileViewController = ANIProfileViewController()
-      profileViewController.hidesBottomBarWhenPushed = true
-      self.navigationController?.pushViewController(profileViewController, animated: true)
-      profileViewController.isBackButtonHide = false
-    } else {
-      let otherProfileViewController = ANIOtherProfileViewController()
-      otherProfileViewController.hidesBottomBarWhenPushed = true
-      otherProfileViewController.userId = userId
-      self.navigationController?.pushViewController(otherProfileViewController, animated: true)
-    }
   }
   
   @objc private func presentImageBrowser(_ notification: NSNotification) {
@@ -275,22 +265,6 @@ class ANICommunityViewController: UIViewController {
     imageBrowserViewController.delegate = self
     //overCurrentContextだとtabBarが消えないのでtabBarからpresentする
     self.tabBarController?.present(imageBrowserViewController, animated: false, completion: nil)
-  }
-  
-  @objc private func pushHashtagList(_ notification: NSNotification) {
-    if let userInfo = notification.userInfo,
-      let contributionKind = userInfo[KEY_CONTRIBUTION_KIND] as? String,
-      let hashtag = userInfo[KEY_HASHTAG] as? String {
-      let hashtagListViewController = ANIHashtagListViewController()
-      hashtagListViewController.hashtag = hashtag
-      if contributionKind == KEY_CONTRIBUTION_KIND_STROY {
-        hashtagListViewController.hashtagList = .story
-      } else if contributionKind == KEY_CONTRIBUTION_KIND_QNA {
-        hashtagListViewController.hashtagList = .question
-      }
-      hashtagListViewController.hidesBottomBarWhenPushed = true
-      self.navigationController?.pushViewController(hashtagListViewController, animated: true)
-    }
   }
   
   //action
@@ -406,23 +380,6 @@ extension ANICommunityViewController: ANICommunityMenuBarDelegate {
 
 //MARK: ANIStoryViewDelegate
 extension ANICommunityViewController: ANIStoryViewDelegate {
-  func didSelectStoryViewCell(selectedStory: FirebaseStory, user: FirebaseUser) {
-    let commentViewController = ANICommentViewController()
-    commentViewController.hidesBottomBarWhenPushed = true
-    commentViewController.commentMode = CommentMode.story
-    commentViewController.story = selectedStory
-    commentViewController.user = user
-    self.navigationController?.pushViewController(commentViewController, animated: true)
-  }
-  
-  func supportCellRecruitTapped(recruit: FirebaseRecruit, user: FirebaseUser) {
-    let recruitDetailViewController = ANIRecruitDetailViewController()
-    recruitDetailViewController.hidesBottomBarWhenPushed = true
-    recruitDetailViewController.recruit = recruit
-    recruitDetailViewController.user = user
-    self.navigationController?.pushViewController(recruitDetailViewController, animated: true)
-  }
-  
   func reject() {
     guard let rejectViewBottomConstraint = self.rejectViewBottomConstraint,
       !isRejectAnimating,
@@ -462,14 +419,6 @@ extension ANICommunityViewController: ANIStoryViewDelegate {
     self.tabBarController?.present(popupOptionViewController, animated: false, completion: nil)
   }
   
-  func didSelectRankingCell(rankingStory: FirebaseStory, ranking: Int) {
-    let rankingStoryDetailViewController = ANIRankingStoryDetailViewController()
-    rankingStoryDetailViewController.hidesBottomBarWhenPushed = true
-    rankingStoryDetailViewController.rankingStory = rankingStory
-    rankingStoryDetailViewController.ranking = ranking
-    self.navigationController?.pushViewController(rankingStoryDetailViewController, animated: true)
-  }
-  
   func showEvent(event: FirebaseEvent) {
     let eventPopupViewController = ANIEventPopupViewController()
     eventPopupViewController.event = event
@@ -480,14 +429,7 @@ extension ANICommunityViewController: ANIStoryViewDelegate {
 
 //MARK: ANIQnaViewDelegate
 extension ANICommunityViewController: ANIQnaViewDelegate {
-  func qnaViewCellDidSelect(selectedQna: FirebaseQna, user: FirebaseUser) {
-    let commentViewController = ANICommentViewController()
-    commentViewController.hidesBottomBarWhenPushed = true
-    commentViewController.commentMode = CommentMode.qna
-    commentViewController.qna = selectedQna
-    commentViewController.user = user
-    self.navigationController?.pushViewController(commentViewController, animated: true)
-  }
+
 }
 
 //MARK: ANIImageBrowserViewControllerDelegate
@@ -575,14 +517,10 @@ extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
                     hideUserIdsTemp.append(currentUserId)
                     
                     database.collection(collection).document(contributionId).updateData([KEY_HIDE_USER_IDS: hideUserIdsTemp])
-                    
-                    self.updateDataAlgolia(objectId: contributionId, data: [KEY_HIDE_USER_IDS: hideUserIdsTemp as AnyObject], indexName: KEY_STORIES_INDEX)
                   } else {
                     let hideUserIds = [currentUserId]
                     
                     database.collection(collection).document(contributionId).updateData([KEY_HIDE_USER_IDS: hideUserIds])
-                    
-                    self.updateDataAlgolia(objectId: contributionId, data: [KEY_HIDE_USER_IDS: hideUserIds as AnyObject], indexName: KEY_STORIES_INDEX)
                   }
                   
                   DispatchQueue.main.async {
@@ -602,14 +540,10 @@ extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
                     hideUserIdsTemp.append(currentUserId)
                     
                     database.collection(collection).document(contributionId).updateData([KEY_HIDE_USER_IDS: hideUserIdsTemp])
-                    
-                    self.updateDataAlgolia(objectId: contributionId, data: [KEY_HIDE_USER_IDS: hideUserIdsTemp as AnyObject], indexName: KEY_QNAS_INDEX)
                   } else {
                     let hideUserIds = [currentUserId]
                     
                     database.collection(collection).document(contributionId).updateData([KEY_HIDE_USER_IDS: hideUserIds])
-                    
-                    self.updateDataAlgolia(objectId: contributionId, data: [KEY_HIDE_USER_IDS: hideUserIds as AnyObject], indexName: KEY_QNAS_INDEX)
                   }
                   
                   DispatchQueue.main.async {
@@ -637,18 +571,7 @@ extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
       }
     }
   }
-  
-  private func updateDataAlgolia(objectId: String, data: [String: AnyObject], indexName: String) {
-    let index = ANISessionManager.shared.client.index(withName: indexName)
-    
-    DispatchQueue.global().async {
-      index.partialUpdateObject(data, withID: objectId, completionHandler: { (content, error) -> Void in
-        if error == nil {
-          DLog("Object IDs: \(content!)")
-        }
-      })
-    }
-  }
+
 }
 
 //MARK: UIGestureRecognizerDelegate
@@ -727,7 +650,6 @@ extension ANICommunityViewController {
         }
         
         database.collection(collection).document(contributionId).delete()
-        self.deleteDataAlgolia(contentType: contentType, contributionId: contributionId)
         
         DispatchQueue.main.async {
           if contentType == .story {
@@ -847,19 +769,5 @@ extension ANICommunityViewController {
     let date = ANIFunction.shared.getToday()
     let values = [KEY_CONTENT_TYPE: contentTypeString, KEY_DATE: date]
     database.collection(KEY_REPORTS).document(contributionId).collection(KEY_REPORT).addDocument(data: values)
-  }
-  
-  private func deleteDataAlgolia(contentType: ContentType, contributionId: String) {
-    var index: Index?
-
-    if contentType == .story {
-      index = ANISessionManager.shared.client.index(withName: KEY_STORIES_INDEX)
-    } else if contentType == .qna {
-      index = ANISessionManager.shared.client.index(withName: KEY_QNAS_INDEX)
-    }
-
-    DispatchQueue.global().async {
-      index?.deleteObject(withID: contributionId)
-    }
   }
 }

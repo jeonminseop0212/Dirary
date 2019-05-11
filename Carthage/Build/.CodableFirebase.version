@@ -3,7 +3,8 @@
   "iOS" : [
     {
       "name" : "CodableFirebase",
-      "hash" : "47f04df6415c66966c08a01bcd9ff49dd4eb3b4d40641fe710da08b7b7fefea4"
+      "hash" : "76e3b00dcceb5c2fbfef96be491688d8a1b046f16a7f15fca021786303b06a0a",
+      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]
 }

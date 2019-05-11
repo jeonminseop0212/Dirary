@@ -10,7 +10,6 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import CodableFirebase
-import GoogleSignIn
 
 class ANITabBarController: UITabBarController {
   
@@ -39,7 +38,6 @@ class ANITabBarController: UITabBarController {
     
     setup()
     setupTabBar()
-    setupBadge()
     setupNotifications()
   }
   
@@ -75,58 +73,11 @@ class ANITabBarController: UITabBarController {
     communityVC.tabBarItem.tag = 0
     let communityNV = UINavigationController(rootViewController: communityVC)
     
-    let recruitVC = ANIRecruitViewController()
-    recruitVC.tabBarItem.image = UIImage(named: "recruit")?.withRenderingMode(.alwaysOriginal)
-    recruitVC.tabBarItem.selectedImage = UIImage(named: "recruitSelected")?.withRenderingMode(.alwaysOriginal)
-    recruitVC.tabBarItem.tag = 1
-    let recruitNV = UINavigationController(rootViewController: recruitVC)
-    
-    let notiVC = ANINotiViewController()
-    notiVC.tabBarItem.image = UIImage(named: "noti")?.withRenderingMode(.alwaysOriginal)
-    notiVC.tabBarItem.selectedImage = UIImage(named: "notiSelected")?.withRenderingMode(.alwaysOriginal)
-    notiVC.tabBarItem.tag = 2
-    let notiNV = UINavigationController(rootViewController: notiVC)
-    
-    let searchVC = ANISearchViewController()
-    searchVC.tabBarItem.image = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
-    searchVC.tabBarItem.selectedImage = UIImage(named: "searchSelected")?.withRenderingMode(.alwaysOriginal)
-    searchVC.tabBarItem.tag = 3
-    let searchNV = UINavigationController(rootViewController: searchVC)
-    
-    let profileVC = ANIProfileViewController()
-    profileVC.tabBarItem.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
-    profileVC.tabBarItem.selectedImage = UIImage(named: "profileSelected")?.withRenderingMode(.alwaysOriginal)
-    profileVC.tabBarItem.tag = 4
-    let profileNV = UINavigationController(rootViewController: profileVC)
-    
-    setViewControllers([communityNV, recruitNV, notiNV, searchNV, profileNV], animated: false)
+    setViewControllers([communityNV], animated: false)
     
     if let items = tabBar.items {
       for item in items {
         item.imageInsets = UIEdgeInsets.init(top: 4.0, left: 0.0, bottom: -4.0, right: 0.0)
-      }
-    }
-  }
-  
-  private func setupBadge() {
-    if self.tabBar.subviews.count > NUMBER_OF_NOTI_TAB {
-      let tabBarButton = self.tabBar.subviews[NUMBER_OF_NOTI_TAB]
-      for subView in tabBarButton.subviews {
-        guard let icon = subView as? UIImageView else { continue }
-
-        let badge = UIView()
-        badge.backgroundColor = ANIColor.red
-        badge.layer.cornerRadius = BADGE_WIDHT / 2
-        badge.layer.masksToBounds = true
-        badge.alpha = 0.0
-        icon.addSubview(badge)
-        badge.centerX(to: icon, icon.rightAnchor)
-        badge.centerY(to: icon, icon.topAnchor, offset: 2)
-        badge.width(BADGE_WIDHT)
-        badge.height(BADGE_WIDHT)
-        self.badge = badge
-        
-        break
       }
     }
   }
@@ -138,26 +89,6 @@ class ANITabBarController: UITabBarController {
         ANINotificationManager.postCommunityTabTapped()
       }
       showingTabTag = 0
-    case 1:
-      if showingTabTag == 1 {
-        ANINotificationManager.postRecruitTabTapped()
-      }
-      showingTabTag = 1
-    case 2:
-      if showingTabTag == 2 {
-        ANINotificationManager.postNotiTabTapped()
-      }
-      showingTabTag = 2
-    case 3:
-      if showingTabTag == 3 {
-        ANINotificationManager.postSearchTabTapped()
-      }
-      showingTabTag = 3
-    case 4:
-      if showingTabTag == 4 {
-        ANINotificationManager.postProfileTabTapped()
-      }
-      showingTabTag = 4
     default:
       DLog("default tab")
     }
@@ -480,8 +411,6 @@ extension ANITabBarController {
   private func signOut() {
     do {
       try Auth.auth().signOut()
-      ANITwitter.logOut()
-      GIDSignIn.sharedInstance().signOut()
       
       let userDefaults = UserDefaults.standard
       userDefaults.set(false, forKey: KEY_IS_TWITTER_SHARE)

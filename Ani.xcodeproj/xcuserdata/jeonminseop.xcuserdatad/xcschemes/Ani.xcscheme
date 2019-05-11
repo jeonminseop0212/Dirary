@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F5B1EF8C20725963000CFB0B"
-               BuildableName = "MYAU.app"
+               BuildableName = "Diary.app"
                BlueprintName = "Ani"
                ReferencedContainer = "container:Ani.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5B1EF8C20725963000CFB0B"
-            BuildableName = "MYAU.app"
+            BuildableName = "Diary.app"
             BlueprintName = "Ani"
             ReferencedContainer = "container:Ani.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5B1EF8C20725963000CFB0B"
-            BuildableName = "MYAU.app"
+            BuildableName = "Diary.app"
             BlueprintName = "Ani"
             ReferencedContainer = "container:Ani.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5B1EF8C20725963000CFB0B"
-            BuildableName = "MYAU.app"
+            BuildableName = "Diary.app"
             BlueprintName = "Ani"
             ReferencedContainer = "container:Ani.xcodeproj">
          </BuildableReference>

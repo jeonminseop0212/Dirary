@@ -11,14 +11,11 @@ import UIKit
 protocol ANIInitialViewDelegate {
   func loginButtonTapped()
   func signUpButtonTapped()
-  func startAnonymous()
   func showTerms()
   func showPrivacyPolicy()
   func reject(notiText: String)
   func startAnimaing()
   func stopAnimating()
-  func successTwitterLogin()
-  func googleLoginButtonTapped()
 }
 
 class ANIInitialView: UIView {
@@ -121,87 +118,6 @@ class ANIInitialView: UIView {
     bottomStackView.addArrangedSubview(privacyPolicyLabel)
     self.privacyPolicyLabel = privacyPolicyLabel
     
-    //anonymousLabel
-    let anonymousLabel = UILabel()
-    anonymousLabel.font = UIFont.systemFont(ofSize: 13.0)
-    anonymousLabel.textColor = ANIColor.darkGray
-    anonymousLabel.text = "ログインしないで始める"
-    anonymousLabel.isUserInteractionEnabled = true
-    let anonymousTapGesture = UITapGestureRecognizer(target: self, action: #selector(startAnonymous))
-    anonymousLabel.addGestureRecognizer(anonymousTapGesture)
-    addSubview(anonymousLabel)
-    anonymousLabel.bottomToTop(of: bottomStackView, offset: -10.0)
-    anonymousLabel.centerXToSuperview()
-    self.anonymousLabel = anonymousLabel
-    
-    //gooleLoginButton
-    let googleLoginButton = ANIAreaButtonView()
-    googleLoginButton.base?.layer.cornerRadius = LOGIN_BUTTON_HEIGHT / 2
-    googleLoginButton.base?.backgroundColor = ANIColor.pink
-    googleLoginButton.delegate = self
-    addSubview(googleLoginButton)
-    googleLoginButton.bottomToTop(of: anonymousLabel, offset: -12.0)
-    googleLoginButton.leftToSuperview(offset: 40.0)
-    googleLoginButton.rightToSuperview(offset: -40.0)
-    googleLoginButton.height(LOGIN_BUTTON_HEIGHT)
-    self.googleLoginButton = googleLoginButton
-    
-    //googleLoginLabel
-    let googleLoginLabel = UILabel()
-    googleLoginLabel.textColor = .white
-    googleLoginLabel.textAlignment = .center
-    googleLoginLabel.text = "Google"
-    googleLoginLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-    googleLoginButton.addContent(googleLoginLabel)
-    googleLoginLabel.centerXToSuperview(offset: 14.0)
-    googleLoginLabel.centerYToSuperview()
-    self.googleLoginLabel = googleLoginLabel
-    
-    //googleImageView
-    let googleImageView = UIImageView()
-    googleImageView.image = UIImage(named: "google")
-    googleImageView.contentMode = .scaleAspectFit
-    googleLoginButton.addContent(googleImageView)
-    googleImageView.width(25.0)
-    googleImageView.height(20.0)
-    googleImageView.rightToLeft(of: googleLoginLabel, offset: -5.0)
-    googleImageView.centerYToSuperview()
-    self.googleImageView = googleImageView
-    
-    //twitterLoginButton
-    let twitterLoginButton = ANIAreaButtonView()
-    twitterLoginButton.base?.layer.cornerRadius = LOGIN_BUTTON_HEIGHT / 2
-    twitterLoginButton.base?.backgroundColor = ANIColor.lightBlue
-    twitterLoginButton.delegate = self
-    addSubview(twitterLoginButton)
-    twitterLoginButton.bottomToTop(of: googleLoginButton, offset: -10.0)
-    twitterLoginButton.leftToSuperview(offset: 40.0)
-    twitterLoginButton.rightToSuperview(offset: -40.0)
-    twitterLoginButton.height(LOGIN_BUTTON_HEIGHT)
-    self.twitterLoginButton = twitterLoginButton
-    
-    //twitterLoginLabel
-    let twitterLoginLabel = UILabel()
-    twitterLoginLabel.textColor = .white
-    twitterLoginLabel.textAlignment = .center
-    twitterLoginLabel.text = "Twitter"
-    twitterLoginLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-    twitterLoginButton.addContent(twitterLoginLabel)
-    twitterLoginLabel.centerXToSuperview(offset: 10.0)
-    twitterLoginLabel.centerYToSuperview()
-    self.twitterLoginLabel = twitterLoginLabel
-    
-    //twitterImageView
-    let twitterImageView = UIImageView()
-    twitterImageView.image = UIImage(named: "twitterWhite")
-    twitterImageView.contentMode = .scaleAspectFit
-    twitterLoginButton.addContent(twitterImageView)
-    twitterImageView.width(20.0)
-    twitterImageView.height(20.0)
-    twitterImageView.rightToLeft(of: twitterLoginLabel, offset: -5.0)
-    twitterImageView.centerYToSuperview()
-    self.twitterImageView = twitterImageView
-    
     //otherLoginLabel
     let otherLoginLabel = UILabel()
     otherLoginLabel.text = "その他ログイン"
@@ -209,7 +125,7 @@ class ANIInitialView: UIView {
     otherLoginLabel.textColor = ANIColor.darkGray
     addSubview(otherLoginLabel)
     otherLoginLabel.centerXToSuperview()
-    otherLoginLabel.bottomToTop(of: twitterLoginButton, offset: -5.0)
+    otherLoginLabel.bottomToTop(of: privacyPolicyLabel, offset: -5.0)
     self.otherLoginLabel = otherLoginLabel
     
     //otherLoginLeftLineView
@@ -307,10 +223,6 @@ class ANIInitialView: UIView {
     self.titleLabel = titleLabel
   }
   
-  @objc private func startAnonymous() {
-    self.delegate?.startAnonymous()
-  }
-  
   @objc private func showTerms() {
     self.delegate?.showTerms()
   }
@@ -328,28 +240,6 @@ extension ANIInitialView: ANIButtonViewDelegate {
     }
     if view === signUpButton {
       self.delegate?.signUpButtonTapped()
-    }
-    if view === twitterLoginButton {
-      self.delegate?.startAnimaing()
-      ANITwitter.login(isLink: false) { (success, errorMessage) in
-        if !success, let errorMessage = errorMessage {
-          self.delegate?.reject(notiText: errorMessage)
-          self.delegate?.stopAnimating()
-          return
-        }
-        
-        self.myTabBarController?.isLoadedUser = false
-        self.myTabBarController?.isLoadedFirstData = false
-        self.myTabBarController?.loadUser() {
-          self.delegate?.successTwitterLogin()
-          self.myTabBarController?.observeChatGroup()
-          
-          self.delegate?.stopAnimating()
-        }
-      }
-    }
-    if view === googleLoginButton {
-      self.delegate?.googleLoginButtonTapped()
     }
   }
 }

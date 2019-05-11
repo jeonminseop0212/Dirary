@@ -1,9 +1,10 @@
 {
-  "commitish" : "3.0.0",
+  "commitish" : "4.0.0",
   "iOS" : [
     {
       "name" : "PryntTrimmerView",
-      "hash" : "925bf200c649c4b626c92caf520162a6301fc49e02dda10b44cfa431807cd174"
+      "hash" : "c913bb4aed000856fb61e734a93a01a84c95a06a8cd9c3bf827b73641986fedc",
+      "swiftToolchainVersion" : "5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
     }
   ]
 }

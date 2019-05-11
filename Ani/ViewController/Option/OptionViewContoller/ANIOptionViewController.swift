@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import CodableFirebase
 import TinyConstraints
-import GoogleSignIn
 
 class ANIOptionViewController: UIViewController {
   
@@ -155,39 +154,6 @@ class ANIOptionViewController: UIViewController {
 
 //MARK: ANIOptionViewDelegate
 extension ANIOptionViewController: ANIOptionViewDelegate {
-  func listTapped(list: List) {
-    let listViewController = ANIListViewController()
-    listViewController.list = list
-    self.navigationController?.pushViewController(listViewController, animated: true)
-  }
-  
-  func linkTwitterTapped() {
-    guard let activityIndicatorView = self.activityIndicatorView else { return }
-    
-    let alertController = UIAlertController(title: "Twitter連携", message: "アカウントをTwitterと連携しますか？\nTwitterアカウントで再ログイン、Twitterに投稿ができます。", preferredStyle: .alert)
-    
-    let logoutAction = UIAlertAction(title: "連携", style: .default) { (action) in
-      activityIndicatorView.startAnimating()
-
-      ANITwitter.login(isLink: true, completion: { (success, errorMessage) in
-        if !success, let errorMessage = errorMessage {
-          self.reject(notiText: errorMessage)
-          activityIndicatorView.stopAnimating()
-          return
-        }
-
-        activityIndicatorView.stopAnimating()
-        self.reject(notiText: "Twitterと連携できました。")
-      })
-    }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-    
-    alertController.addAction(logoutAction)
-    alertController.addAction(cancelAction)
-    
-    self.present(alertController, animated: true, completion: nil)
-  }
-  
   func logoutTapped() {
     let alertController = UIAlertController(title: "ログアウト", message: "ログアウトしますか？\nアカウントで再ログインすることができます。", preferredStyle: .alert)
     
@@ -199,9 +165,6 @@ extension ANIOptionViewController: ANIOptionViewDelegate {
           let database = Firestore.firestore()
           database.collection(KEY_USERS).document(currentUserUid).updateData([KEY_FCM_TOKEN: ""])
         }
-        
-        ANITwitter.logOut()
-        GIDSignIn.sharedInstance().signOut()
         
         let userDefaults = UserDefaults.standard
         userDefaults.set(false, forKey: KEY_IS_TWITTER_SHARE)
@@ -225,45 +188,5 @@ extension ANIOptionViewController: ANIOptionViewDelegate {
     alertController.addAction(cancelAction)
     
     self.present(alertController, animated: true, completion: nil)
-  }
-  
-  func blockUserTapped() {
-    let blockUserViewController = ANIBlockUserViewController()
-    self.navigationController?.pushViewController(blockUserViewController, animated: true)
-  }
-  
-  func opinionBoxTapped() {
-    let opinionBoxViewController = ANIOpinionBoxViewController()
-    self.navigationController?.pushViewController(opinionBoxViewController, animated: true)
-  }
-  
-  func contactTapped() {
-    let adminUserId = ANISessionManager.shared.adminUserId
-    
-    let database = Firestore.firestore()
-    
-    DispatchQueue.global().async {
-      database.collection(KEY_USERS).document(adminUserId).getDocument(completion: { (snapshot, error) in
-        if let error = error {
-          DLog("Error get document: \(error)")
-          return
-        }
-        
-        guard let snapshot = snapshot,
-          let data = snapshot.data() else { return }
-        
-        do {
-          let adminUser = try FirestoreDecoder().decode(FirebaseUser.self, from: data)
-          
-          let chatViewController = ANIChatViewController()
-          chatViewController.user = adminUser
-          chatViewController.isPush = true
-          chatViewController.hidesBottomBarWhenPushed = true
-          self.navigationController?.pushViewController(chatViewController, animated: true)
-        } catch let error {
-          DLog(error)
-        }
-      })
-    }
   }
 }

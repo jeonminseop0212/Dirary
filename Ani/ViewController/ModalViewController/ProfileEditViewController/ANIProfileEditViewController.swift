@@ -304,9 +304,7 @@ class ANIProfileEditViewController: UIViewController {
       if let error = error {
         DLog("update user error \(error)")
       }
-      
-      self.updateDataAlgolia(data: values)
-      
+            
       database.collection(KEY_USERS).document(uid).getDocument { (snapshot, error) in
         if let error = error {
           DLog("Error get document: \(error)")
@@ -328,20 +326,6 @@ class ANIProfileEditViewController: UIViewController {
           DLog(error)
         }
       }
-    }
-  }
-  
-  private func updateDataAlgolia(data: [String: AnyObject]) {
-    guard let objectId = ANISessionManager.shared.currentUserUid else { return }
-    
-    let index = ANISessionManager.shared.client.index(withName: KEY_USERS_INDEX)
-    
-    DispatchQueue.global().async {
-      index.partialUpdateObject(data, withID: objectId, completionHandler: { (content, error) -> Void in
-        if error == nil {
-          DLog("Object IDs: \(content!)")
-        }
-      })
     }
   }
   
