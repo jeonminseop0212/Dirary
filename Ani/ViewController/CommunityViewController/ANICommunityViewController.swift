@@ -78,7 +78,6 @@ class ANICommunityViewController: UIViewController {
     removeNotifications()
     
     ANIStoryView.endRefresh()
-    ANIQnaView.endRefresh()
   }
   
   private func setup() {
@@ -295,7 +294,6 @@ extension ANICommunityViewController: UICollectionViewDataSource {
       let qnaId = NSStringFromClass(ANICommunityQnaCell.self)
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: qnaId, for: indexPath) as! ANICommunityQnaCell
       cell.frame.origin.y = collectionView.frame.origin.y
-      cell.delegate = self
       return cell
     }
   }
@@ -346,24 +344,20 @@ extension ANICommunityViewController: ANIButtonViewDelegate{
   func buttonViewTapped(view: ANIButtonView) {
     
     if view === self.contributionButon {
-      if ANISessionManager.shared.isAnonymous == false {
-        if selectedIndex == 0 {
-          let contributionViewController = ANIContributionViewController()
-          contributionViewController.navigationTitle = "STORY"
-          contributionViewController.selectedContributionMode = ContributionMode.story
-          contributionViewController.delegate = self
-          let contributionNV = UINavigationController(rootViewController: contributionViewController)
-          self.present(contributionNV, animated: true, completion: nil)
-        } else {
-          let contributionViewController = ANIContributionViewController()
-          contributionViewController.navigationTitle = "Q&A"
-          contributionViewController.selectedContributionMode = ContributionMode.qna
-          contributionViewController.delegate = self
-          let contributionNV = UINavigationController(rootViewController: contributionViewController)
-          self.present(contributionNV, animated: true, completion: nil)
-        }
+      if selectedIndex == 0 {
+        let contributionViewController = ANIContributionViewController()
+        contributionViewController.navigationTitle = "STORY"
+        contributionViewController.selectedContributionMode = ContributionMode.story
+        contributionViewController.delegate = self
+        let contributionNV = UINavigationController(rootViewController: contributionViewController)
+        self.present(contributionNV, animated: true, completion: nil)
       } else {
-        reject()
+        let contributionViewController = ANIContributionViewController()
+        contributionViewController.navigationTitle = "Q&A"
+        contributionViewController.selectedContributionMode = ContributionMode.qna
+        contributionViewController.delegate = self
+        let contributionNV = UINavigationController(rootViewController: contributionViewController)
+        self.present(contributionNV, animated: true, completion: nil)
       }
     }
   }
@@ -427,11 +421,6 @@ extension ANICommunityViewController: ANIStoryViewDelegate {
   }
 }
 
-//MARK: ANIQnaViewDelegate
-extension ANICommunityViewController: ANIQnaViewDelegate {
-
-}
-
 //MARK: ANIImageBrowserViewControllerDelegate
 extension ANICommunityViewController: ANIImageBrowserViewControllerDelegate {
   func imageBrowserDidDissmiss() {
@@ -459,11 +448,7 @@ extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
     let alertController = UIAlertController(title: nil, message: "投稿を通報しますか？", preferredStyle: .alert)
     
     let reportAction = UIAlertAction(title: "通報", style: .default) { (action) in
-      if !ANISessionManager.shared.isAnonymous {
-        self.reportData()
-      } else {
-        self.reject()
-      }
+      self.reportData()
     }
     let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
     

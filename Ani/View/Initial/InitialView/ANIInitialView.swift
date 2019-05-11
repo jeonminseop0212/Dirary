@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+import CodableFirebase
 
 protocol ANIInitialViewDelegate {
-  func loginButtonTapped()
+  func loginSuccess()
   func signUpButtonTapped()
-  func showTerms()
-  func showPrivacyPolicy()
+//  func showTerms()
+//  func showPrivacyPolicy()
   func reject(notiText: String)
   func startAnimaing()
   func stopAnimating()
@@ -20,37 +23,29 @@ protocol ANIInitialViewDelegate {
 
 class ANIInitialView: UIView {
   
-  private weak var initialImageView: UIImageView?
-
-  private weak var titleLabel: UILabel?
-  private weak var subTitleLabel: UILabel?
+  private weak var scrollView: ANIScrollView?
+  private weak var contentView: UIView?
   
-  private weak var buttonStackView: UIStackView?
-  private let LOGIN_BUTTON_HEIGHT: CGFloat = 40.0
+  private weak var logoImageView: UIImageView?
+  
+  private weak var loginStackView: UIStackView?
+  
+  private weak var userIdTitleLabel: UILabel?
+  private weak var userIdTextFieldBase: UIView?
+  private weak var userIdTextField: UITextField?
+  private weak var userIdUnderLineView: UIView?
+  
+  private weak var passwordTitleLabel: UILabel?
+  private weak var passwordTextFieldBase: UIView?
+  private weak var passwordTextField: UITextField?
+  private weak var passwordUnderLineView: UIView?
+  
   private weak var loginButton: ANIAreaButtonView?
   private weak var loginButtonLabel: UILabel?
+  
   private weak var signUpButton: ANIAreaButtonView?
   private weak var signUpButtonLabel: UILabel?
-  
-  private weak var otherLoginLeftLineView: UIView?
-  private weak var otherLoginLabel: UILabel?
-  private weak var otherLoginRightLineView: UIView?
-  
-  private weak var twitterLoginButton: ANIAreaButtonView?
-  private weak var twitterImageView: UIImageView?
-  private weak var twitterLoginLabel: UILabel?
-  
-  private weak var googleLoginButton: ANIAreaButtonView?
-  private weak var googleImageView: UIImageView?
-  private weak var googleLoginLabel: UILabel?
-  
-  private weak var anonymousLabel: UILabel?
-  
-  private weak var bottomStackView: UIStackView?
-  private weak var termsLabel: UILabel?
-  private let dotViewHeight: CGFloat = 2.0
-  private weak var dotView: UIView?
-  private weak var privacyPolicyLabel: UILabel?
+  private weak var signUpButtonUnderLineView: UIView?
   
   var myTabBarController: ANITabBarController?
   
@@ -67,111 +62,126 @@ class ANIInitialView: UIView {
   }
   
   private func setup() {
-    //initialImageView
-    let initialImageView = UIImageView()
-    initialImageView.contentMode = .scaleAspectFill
-    initialImageView.image = UIImage(named: "initial")
-    addSubview(initialImageView)
-    initialImageView.edgesToSuperview()
-    self.initialImageView = initialImageView
+    //scrollView
+    let scrollView = ANIScrollView()
+    addSubview(scrollView)
+    scrollView.edgesToSuperview()
+    self.scrollView = scrollView
     
-    //bottomStackView
-    let bottomStackView = UIStackView()
-    bottomStackView.axis = .horizontal
-    bottomStackView.alignment = .center
-    bottomStackView.distribution = .equalSpacing
-    bottomStackView.spacing = 5.0
-    addSubview(bottomStackView)
-    bottomStackView.bottomToSuperview(offset: -24.0)
-    bottomStackView.centerXToSuperview()
-    self.bottomStackView = bottomStackView
+    //contentView
+    let contentView = UIView()
+    scrollView.addSubview(contentView)
+    contentView.edgesToSuperview()
+    contentView.width(to: scrollView)
+    self.contentView = contentView
     
-    //termsLabel
-    let termsLabel = UILabel()
-    termsLabel.font = UIFont.systemFont(ofSize: 13.0)
-    termsLabel.textColor = ANIColor.darkGray
-    termsLabel.text = "利用規約"
-    termsLabel.isUserInteractionEnabled = true
-    let termsTapGesture = UITapGestureRecognizer(target: self, action: #selector(showTerms))
-    termsLabel.addGestureRecognizer(termsTapGesture)
-    bottomStackView.addArrangedSubview(termsLabel)
-    self.termsLabel = termsLabel
+    //logoImageView
+    let logoImageView = UIImageView()
+    logoImageView.image = UIImage(named: "logo")
+    contentView.addSubview(logoImageView)
+    logoImageView.centerXToSuperview()
+    logoImageView.topToSuperview(offset: 100.0, usingSafeArea: true)
+    logoImageView.width(63.0)
+    logoImageView.height(86.0)
+    self.logoImageView = logoImageView
     
-    //dotView
-    let dotView = UIView()
-    dotView.backgroundColor = ANIColor.darkGray
-    dotView.layer.cornerRadius = dotViewHeight / 2
-    dotView.layer.masksToBounds = true
-    bottomStackView.addArrangedSubview(dotView)
-    dotView.width(dotViewHeight)
-    dotView.height(dotViewHeight)
-    self.dotView = dotView
+    //loginStackView
+    let loginStackView = UIStackView()
+    loginStackView.axis = .vertical
+    loginStackView.distribution = .equalSpacing
+    loginStackView.spacing = 12.0
+    contentView.addSubview(loginStackView)
+    loginStackView.topToBottom(of: logoImageView, offset: 78.0)
+    loginStackView.leftToSuperview(offset: 40.0)
+    loginStackView.rightToSuperview(offset: -40.0)
+    self.loginStackView = loginStackView
     
-    //privacyPolicyLabel
-    let privacyPolicyLabel = UILabel()
-    privacyPolicyLabel.font = UIFont.systemFont(ofSize: 13.0)
-    privacyPolicyLabel.textColor = ANIColor.darkGray
-    privacyPolicyLabel.text = "プライバシーポリシー"
-    privacyPolicyLabel.isUserInteractionEnabled = true
-    let privacyPolicyTapGesture = UITapGestureRecognizer(target: self, action: #selector(showPrivacyPolicy))
-    privacyPolicyLabel.addGestureRecognizer(privacyPolicyTapGesture)
-    bottomStackView.addArrangedSubview(privacyPolicyLabel)
-    self.privacyPolicyLabel = privacyPolicyLabel
+    //userIdTitleLabel
+    let userIdTitleLabel = UILabel()
+    userIdTitleLabel.text = "ユーザーID"
+    userIdTitleLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+    userIdTitleLabel.textColor = ANIColor.darkGray
+    userIdTitleLabel.textAlignment = .left
+    loginStackView.addArrangedSubview(userIdTitleLabel)
+    self.userIdTitleLabel = userIdTitleLabel
     
-    //otherLoginLabel
-    let otherLoginLabel = UILabel()
-    otherLoginLabel.text = "その他ログイン"
-    otherLoginLabel.font = UIFont.systemFont(ofSize: 13.0)
-    otherLoginLabel.textColor = ANIColor.darkGray
-    addSubview(otherLoginLabel)
-    otherLoginLabel.centerXToSuperview()
-    otherLoginLabel.bottomToTop(of: privacyPolicyLabel, offset: -5.0)
-    self.otherLoginLabel = otherLoginLabel
+    //userIdTextFieldBase
+    let userIdTextFieldBase = UIView()
+    loginStackView.addArrangedSubview(userIdTextFieldBase)
+    self.userIdTextFieldBase = userIdTextFieldBase
     
-    //otherLoginLeftLineView
-    let otherLoginLeftLineView = UIView()
-    otherLoginLeftLineView.backgroundColor = ANIColor.darkGray
-    addSubview(otherLoginLeftLineView)
-    otherLoginLeftLineView.leftToSuperview(offset: 50.0)
-    otherLoginLeftLineView.rightToLeft(of: otherLoginLabel, offset: -10.0)
-    otherLoginLeftLineView.height(0.5)
-    otherLoginLeftLineView.centerY(to: otherLoginLabel)
-    self.otherLoginLeftLineView = otherLoginLeftLineView
+    //userIdTextField
+    let userIdTextField = UITextField()
+    userIdTextField.font = UIFont.boldSystemFont(ofSize: 16.0)
+    userIdTextField.textColor = ANIColor.dark
+    userIdTextField.backgroundColor = .clear
+    userIdTextField.placeholder = "Diary@diary.com"
+    userIdTextField.returnKeyType = .done
+    userIdTextField.keyboardType = .emailAddress
+    userIdTextFieldBase.addSubview(userIdTextField)
+    userIdTextField.edgesToSuperview(excluding: .bottom)
+    self.userIdTextField = userIdTextField
     
-    //otherLoginRightLineView
-    let otherLoginRightLineView = UIView()
-    otherLoginRightLineView.backgroundColor = ANIColor.darkGray
-    addSubview(otherLoginRightLineView)
-    otherLoginRightLineView.leftToRight(of: otherLoginLabel, offset: 10.0)
-    otherLoginRightLineView.rightToSuperview(offset: -50.0)
-    otherLoginRightLineView.height(0.5)
-    otherLoginRightLineView.centerY(to: otherLoginLabel)
-    self.otherLoginRightLineView = otherLoginRightLineView
+    //userIdUnderLineView
+    let userIdUnderLineView = UIView()
+    userIdUnderLineView.backgroundColor = ANIColor.dark
+    userIdTextFieldBase.addSubview(userIdUnderLineView)
+    userIdUnderLineView.height(1.0)
+    userIdUnderLineView.topToBottom(of: userIdTextField, offset: 3.0)
+    userIdUnderLineView.edgesToSuperview(excluding: .top)
+    self.userIdUnderLineView = userIdUnderLineView
     
-    //buttonStackView
-    let buttonStackView = UIStackView()
-    buttonStackView.axis = .horizontal
-    buttonStackView.alignment = .center
-    buttonStackView.distribution = .fillEqually
-    buttonStackView.spacing = 10.0
-    addSubview(buttonStackView)
-    buttonStackView.bottomToTop(of: otherLoginLabel, offset: -5.0)
-    buttonStackView.leftToSuperview(offset: 40.0)
-    buttonStackView.rightToSuperview(offset: -40.0)
-    self.buttonStackView = buttonStackView
+    //passwordTitleLabel
+    let passwordTitleLabel = UILabel()
+    passwordTitleLabel.text = "パスワード"
+    passwordTitleLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+    passwordTitleLabel.textColor = ANIColor.darkGray
+    passwordTitleLabel.textAlignment = .left
+    loginStackView.addArrangedSubview(passwordTitleLabel)
+    self.passwordTitleLabel = passwordTitleLabel
+    
+    //passwordTextFieldBase
+    let passwordTextFieldBase = UIView()
+    loginStackView.addArrangedSubview(passwordTextFieldBase)
+    self.passwordTextFieldBase = passwordTextFieldBase
+    
+    //passwordTextField
+    let passwordTextField = UITextField()
+    passwordTextField.font = UIFont.boldSystemFont(ofSize: 16.0)
+    passwordTextField.textColor = ANIColor.dark
+    passwordTextField.backgroundColor = .clear
+    passwordTextField.placeholder = "PASSWORD"
+    passwordTextField.returnKeyType = .done
+    passwordTextField.isSecureTextEntry = true
+    passwordTextFieldBase.addSubview(passwordTextField)
+    passwordTextField.edgesToSuperview(excluding: .bottom)
+    self.passwordTextField = passwordTextField
+    
+    //passwordUnderLineView
+    let passwordUnderLineView = UIView()
+    passwordUnderLineView.backgroundColor = ANIColor.dark
+    passwordTextFieldBase.addSubview(passwordUnderLineView)
+    passwordUnderLineView.height(1.0)
+    passwordUnderLineView.topToBottom(of: passwordTextField, offset: 3.0)
+    passwordUnderLineView.edgesToSuperview(excluding: .top)
+    self.passwordUnderLineView = passwordUnderLineView
     
     //loginButton
     let loginButton = ANIAreaButtonView()
-    loginButton.base?.layer.cornerRadius = LOGIN_BUTTON_HEIGHT / 2
-    loginButton.base?.backgroundColor = ANIColor.emerald
+    loginButton.base?.backgroundColor = .white
+    loginButton.base?.layer.borderColor = ANIColor.dark.cgColor
+    loginButton.base?.layer.borderWidth = 2.0
     loginButton.delegate = self
-    buttonStackView.addArrangedSubview(loginButton)
-    loginButton.height(LOGIN_BUTTON_HEIGHT)
+    contentView.addSubview(loginButton)
+    loginButton.topToBottom(of: loginStackView, offset: 27.0)
+    loginButton.height(45.0)
+    loginButton.leftToSuperview(offset: 40.0)
+    loginButton.rightToSuperview(offset: -40.0)
     self.loginButton = loginButton
     
     //loginButtonLabel
     let loginButtonLabel = UILabel()
-    loginButtonLabel.textColor = .white
+    loginButtonLabel.textColor = ANIColor.dark
     loginButtonLabel.textAlignment = .center
     loginButtonLabel.text = "ログイン"
     loginButtonLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
@@ -181,54 +191,42 @@ class ANIInitialView: UIView {
     
     //signUpButton
     let signUpButton = ANIAreaButtonView()
-    signUpButton.base?.layer.cornerRadius = LOGIN_BUTTON_HEIGHT / 2
-    signUpButton.base?.backgroundColor = .clear
-    signUpButton.base?.layer.borderColor = ANIColor.emerald.cgColor
-    signUpButton.base?.layer.borderWidth = 2.0
+    signUpButton.base?.backgroundColor = .white
     signUpButton.delegate = self
-    buttonStackView.addArrangedSubview(signUpButton)
-    signUpButton.height(LOGIN_BUTTON_HEIGHT)
+    contentView.addSubview(signUpButton)
+    signUpButton.topToBottom(of: loginButton, offset: 20.0)
+    signUpButton.height(20.0)
+    signUpButton.centerXToSuperview()
     self.signUpButton = signUpButton
     
     //signUpButtonLabel
     let signUpButtonLabel = UILabel()
-    signUpButtonLabel.textColor = ANIColor.emerald
+    signUpButtonLabel.textColor = ANIColor.darkGray
     signUpButtonLabel.textAlignment = .center
-    signUpButtonLabel.text = "登録"
-    signUpButtonLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+    signUpButtonLabel.text = "アカウント登録"
+    signUpButtonLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
     signUpButton.addContent(signUpButtonLabel)
     signUpButtonLabel.edgesToSuperview()
     self.signUpButtonLabel = signUpButtonLabel
-
-    //subTitleLabel
-    let subTitleLabel = UILabel()
-    subTitleLabel.textColor = ANIColor.subTitle
-    subTitleLabel.font = UIFont.systemFont(ofSize: 18.0)
-    subTitleLabel.numberOfLines = 2
-    subTitleLabel.textAlignment = .center
-    subTitleLabel.text = "猫と猫好き、猫好きと猫好きが\nつながるコミュニティ"
-    addSubview(subTitleLabel)
-    subTitleLabel.centerXToSuperview()
-    subTitleLabel.bottomToTop(of: buttonStackView, offset: -24.0)
-    self.subTitleLabel = subTitleLabel
     
-    //titleLabel
-    let titleLabel = UILabel()
-    titleLabel.textColor = ANIColor.dark
-    titleLabel.font = UIFont.boldSystemFont(ofSize: 55.0)
-    titleLabel.text = "MYAU"
-    addSubview(titleLabel)
-    titleLabel.bottomToTop(of: subTitleLabel, offset: -20.0)
-    titleLabel.centerXToSuperview()
-    self.titleLabel = titleLabel
+    //signUpButtonUnderLineView
+    let signUpButtonUnderLineView = UIView()
+    signUpButtonUnderLineView.backgroundColor = ANIColor.darkGray
+    contentView.addSubview(signUpButtonUnderLineView)
+    signUpButtonUnderLineView.topToBottom(of: signUpButton, offset: -2.0)
+    signUpButtonUnderLineView.left(to: signUpButton, offset: -2.0)
+    signUpButtonUnderLineView.right(to: signUpButton, offset: 2.0)
+    signUpButtonUnderLineView.height(1.0)
+    signUpButtonUnderLineView.bottomToSuperview(offset: -20.0)
+    self.signUpButtonUnderLineView = signUpButtonUnderLineView
   }
   
   @objc private func showTerms() {
-    self.delegate?.showTerms()
+//    self.delegate?.showTerms()
   }
   
   @objc private func showPrivacyPolicy() {
-    self.delegate?.showPrivacyPolicy()
+//    self.delegate?.showPrivacyPolicy()
   }
 }
 
@@ -236,7 +234,57 @@ class ANIInitialView: UIView {
 extension ANIInitialView: ANIButtonViewDelegate {
   func buttonViewTapped(view: ANIButtonView) {
     if view === loginButton {
-      self.delegate?.loginButtonTapped()
+      guard let userIdTextField = self.userIdTextField,
+            let userId = userIdTextField.text,
+            let passwordTextField = self.passwordTextField,
+            let password = passwordTextField.text else { return }
+      
+      guard userId != "" else {
+        self.delegate?.reject(notiText: "ユーザーIDを入力してください")
+        return
+      }
+      
+      guard password != "" else {
+        self.delegate?.reject(notiText: "パスワードを入力してください")
+        return
+      }
+      
+      self.delegate?.startAnimaing()
+      
+      self.endEditing(true)
+      
+      Auth.auth().signIn(withEmail: userId, password: password) { (successUser, error) in
+        if let errorUnrap = error {
+          let nsError = errorUnrap as NSError
+          
+          self.delegate?.stopAnimating()
+          
+          DLog("nsError \(nsError)")
+          if nsError.code == 17008 || nsError.code == 17011 {
+            self.delegate?.reject(notiText: "存在しないメールアドレスです！")
+          } else if nsError.code == 17009 {
+            self.delegate?.reject(notiText: "パスワードが違います！")
+          } else {
+            self.delegate?.reject(notiText: "ログインに失敗しました！")
+          }
+        } else {
+          if let currentUser = Auth.auth().currentUser {
+            if currentUser.isEmailVerified {
+              self.myTabBarController?.isLoadedUser = false
+              self.myTabBarController?.loadUser() {
+                self.delegate?.loginSuccess()
+                self.delegate?.stopAnimating()
+              }
+            } else {
+              self.delegate?.stopAnimating()
+              
+              self.delegate?.reject(notiText: "アドレスの認証メールを確認してください！")
+            }
+            
+            self.endEditing(true)
+          }
+        }
+      }
     }
     if view === signUpButton {
       self.delegate?.signUpButtonTapped()

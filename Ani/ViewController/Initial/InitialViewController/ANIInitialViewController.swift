@@ -16,6 +16,7 @@ import Firebase
 
 class ANIInitialViewController: UIViewController {
   
+  private var initialViewBottomConstraint: Constraint?
   private weak var initialView: ANIInitialView?
   
   private var rejectViewBottomConstraint: Constraint?
@@ -35,10 +36,15 @@ class ANIInitialViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     UIApplication.shared.statusBar?.alpha = 0.0
+    setupNotifications()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     UIApplication.shared.statusBar?.alpha = 1.0
+  }
+  
+  override func viewDidDisappear(_ animated: Bool) {
+    removeNotifications()
   }
   
   private func setup() {
@@ -54,12 +60,13 @@ class ANIInitialViewController: UIViewController {
     initialView.myTabBarController = myTabBarController
     initialView.delegate = self
     self.view.addSubview(initialView)
-    initialView.edgesToSuperview()
+    initialView.edgesToSuperview(excluding: .bottom)
+    initialViewBottomConstraint = initialView.bottomToSuperview()
     self.initialView = initialView
     
     //rejectView
     let rejectView = UIView()
-    rejectView.backgroundColor = ANIColor.emerald
+    rejectView.backgroundColor = ANIColor.darkGray
     self.view.addSubview(rejectView)
     rejectViewBottomConstraint = rejectView.bottomToTop(of: self.view)
     rejectViewBottomConstraintOriginalConstant = rejectViewBottomConstraint?.constant
@@ -70,7 +77,7 @@ class ANIInitialViewController: UIViewController {
     
     //rejectBaseView
     let rejectBaseView = UIView()
-    rejectBaseView.backgroundColor = ANIColor.emerald
+    rejectBaseView.backgroundColor = ANIColor.darkGray
     rejectView.addSubview(rejectBaseView)
     rejectBaseView.edgesToSuperview(excluding: .top)
     rejectBaseView.height(UIViewController.NAVIGATION_BAR_HEIGHT)
@@ -93,14 +100,49 @@ class ANIInitialViewController: UIViewController {
     activityIndicatorView.edgesToSuperview()
     self.activityIndicatorView = activityIndicatorView
   }
+  
+  private func setupNotifications() {
+    removeNotifications()
+    ANINotificationManager.receive(keyboardWillChangeFrame: self, selector: #selector(keyboardWillChangeFrame))
+    ANINotificationManager.receive(keyboardWillHide: self, selector: #selector(keyboardWillHide))
+  }
+  
+  private func removeNotifications() {
+    ANINotificationManager.remove(self)
+  }
+  
+  @objc private func keyboardWillChangeFrame(_ notification: Notification) {
+    guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+          let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+          let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
+          let initialViewBottomConstraint = self.initialViewBottomConstraint else { return }
+    
+    let h = keyboardFrame.height
+    
+    initialViewBottomConstraint.constant = -h
+    
+    UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: curve), animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  @objc private func keyboardWillHide(_ notification: Notification) {
+    guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+          let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt,
+          let initialViewBottomConstraint = self.initialViewBottomConstraint else { return }
+    
+    initialViewBottomConstraint.constant = 0.0
+    
+    UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: curve), animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
 }
 
 //MARK: ANIInitialViewDelegate
 extension ANIInitialViewController: ANIInitialViewDelegate {
-  func loginButtonTapped() {
-    let loginViewController = ANILoginViewController()
-    loginViewController.myTabBarController = myTabBarController
-    self.navigationController?.pushViewController(loginViewController, animated: true)
+  func loginSuccess() {
+    
   }
   
   func signUpButtonTapped() {
@@ -108,22 +150,22 @@ extension ANIInitialViewController: ANIInitialViewDelegate {
     self.navigationController?.pushViewController(signUpViewController, animated: true)
   }
   
-  func showTerms() {
-    let urlString = "https://myau5.webnode.jp/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84/"
-    guard let url = URL(string: urlString) else { return }
-    
-    let safariVC = SFSafariViewController(url: url)
-    present(safariVC, animated: true, completion: nil)
-  }
-  
-  func showPrivacyPolicy() {
-    let urlString = "https://myau5.webnode.jp/プライバシーポリシー/"
-    guard let privacyPolicyUrl = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed),
-          let url = URL(string: privacyPolicyUrl) else { return }
-    
-    let safariVC = SFSafariViewController(url: url)
-    present(safariVC, animated: true, completion: nil)
-  }
+//  func showTerms() {
+//    let urlString = "https://myau5.webnode.jp/%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84/"
+//    guard let url = URL(string: urlString) else { return }
+//    
+//    let safariVC = SFSafariViewController(url: url)
+//    present(safariVC, animated: true, completion: nil)
+//  }
+//  
+//  func showPrivacyPolicy() {
+//    let urlString = "https://myau5.webnode.jp/プライバシーポリシー/"
+//    guard let privacyPolicyUrl = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed),
+//          let url = URL(string: privacyPolicyUrl) else { return }
+//    
+//    let safariVC = SFSafariViewController(url: url)
+//    present(safariVC, animated: true, completion: nil)
+//  }
   
   func reject(notiText: String) {
     guard let rejectViewBottomConstraint = self.rejectViewBottomConstraint,

@@ -7,19 +7,17 @@
 //
 
 import UIKit
-import Gallery
 import TinyConstraints
 
 class ANISignUpViewController: UIViewController {
   private weak var myNavigationBar: UIView?
   private weak var myNavigationBarBase: UIView?
+  private weak var navigationTitleLabel: UILabel?
   private weak var backButton: UIButton?
   
   private var signUpViewOriginalBottomConstraintConstant: CGFloat?
   private var signUpViewBottomConstraint: Constraint?
   private weak var signUpView: ANISignUpView?
-  
-  private var gallery: GalleryController?
   
   private var rejectViewBottomConstraint: Constraint?
   private var rejectViewBottomConstraintOriginalConstant: CGFloat?
@@ -27,8 +25,6 @@ class ANISignUpViewController: UIViewController {
   private weak var rejectBaseView: UIView?
   private weak var rejectLabel: UILabel?
   private var isRejectAnimating: Bool = false
-  
-  private let IMAGE_SIZE: CGSize = CGSize(width: 500.0, height: 500.0)
   
   private weak var activityIndicatorView: ANIActivityIndicator?
   
@@ -67,6 +63,15 @@ class ANISignUpViewController: UIViewController {
     myNavigationBarBase.rightToSuperview()
     self.myNavigationBarBase = myNavigationBarBase
     
+    //navigationTitleLabel
+    let navigationTitleLabel = UILabel()
+    navigationTitleLabel.text = "新規登録"
+    navigationTitleLabel.textColor = ANIColor.dark
+    navigationTitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+    myNavigationBarBase.addSubview(navigationTitleLabel)
+    navigationTitleLabel.centerInSuperview()
+    self.navigationTitleLabel = navigationTitleLabel
+    
     //backButton
     let backButton = UIButton()
     let dismissButtonImage = UIImage(named: "backButton")?.withRenderingMode(.alwaysTemplate)
@@ -93,7 +98,7 @@ class ANISignUpViewController: UIViewController {
     
     //rejectView
     let rejectView = UIView()
-    rejectView.backgroundColor = ANIColor.emerald
+    rejectView.backgroundColor = ANIColor.darkGray
     self.view.addSubview(rejectView)
     rejectViewBottomConstraint = rejectView.bottomToTop(of: self.view)
     rejectViewBottomConstraintOriginalConstant = rejectViewBottomConstraint?.constant
@@ -104,7 +109,7 @@ class ANISignUpViewController: UIViewController {
     
     //rejectBaseView
     let rejectBaseView = UIView()
-    rejectBaseView.backgroundColor = ANIColor.emerald
+    rejectBaseView.backgroundColor = ANIColor.darkGray
     rejectView.addSubview(rejectBaseView)
     rejectBaseView.edgesToSuperview(excluding: .top)
     rejectBaseView.height(UIViewController.NAVIGATION_BAR_HEIGHT)
@@ -166,25 +171,6 @@ class ANISignUpViewController: UIViewController {
     })
   }
   
-  private func getCropImages(images: [UIImage?], items: [Image]) -> [UIImage] {
-    var croppedImages = [UIImage]()
-    
-    for (index, image) in images.enumerated() {
-      let imageSize = image?.size
-      let scrollViewWidth = self.view.frame.width
-      let widthScale =  scrollViewWidth / (imageSize?.width)! * items[index].scale
-      let heightScale = scrollViewWidth / (imageSize?.height)! * items[index].scale
-      
-      let scale = 1 / min(widthScale, heightScale)
-      let visibleRect = CGRect(x: floor(items[index].offset.x * scale), y: floor(items[index].offset.y * scale), width: scrollViewWidth * scale, height: scrollViewWidth * scale * Config.Grid.previewRatio)
-      let ref: CGImage = (image?.cgImage?.cropping(to: visibleRect))!
-      let croppedImage:UIImage = UIImage(cgImage: ref)
-      
-      croppedImages.append(croppedImage)
-    }
-    return croppedImages
-  }
-  
   //MARK: action
   @objc private func back() {
     self.navigationController?.popViewController(animated: true)
@@ -193,47 +179,22 @@ class ANISignUpViewController: UIViewController {
 
 //MARK: ANISignUpViewDelegate
 extension ANISignUpViewController: ANISignUpViewDelegate {
-  func signUpSuccess(adress: String, password: String, userId: String) {
-    let autoLoginViewController = ANIAutoLoginViewController()
-    autoLoginViewController.adress = adress
-    autoLoginViewController.password = password
-    autoLoginViewController.userId = userId
-    self.navigationController?.pushViewController(autoLoginViewController, animated: true)
+  func signUpSuccess() {
+    self.navigationController?.dismiss(animated: true, completion: nil)
   }
-  
+
   func donButtonTapped() {
     ANISessionManager.shared.isHiddenInitial = true
     self.navigationController?.dismiss(animated: true, completion: nil)
   }
-  
-  func prifileImagePickButtonTapped() {
-    self.view.endEditing(true)
-    
-    gallery = GalleryController()
-    if let galleryUnrap = gallery {
-      galleryUnrap.delegate = self
-      Gallery.Config.initialTab = .imageTab
-      Gallery.Config.PageIndicator.backgroundColor = .white
-      Gallery.Config.Camera.oneImageMode = true
-      Gallery.Config.Grid.previewRatio = 1.0
-      Gallery.Config.tabsToShow = [.imageTab, .cameraTab]
-      Gallery.Config.Font.Main.regular = UIFont.boldSystemFont(ofSize: 17)
-      Gallery.Config.Grid.ArrowButton.tintColor = ANIColor.dark
-      Gallery.Config.Grid.FrameView.borderColor = ANIColor.emerald
-      Gallery.Config.Grid.previewRatio = 1.0
-      
-      let galleryNV = UINavigationController(rootViewController: galleryUnrap)
-      self.present(galleryNV, animated: true, completion: nil)
-    }
-  }
-  
+
   func reject(notiText: String) {
     guard let rejectViewBottomConstraint = self.rejectViewBottomConstraint,
           let rejectLabel = self.rejectLabel,
           !isRejectAnimating else { return }
-    
+
     rejectLabel.text = notiText
-    
+
     rejectViewBottomConstraint.constant = UIViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT
     UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
       self.isRejectAnimating = true
@@ -241,7 +202,7 @@ extension ANISignUpViewController: ANISignUpViewDelegate {
     }) { (complete) in
       guard let rejectViewBottomConstraint = self.rejectViewBottomConstraint,
             let rejectViewBottomConstraintOriginalConstant = self.rejectViewBottomConstraintOriginalConstant else { return }
-      
+
       rejectViewBottomConstraint.constant = rejectViewBottomConstraintOriginalConstant
       UIView.animate(withDuration: 0.3, delay: 1.0, options: .curveEaseInOut, animations: {
         self.view.layoutIfNeeded()
@@ -250,54 +211,12 @@ extension ANISignUpViewController: ANISignUpViewDelegate {
       })
     }
   }
-  
+
   func startAnimaing() {
     self.activityIndicatorView?.startAnimating()
   }
-  
+
   func stopAnimating() {
     self.activityIndicatorView?.stopAnimating()
-  }
-}
-
-//MARK: GalleryControllerDelegate
-extension ANISignUpViewController: GalleryControllerDelegate {
-  func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
-    
-    Image.resolve(images: images) { (myImages) in
-      let imageFilteriewController = ANIImageFilterViewController()
-      imageFilteriewController.images = self.getCropImages(images: myImages, items: images)
-      imageFilteriewController.delegate = self
-      controller.navigationController?.pushViewController(imageFilteriewController, animated: true)
-    }
-    
-    gallery = nil
-  }
-  
-  func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
-    controller.dismiss(animated: true, completion: nil)
-    
-    gallery = nil
-  }
-  
-  func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
-    controller.dismiss(animated: true, completion: nil)
-    gallery = nil
-  }
-  
-  func galleryControllerDidCancel(_ controller: GalleryController) {
-    controller.dismiss(animated: true, completion: nil)
-    gallery = nil
-  }
-}
-
-//MARK: ANIImageFilterViewControllerDelegate
-extension ANISignUpViewController: ANIImageFilterViewControllerDelegate {
-  func doneFilterImages(filteredImages: [UIImage?]) {
-    guard !filteredImages.isEmpty,
-          let filteredImage = filteredImages[0],
-          let signUpView = self.signUpView else { return }
-    
-    signUpView.profileImage = filteredImage.resize(size: IMAGE_SIZE)
   }
 }

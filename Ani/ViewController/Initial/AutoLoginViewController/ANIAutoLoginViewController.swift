@@ -81,7 +81,7 @@ class ANIAutoLoginViewController: UIViewController {
     
     //rejectView
     let rejectView = UIView()
-    rejectView.backgroundColor = ANIColor.emerald
+    rejectView.backgroundColor = ANIColor.darkGray
     self.view.addSubview(rejectView)
     rejectViewBottomConstraint = rejectView.bottomToTop(of: self.view)
     rejectViewBottomConstraintOriginalConstant = rejectViewBottomConstraint?.constant
@@ -92,7 +92,7 @@ class ANIAutoLoginViewController: UIViewController {
     
     //rejectBaseView
     let rejectBaseView = UIView()
-    rejectBaseView.backgroundColor = ANIColor.emerald
+    rejectBaseView.backgroundColor = ANIColor.darkGray
     rejectView.addSubview(rejectBaseView)
     rejectBaseView.edgesToSuperview(excluding: .top)
     rejectBaseView.height(UIViewController.NAVIGATION_BAR_HEIGHT)
@@ -172,7 +172,6 @@ extension ANIAutoLoginViewController: ANIAutoLoginViewDelegate {
                     self.navigationController?.dismiss(animated: true, completion: {
                       ANISessionManager.shared.currentUser = user
                       ANISessionManager.shared.currentUserUid = currentUser.uid
-                      ANISessionManager.shared.isAnonymous = false
                       
                       ANINotificationManager.postLogin()
                     })

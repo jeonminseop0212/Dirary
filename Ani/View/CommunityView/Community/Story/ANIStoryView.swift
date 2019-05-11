@@ -75,11 +75,8 @@ class ANIStoryView: UIView {
     super.init(frame: frame)
     setup()
     setupNotifications()
-    observeStory()
     
-    if ANISessionManager.shared.isLaunchNoti {
-      loadStory(sender: nil)
-    }
+    loadStory(sender: nil)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -272,40 +269,23 @@ class ANIStoryView: UIView {
           let reloadView = self.reloadView,
           let storyTableView = self.storyTableView else { return }
     
-    activityIndicatorView.stopAnimating()
-    
-    storyTableView.reloadData()
-    storyTableView.alpha = 0.0
-    
-    if let sender = sender {
-      sender.endRefreshing()
+    DispatchQueue.main.async {
+      activityIndicatorView.stopAnimating()
+      
+      storyTableView.reloadData()
+      storyTableView.alpha = 0.0
+      
+      if let sender = sender {
+        sender.endRefreshing()
+      }
+      
+      UIView.animate(withDuration: 0.2, animations: {
+        reloadView.alpha = 1.0
+      }) { (complete) in
+        ANISessionManager.shared.isLoadedFirstData = true
+        ANINotificationManager.postDismissSplash()
+      }
     }
-    
-    UIView.animate(withDuration: 0.2, animations: {
-      reloadView.alpha = 1.0
-    }) { (complete) in
-      ANISessionManager.shared.isLoadedFirstData = true
-      ANINotificationManager.postDismissSplash()
-    }
-  }
-  
-  private func isBlockStory(story: FirebaseStory) -> Bool {
-    guard let currentUserUid = ANISessionManager.shared.currentUserUid else { return false }
-    
-    if let blockUserIds = ANISessionManager.shared.blockUserIds, blockUserIds.contains(story.userId) {
-      return true
-    }
-    if let blockingUserIds = ANISessionManager.shared.blockingUserIds, blockingUserIds.contains(story.userId) {
-      return true
-    }
-    if let hideUserIds = story.hideUserIds, hideUserIds.contains(currentUserUid) {
-      return true
-    }
-    if story.storyImageUrls == nil && story.recruitId == nil && story.thumbnailImageUrl == nil {
-      return true
-    }
-    
-    return false
   }
   
   private func setPushNotification() {
@@ -318,26 +298,6 @@ class ANIStoryView: UIView {
           }
         }
       }
-    }
-  }
-  
-  private func observeStory() {
-    let database = Firestore.firestore()
-    
-    database.collection(KEY_STORIES).order(by: KEY_DATE, descending: true).limit(to: 1).addSnapshotListener { (snapshot, error) in
-      if let error = error {
-        DLog("stories observe error \(error)")
-        return
-      }
-      
-      guard let snapshot = snapshot else { return }
-      
-      snapshot.documentChanges.forEach({ (diff) in
-        if diff.type == .added && self.isLoadedFirstData {
-          self.isNewStory = true
-          self.showNewStoryButton()
-        }
-      })
     }
   }
   
@@ -383,17 +343,6 @@ extension ANIStoryView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: videoStoryCellId, for: indexPath) as! ANIVideoStoryViewCell
         cell.delegate = self
         
-        if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
-          for user in users {
-            if stories[indexPath.row].userId == user.uid {
-              cell.user = user
-              break
-            }
-          }
-        } else {
-          cell.user = nil
-        }
-        
         if let storyVideoUrl = stories[indexPath.row].storyVideoUrl,
           storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
           cell.videoAsset = storyVideoAssets[storyVideoUrl]
@@ -410,17 +359,6 @@ extension ANIStoryView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: storyCellId, for: indexPath) as! ANIStoryViewCell
         cell.delegate = self
         
-        if users.contains(where: { $0.uid == stories[indexPath.row].userId }) {
-          for user in users {
-            if stories[indexPath.row].userId == user.uid {
-              cell.user = user
-              break
-            }
-          }
-        } else {
-          cell.user = nil
-        }
-        
         cell.indexPath = indexPath.row
         cell.story = stories[indexPath.row]
         
@@ -436,17 +374,9 @@ extension ANIStoryView: UITableViewDataSource {
 extension ANIStoryView: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     if !stories.isEmpty && stories.count > indexPath.row {
-      if stories[indexPath.row].recruitId != nil, let cell = cell as? ANISupportViewCell {
-        cell.unobserveLove()
-        cell.unobserveComment()
-      } else if stories[indexPath.row].thumbnailImageUrl != nil, let cell = cell as? ANIVideoStoryViewCell {
-        cell.unobserveLove()
-        cell.unobserveComment()
+      if stories[indexPath.row].thumbnailImageUrl != nil, let cell = cell as? ANIVideoStoryViewCell {
         cell.storyVideoView?.removeReachEndObserver()
         cell.storyVideoView?.stop()
-      } else if let cell = cell as? ANIStoryViewCell {
-        cell.unobserveLove()
-        cell.unobserveComment()
       }
     }
   }
@@ -627,16 +557,14 @@ extension ANIStoryView {
           do {
             let story = try FirestoreDecoder().decode(FirebaseStory.self, from: document.data())
             
-            if !self.isBlockStory(story: story) {
-              if let storyVideoUrl = story.storyVideoUrl,
-                let url = URL(string: storyVideoUrl),
-                !self.storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
-                let asset = AVAsset(url: url)
-                self.storyVideoAssets[storyVideoUrl] = asset
-              }
-              
-              self.stories.append(story)
+            if let storyVideoUrl = story.storyVideoUrl,
+              let url = URL(string: storyVideoUrl),
+              !self.storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
+              let asset = AVAsset(url: url)
+              self.storyVideoAssets[storyVideoUrl] = asset
             }
+            
+            self.stories.append(story)
             
             DispatchQueue.main.async {
               if index + 1 == snapshot.documents.count {
@@ -699,16 +627,14 @@ extension ANIStoryView {
           do {
             let story = try FirestoreDecoder().decode(FirebaseStory.self, from: document.data())
             
-            if !self.isBlockStory(story: story) {
-              if let storyVideoUrl = story.storyVideoUrl,
-                let url = URL(string: storyVideoUrl),
-                !self.storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
-                let asset = AVAsset(url: url)
-                self.storyVideoAssets[storyVideoUrl] = asset
-              }
-              
-              self.stories.append(story)
+            if let storyVideoUrl = story.storyVideoUrl,
+              let url = URL(string: storyVideoUrl),
+              !self.storyVideoAssets.contains(where: { $0.0 == storyVideoUrl }) {
+              let asset = AVAsset(url: url)
+              self.storyVideoAssets[storyVideoUrl] = asset
             }
+            
+            self.stories.append(story)
             
             DispatchQueue.main.async {
               if index + 1 == snapshot.documents.count {
