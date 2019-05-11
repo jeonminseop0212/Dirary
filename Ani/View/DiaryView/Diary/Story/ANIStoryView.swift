@@ -27,7 +27,7 @@ class ANIStoryView: UIView {
   
   private weak var refreshControl: UIRefreshControl?
   
-  private let NEW_STORY_BUTTON_OFFSET: CGFloat = ANICommunityViewController.NAVIGATION_BAR_HEIGHT + 7.0
+  private let NEW_STORY_BUTTON_OFFSET: CGFloat = ANIDiaryViewController.NAVIGATION_BAR_HEIGHT + 7.0
   private let NEW_STORY_BUTTON_HEIGHT: CGFloat = 30.0
   private var newStoryButtonTopConstraint: Constraint?
   private weak var newStoryButton: ANIAreaButtonView?
@@ -100,7 +100,7 @@ class ANIStoryView: UIView {
     
     //tableView
     let tableView = UITableView()
-    tableView.contentInset = UIEdgeInsets(top: ANICommunityViewController.NAVIGATION_BAR_HEIGHT, left: 0, bottom: 0, right: 0)
+    tableView.contentInset = UIEdgeInsets(top: ANIDiaryViewController.NAVIGATION_BAR_HEIGHT, left: 0, bottom: 0, right: 0)
     tableView.scrollIndicatorInsets  = UIEdgeInsets(top: UIViewController.NAVIGATION_BAR_HEIGHT, left: 0, bottom: 0, right: 0)
     let storyCellId = NSStringFromClass(ANIStoryViewCell.self)
     tableView.register(ANIStoryViewCell.self, forCellReuseIdentifier: storyCellId)
@@ -179,7 +179,7 @@ class ANIStoryView: UIView {
     
     refreshControl.endRefreshing()
     
-    let topInset = ANICommunityViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT
+    let topInset = ANIDiaryViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT
     if storyTableView.contentOffset.y + topInset < 0 {
       storyTableView.scrollToRow(at: [0, 0], at: .top, animated: false)
     }
@@ -486,7 +486,7 @@ extension ANIStoryView: ANIButtonViewDelegate {
     isNewStory = false
     
     refreshControl.beginRefreshing()
-    let offsetY = 60 + ANICommunityViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT
+    let offsetY = 60 + ANIDiaryViewController.NAVIGATION_BAR_HEIGHT + UIViewController.STATUS_BAR_HEIGHT
     storyTableView.setContentOffset(CGPoint(x: 0.0, y: -offsetY), animated: true)
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

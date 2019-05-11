@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   private func playTopViewControllerVideo() {
     if let topController = UIApplication.topViewController() {
-      if let communityViewController = topController as? ANICommunityViewController {
+      if let communityViewController = topController as? ANIDiaryViewController {
         communityViewController.playVideo()
       }
     }

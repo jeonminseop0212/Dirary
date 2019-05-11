@@ -58,13 +58,13 @@ class ANITabBarController: UITabBarController {
   }
   
   private func setupTabBar() {
-    let communityVC = ANICommunityViewController()
-    communityVC.tabBarItem.image = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
-    communityVC.tabBarItem.selectedImage = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
-    communityVC.tabBarItem.tag = 0
-    let communityNV = UINavigationController(rootViewController: communityVC)
+    let diaryVC = ANIDiaryViewController()
+    diaryVC.tabBarItem.image = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
+    diaryVC.tabBarItem.selectedImage = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
+    diaryVC.tabBarItem.tag = 0
+    let diaryNV = UINavigationController(rootViewController: diaryVC)
     
-    setViewControllers([communityNV], animated: false)
+    setViewControllers([diaryNV], animated: false)
     
     if let items = tabBar.items {
       for item in items {

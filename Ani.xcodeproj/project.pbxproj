@@ -108,9 +108,9 @@
 		F5DF835D207A17C200EA7FBE /* ANICommunityQnaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF835C207A17C200EA7FBE /* ANICommunityQnaCell.swift */; };
 		F5DF8365207A27DC00EA7FBE /* ANIStoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF8364207A27DC00EA7FBE /* ANIStoryViewCell.swift */; };
 		F5E9E22F2079AEC30021D4CC /* ANIOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E22E2079AEC30021D4CC /* ANIOrientation.swift */; };
-		F5E9E2332079AFF40021D4CC /* ANICommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */; };
-		F5E9E2372079B1900021D4CC /* ANICommunityMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */; };
-		F5E9E2392079B9D20021D4CC /* ANICommunityMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */; };
+		F5E9E2332079AFF40021D4CC /* ANIDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2322079AFF40021D4CC /* ANIDiaryViewController.swift */; };
+		F5E9E2372079B1900021D4CC /* ANIDiaryMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2362079B1900021D4CC /* ANIDiaryMenuBar.swift */; };
+		F5E9E2392079B9D20021D4CC /* ANIDiaryMenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E2382079B9D20021D4CC /* ANIDiaryMenuBarCell.swift */; };
 		F5E9E23D2079C10C0021D4CC /* ANIStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E9E23C2079C10C0021D4CC /* ANIStoryView.swift */; };
 /* End PBXBuildFile section */
 
@@ -248,9 +248,9 @@
 		F5DF835C207A17C200EA7FBE /* ANICommunityQnaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityQnaCell.swift; sourceTree = "<group>"; };
 		F5DF8364207A27DC00EA7FBE /* ANIStoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryViewCell.swift; sourceTree = "<group>"; };
 		F5E9E22E2079AEC30021D4CC /* ANIOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIOrientation.swift; sourceTree = "<group>"; };
-		F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityViewController.swift; sourceTree = "<group>"; };
-		F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityMenuBar.swift; sourceTree = "<group>"; };
-		F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICommunityMenuBarCell.swift; sourceTree = "<group>"; };
+		F5E9E2322079AFF40021D4CC /* ANIDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIDiaryViewController.swift; sourceTree = "<group>"; };
+		F5E9E2362079B1900021D4CC /* ANIDiaryMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIDiaryMenuBar.swift; sourceTree = "<group>"; };
+		F5E9E2382079B9D20021D4CC /* ANIDiaryMenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIDiaryMenuBarCell.swift; sourceTree = "<group>"; };
 		F5E9E23C2079C10C0021D4CC /* ANIStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIStoryView.swift; sourceTree = "<group>"; };
 		F8BF8D21240D7035E50361DD /* Pods-Ani.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ani.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ani/Pods-Ani.release.xcconfig"; sourceTree = "<group>"; };
 		FD08576705673419CEA26417 /* Pods_Ani.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ani.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -842,7 +842,7 @@
 			isa = PBXGroup;
 			children = (
 				CDDD04B520B5381B0094DBFA /* Initial */,
-				F5E9E2312079AFA40021D4CC /* CommunityViewController */,
+				F5E9E2312079AFA40021D4CC /* DiaryViewController */,
 				CDDE4B5A20E079A5005762A1 /* Option */,
 				CD2C414620A5A1FF00581267 /* ImageFilterViewController */,
 				CD4929FF21C72C8800C5AF81 /* VideoFilterViewController */,
@@ -851,12 +851,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		F5E9E2312079AFA40021D4CC /* CommunityViewController */ = {
+		F5E9E2312079AFA40021D4CC /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F5E9E2322079AFF40021D4CC /* ANICommunityViewController.swift */,
+				F5E9E2322079AFF40021D4CC /* ANIDiaryViewController.swift */,
 			);
-			path = CommunityViewController;
+			path = DiaryViewController;
 			sourceTree = "<group>";
 		};
 		F5E9E2342079B1660021D4CC /* View */ = {
@@ -865,7 +865,7 @@
 				CD4CBFE521DB665E0030C595 /* uploadProgressView */,
 				CD47937521896FC1002643E2 /* Splash */,
 				CDDD04C120B53C110094DBFA /* Initial */,
-				F5E9E2352079B16F0021D4CC /* CommunityView */,
+				F5E9E2352079B16F0021D4CC /* DiaryView */,
 				CDAFD75920DC9CEB00AEDD83 /* Option */,
 				CDD0550420A5CF0100BEF482 /* ImageFilter */,
 				CD492A0521C749EA00C5AF81 /* VideoFilter */,
@@ -878,31 +878,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F5E9E2352079B16F0021D4CC /* CommunityView */ = {
+		F5E9E2352079B16F0021D4CC /* DiaryView */ = {
 			isa = PBXGroup;
 			children = (
-				F5E9E23A2079C0B00021D4CC /* CoummunityMenuBar */,
-				F5E9E23B2079C0BD0021D4CC /* Community */,
+				F5E9E23A2079C0B00021D4CC /* DiaryMenuBar */,
+				F5E9E23B2079C0BD0021D4CC /* Diary */,
 			);
-			path = CommunityView;
+			path = DiaryView;
 			sourceTree = "<group>";
 		};
-		F5E9E23A2079C0B00021D4CC /* CoummunityMenuBar */ = {
+		F5E9E23A2079C0B00021D4CC /* DiaryMenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				F5E9E2362079B1900021D4CC /* ANICommunityMenuBar.swift */,
-				F5E9E2382079B9D20021D4CC /* ANICommunityMenuBarCell.swift */,
+				F5E9E2362079B1900021D4CC /* ANIDiaryMenuBar.swift */,
+				F5E9E2382079B9D20021D4CC /* ANIDiaryMenuBarCell.swift */,
 			);
-			path = CoummunityMenuBar;
+			path = DiaryMenuBar;
 			sourceTree = "<group>";
 		};
-		F5E9E23B2079C0BD0021D4CC /* Community */ = {
+		F5E9E23B2079C0BD0021D4CC /* Diary */ = {
 			isa = PBXGroup;
 			children = (
 				F5DF835E207A1CA300EA7FBE /* Story */,
 				F5DF835F207A1CB000EA7FBE /* Qna */,
 			);
-			path = Community;
+			path = Diary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1262,12 +1262,12 @@
 				F5DF8365207A27DC00EA7FBE /* ANIStoryViewCell.swift in Sources */,
 				F5E9E22F2079AEC30021D4CC /* ANIOrientation.swift in Sources */,
 				CDDD04B320B50FEA0094DBFA /* ANIInitialViewController.swift in Sources */,
-				F5E9E2372079B1900021D4CC /* ANICommunityMenuBar.swift in Sources */,
+				F5E9E2372079B1900021D4CC /* ANIDiaryMenuBar.swift in Sources */,
 				CDA32A3A20AD22E7008A2AC1 /* ANIContributionImagesView.swift in Sources */,
 				CDA32A3520AC14C0008A2AC1 /* ANIContributionViewController.swift in Sources */,
 				CD0417D021BF865C0017571A /* ANIActivityIndicator.swift in Sources */,
 				F51D221520768B24009D1B26 /* UISearchBar.swift in Sources */,
-				F5E9E2392079B9D20021D4CC /* ANICommunityMenuBarCell.swift in Sources */,
+				F5E9E2392079B9D20021D4CC /* ANIDiaryMenuBarCell.swift in Sources */,
 				CD492A0B21C8990300C5AF81 /* AVFileType.swift in Sources */,
 				CD0FAD0E20BFC02E00D8CD27 /* ANISessionManager.swift in Sources */,
 				F5E9E23D2079C10C0021D4CC /* ANIStoryView.swift in Sources */,
@@ -1292,7 +1292,7 @@
 				CD0BFF1820C7AD9C00D5959B /* FirebaseQna.swift in Sources */,
 				CD4CBFE721DB66690030C595 /* uploadProgressView.swift in Sources */,
 				CD9EEB32219E93FA0079B50E /* ANIFirebaseRemoteConfigManager.swift in Sources */,
-				F5E9E2332079AFF40021D4CC /* ANICommunityViewController.swift in Sources */,
+				F5E9E2332079AFF40021D4CC /* ANIDiaryViewController.swift in Sources */,
 				CD9E52BB2094614400715F50 /* ANIAreaButtonView.swift in Sources */,
 				CD325F6521FFFEE00044ADFD /* FirebaseEvent.swift in Sources */,
 				CDDD04C020B53A8B0094DBFA /* ANIInitialView.swift in Sources */,
