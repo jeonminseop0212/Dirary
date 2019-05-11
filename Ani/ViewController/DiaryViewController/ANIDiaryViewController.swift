@@ -22,9 +22,9 @@ enum ContentType: Int {
   case comment;
 }
 
-class ANICommunityViewController: UIViewController {
+class ANIDiaryViewController: UIViewController {
   
-  private weak var menuBar: ANICommunityMenuBar?
+  private weak var menuBar: ANIDiaryMenuBar?
   private weak var containerCollectionView: UICollectionView?
   
   private let CONTRIBUTION_BUTTON_HEIGHT: CGFloat = 55.0
@@ -109,7 +109,7 @@ class ANICommunityViewController: UIViewController {
     self.containerCollectionView = containerCollectionView
     
     //menuBar
-    let menuBar = ANICommunityMenuBar()
+    let menuBar = ANIDiaryMenuBar()
     menuBar.delegate = self
     self.view.addSubview(menuBar)
     let menuBarHeight = UIViewController.STATUS_BAR_HEIGHT + UIViewController.NAVIGATION_BAR_HEIGHT
@@ -277,7 +277,7 @@ class ANICommunityViewController: UIViewController {
 
 
 //MARK: UICollectionViewDataSource
-extension ANICommunityViewController: UICollectionViewDataSource {
+extension ANIDiaryViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 2
   }
@@ -300,7 +300,7 @@ extension ANICommunityViewController: UICollectionViewDataSource {
 }
 
 //MARK: UICollectionViewDelegateFlowLayout
-extension ANICommunityViewController: UICollectionViewDelegateFlowLayout {
+extension ANIDiaryViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let size = CGSize(width: self.view.frame.width, height: self.view.frame.height)
     return size
@@ -308,10 +308,10 @@ extension ANICommunityViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: UICollectionViewDelegate
-extension ANICommunityViewController: UICollectionViewDelegate {
+extension ANIDiaryViewController: UICollectionViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    guard let menuBar = self.menuBar, let horizontalBarleftConstraint = menuBar.horizontalBarleftConstraint else { return }
-    horizontalBarleftConstraint.constant = scrollView.contentOffset.x / 2
+    guard let menuBar = self.menuBar, let horizontalBarBaseleftConstraint = menuBar.horizontalBarBaseleftConstraint else { return }
+    horizontalBarBaseleftConstraint.constant = scrollView.contentOffset.x / 2
   }
   
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -340,7 +340,7 @@ extension ANICommunityViewController: UICollectionViewDelegate {
 }
 
 //MARK: ANIButtonViewDelegate
-extension ANICommunityViewController: ANIButtonViewDelegate{
+extension ANIDiaryViewController: ANIButtonViewDelegate{
   func buttonViewTapped(view: ANIButtonView) {
     
     if view === self.contributionButon {
@@ -363,8 +363,8 @@ extension ANICommunityViewController: ANIButtonViewDelegate{
   }
 }
 
-//MARK: ANICommunityMenuBarDelegate
-extension ANICommunityViewController: ANICommunityMenuBarDelegate {
+//MARK: ANIDiaryMenuBarDelegate
+extension ANIDiaryViewController: ANIDiaryMenuBarDelegate {
   func didSelectCell(index: IndexPath) {
     guard let containerCollectionView = self.containerCollectionView else { return }
     containerCollectionView.scrollToItem(at: index, at: .left, animated: true)
@@ -373,7 +373,7 @@ extension ANICommunityViewController: ANICommunityMenuBarDelegate {
 }
 
 //MARK: ANIStoryViewDelegate
-extension ANICommunityViewController: ANIStoryViewDelegate {
+extension ANIDiaryViewController: ANIStoryViewDelegate {
   func reject() {
     guard let rejectViewBottomConstraint = self.rejectViewBottomConstraint,
       !isRejectAnimating,
@@ -422,14 +422,14 @@ extension ANICommunityViewController: ANIStoryViewDelegate {
 }
 
 //MARK: ANIImageBrowserViewControllerDelegate
-extension ANICommunityViewController: ANIImageBrowserViewControllerDelegate {
+extension ANIDiaryViewController: ANIImageBrowserViewControllerDelegate {
   func imageBrowserDidDissmiss() {
     UIApplication.shared.statusBarStyle = .default
   }
 }
 
 //MARK: ANIPopupOptionViewControllerDelegate
-extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
+extension ANIDiaryViewController: ANIPopupOptionViewControllerDelegate {
   func deleteContribution() {
     let alertController = UIAlertController(title: nil, message: "投稿を削除しますか？", preferredStyle: .alert)
     
@@ -560,14 +560,14 @@ extension ANICommunityViewController: ANIPopupOptionViewControllerDelegate {
 }
 
 //MARK: UIGestureRecognizerDelegate
-extension ANICommunityViewController: UIGestureRecognizerDelegate {
+extension ANIDiaryViewController: UIGestureRecognizerDelegate {
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
   }
 }
 
 //MARK: ANIContributionViewControllerDelegate
-extension ANICommunityViewController: ANIContributionViewControllerDelegate {
+extension ANIDiaryViewController: ANIContributionViewControllerDelegate {
   func loadThumnailImage(thumbnailImage: UIImage?) {
     guard let uploadProgressView = self.uploadProgressView,
           let thumbnailImageView = uploadProgressView.thumbnailImageView else { return }
@@ -596,7 +596,7 @@ extension ANICommunityViewController: ANIContributionViewControllerDelegate {
 }
 
 //MARK: ANIUploadProgressViewDelegate
-extension ANICommunityViewController: ANIUploadProgressViewDelegate {
+extension ANIDiaryViewController: ANIUploadProgressViewDelegate {
   func completeProgress() {
     guard let uploadProgressView = self.uploadProgressView else { return }
     
@@ -609,7 +609,7 @@ extension ANICommunityViewController: ANIUploadProgressViewDelegate {
 }
 
 //MAKR: data
-extension ANICommunityViewController {
+extension ANIDiaryViewController {
   private func deleteData() {
     guard let contentType = self.contentType, let contributionId = self.contributionId else { return }
       

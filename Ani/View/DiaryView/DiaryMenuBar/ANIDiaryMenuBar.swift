@@ -9,16 +9,15 @@
 import UIKit
 import TinyConstraints
 
-protocol ANICommunityMenuBarDelegate {
+protocol ANIDiaryMenuBarDelegate {
   func didSelectCell(index: IndexPath)
 }
 
-class ANICommunityMenuBar: UIView {
+class ANIDiaryMenuBar: UIView {
   weak var menuCollectionView: UICollectionView?
-  private let menus = ["ストーリー", "Q&A"]
-  var horizontalBarleftConstraint: Constraint?
+  var horizontalBarBaseleftConstraint: Constraint?
   
-  var delegate: ANICommunityMenuBarDelegate?
+  var delegate: ANIDiaryMenuBarDelegate?
     
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -34,8 +33,8 @@ class ANICommunityMenuBar: UIView {
     self.backgroundColor = .white    
     let flowlayout = UICollectionViewFlowLayout()
     let collectionView = UICollectionView(frame: self.frame, collectionViewLayout: flowlayout)
-    let id = NSStringFromClass(ANICommunityMenuBarCell.self)
-    collectionView.register(ANICommunityMenuBarCell.self, forCellWithReuseIdentifier: id)
+    let id = NSStringFromClass(ANIDiaryMenuBarCell.self)
+    collectionView.register(ANIDiaryMenuBarCell.self, forCellWithReuseIdentifier: id)
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.backgroundColor = .white
@@ -49,26 +48,39 @@ class ANICommunityMenuBar: UIView {
     self.menuCollectionView = collectionView
     
     //horizontalBar
+    let horizontalBarBase = UIView()
+    addSubview(horizontalBarBase)
+    horizontalBarBaseleftConstraint = horizontalBarBase.leftToSuperview()
+    horizontalBarBase.widthToSuperview(multiplier: 1/2)
+    horizontalBarBase.height(2.0)
+    horizontalBarBase.bottomToSuperview()
+    
+    //horizontalBar
     let horizontalBar = UIView()
-    horizontalBar.backgroundColor = ANIColor.emerald
-    addSubview(horizontalBar)
-    horizontalBarleftConstraint = horizontalBar.leftToSuperview()
-    horizontalBar.widthToSuperview(multiplier: 1/2)
+    horizontalBar.backgroundColor = ANIColor.dark
+    horizontalBarBase.addSubview(horizontalBar)
+    horizontalBar.width(50.0)
     horizontalBar.height(2.0)
-    horizontalBar.bottomToSuperview()
+    horizontalBar.centerInSuperview()
   }
 }
 
 //MARK: UICollectionViewDataSource
-extension ANICommunityMenuBar: UICollectionViewDataSource {
+extension ANIDiaryMenuBar: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 2
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let id = NSStringFromClass(ANICommunityMenuBarCell.self)
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as! ANICommunityMenuBarCell
-    cell.menuLabel?.text = menus[indexPath.item]
+    let id = NSStringFromClass(ANIDiaryMenuBarCell.self)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as! ANIDiaryMenuBarCell
+    
+    if indexPath.item == 0 {
+      cell.menuImageView?.image = UIImage(named: "tableTab")
+    } else {
+      cell.menuImageView?.image = UIImage(named: "collectionTab")
+    }
+    
     return cell
   }
   
@@ -78,7 +90,7 @@ extension ANICommunityMenuBar: UICollectionViewDataSource {
 }
 
 //MAKR: UICollectionViewDelegateFlowLayout
-extension ANICommunityMenuBar: UICollectionViewDelegateFlowLayout {
+extension ANIDiaryMenuBar: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let size = CGSize(width: collectionView.frame.width / 2, height: collectionView.frame.height)
     return size
@@ -86,7 +98,7 @@ extension ANICommunityMenuBar: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: UICollectionViewDelegate
-extension ANICommunityMenuBar: UICollectionViewDelegate {
+extension ANIDiaryMenuBar: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     self.delegate?.didSelectCell(index: indexPath)
   }
