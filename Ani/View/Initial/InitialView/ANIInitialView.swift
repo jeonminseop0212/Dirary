@@ -268,17 +268,11 @@ extension ANIInitialView: ANIButtonViewDelegate {
             self.delegate?.reject(notiText: "ログインに失敗しました！")
           }
         } else {
-          if let currentUser = Auth.auth().currentUser {
-            if currentUser.isEmailVerified {
-              self.myTabBarController?.isLoadedUser = false
-              self.myTabBarController?.loadUser() {
-                self.delegate?.loginSuccess()
-                self.delegate?.stopAnimating()
-              }
-            } else {
+          if Auth.auth().currentUser != nil {
+            self.myTabBarController?.isLoadedUser = false
+            self.myTabBarController?.loadUser() {
+              self.delegate?.loginSuccess()
               self.delegate?.stopAnimating()
-              
-              self.delegate?.reject(notiText: "アドレスの認証メールを確認してください！")
             }
             
             self.endEditing(true)
