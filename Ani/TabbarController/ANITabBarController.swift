@@ -34,6 +34,7 @@ class ANITabBarController: UITabBarController {
   
   private func setup() {
     //basic
+    self.delegate = self
     ANIOrientation.lockOrientation(.portrait)
     
     //splashView
@@ -59,29 +60,29 @@ class ANITabBarController: UITabBarController {
   
   private func setupTabBar() {
     let diaryVC = ANIDiaryViewController()
-    diaryVC.tabBarItem.image = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
-    diaryVC.tabBarItem.selectedImage = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
+    diaryVC.tabBarItem.image = UIImage(named: "diary")?.withRenderingMode(.alwaysOriginal)
+    diaryVC.tabBarItem.selectedImage = UIImage(named: "diary")?.withRenderingMode(.alwaysOriginal)
     diaryVC.tabBarItem.tag = 0
     let diaryNV = UINavigationController(rootViewController: diaryVC)
     
-    setViewControllers([diaryNV], animated: false)
+    let dumyVC = UIViewController()
+    dumyVC.tabBarItem.image = UIImage(named: "new")?.withRenderingMode(.alwaysOriginal)
+    dumyVC.tabBarItem.selectedImage = UIImage(named: "new")?.withRenderingMode(.alwaysOriginal)
+    dumyVC.tabBarItem.tag = 1
+    let dubyNV = UINavigationController(rootViewController: dumyVC)
+    
+    let settingVC = UIViewController()
+    settingVC.tabBarItem.image = UIImage(named: "settings")?.withRenderingMode(.alwaysOriginal)
+    settingVC.tabBarItem.selectedImage = UIImage(named: "settings")?.withRenderingMode(.alwaysOriginal)
+    settingVC.tabBarItem.tag = 2
+    let settingNV = UINavigationController(rootViewController: settingVC)
+    
+    setViewControllers([diaryNV, dubyNV, settingNV], animated: false)
     
     if let items = tabBar.items {
       for item in items {
         item.imageInsets = UIEdgeInsets.init(top: 4.0, left: 0.0, bottom: -4.0, right: 0.0)
       }
-    }
-  }
-  
-  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-    switch item.tag {
-    case 0:
-      if showingTabTag == 0 {
-        ANINotificationManager.postCommunityTabTapped()
-      }
-      showingTabTag = 0
-    default:
-      DLog("default tab")
     }
   }
   
@@ -234,5 +235,16 @@ extension ANITabBarController {
     } catch let signOutError as NSError {
       DLog("signOutError \(signOutError)")
     }
+  }
+}
+
+extension ANITabBarController: UITabBarControllerDelegate {
+  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    if viewController.tabBarItem.tag == 1 {
+      let contributionViewController = ANIContributionViewController()
+      self.present(contributionViewController, animated: true, completion: nil)
+      return false
+    }
+    return true
   }
 }
