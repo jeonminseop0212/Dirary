@@ -142,7 +142,7 @@ class ANIInitialViewController: UIViewController {
 //MARK: ANIInitialViewDelegate
 extension ANIInitialViewController: ANIInitialViewDelegate {
   func loginSuccess() {
-    
+    self.navigationController?.dismiss(animated: true, completion: nil)
   }
   
   func signUpButtonTapped() {

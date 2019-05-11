@@ -59,8 +59,8 @@ class ANITabBarController: UITabBarController {
   
   private func setupTabBar() {
     let communityVC = ANICommunityViewController()
-    communityVC.tabBarItem.image = UIImage(named: "community")?.withRenderingMode(.alwaysOriginal)
-    communityVC.tabBarItem.selectedImage = UIImage(named: "communitySelected")?.withRenderingMode(.alwaysOriginal)
+    communityVC.tabBarItem.image = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
+    communityVC.tabBarItem.selectedImage = UIImage(named: "diaryTap")?.withRenderingMode(.alwaysOriginal)
     communityVC.tabBarItem.tag = 0
     let communityNV = UINavigationController(rootViewController: communityVC)
     
@@ -177,8 +177,6 @@ class ANITabBarController: UITabBarController {
 //MARK: data
 extension ANITabBarController {
   func loadUser(completion:(()->())? = nil) {
-
-    signOut()
     
     if Auth.auth().currentUser == nil {
       ifNeedsShowInitialView()
@@ -189,9 +187,8 @@ extension ANITabBarController {
       guard let currentUserUid = ANISessionManager.shared.currentUserUid else { return }
       
       let database = Firestore.firestore()
-      let group = DispatchGroup()
 
-      DispatchQueue(label: "user").async {
+      DispatchQueue.global().async {
         database.collection(KEY_USERS).document(currentUserUid).getDocument(completion: { (snapshot, error) in
           guard let snapshot = snapshot, let data = snapshot.data() else {
             self.signOut()
@@ -203,23 +200,20 @@ extension ANITabBarController {
             
             DispatchQueue.main.async {
               ANISessionManager.shared.currentUser = user
+              ANISessionManager.shared.currentUserUid = user.uid
               
               if !self.isLoadedUser {
-                group.leave()
+                DispatchQueue.main.async {
+                  ANINotificationManager.postLoadedCurrentUser()
+                  
+                  completion?()
+                }
               }
             }
           } catch let error {
             DLog(error)
           }
         })
-      }
-      
-      group.notify(queue: DispatchQueue(label: "user")) {
-        DispatchQueue.main.async {
-          ANINotificationManager.postLoadedCurrentUser()
-          
-          completion?()
-        }
       }
     } else {
       signOut()

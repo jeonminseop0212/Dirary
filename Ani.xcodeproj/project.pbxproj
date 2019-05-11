@@ -32,8 +32,6 @@
 		CD334E8221421C7F001C6289 /* ANIReloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD334E8121421C7F001C6289 /* ANIReloadView.swift */; };
 		CD3A64C021A287DC0056ABA2 /* ANICellButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A64BF21A287DC0056ABA2 /* ANICellButtonView.swift */; };
 		CD3DBF97215A31F50010A219 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3DBF96215A31F50010A219 /* Macros.swift */; };
-		CD4793722187F1E6002643E2 /* ANIAutoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */; };
-		CD4793742187F256002643E2 /* ANIAutoLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4793732187F256002643E2 /* ANIAutoLoginView.swift */; };
 		CD47937721896FD4002643E2 /* ANISplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD47937621896FD3002643E2 /* ANISplashView.swift */; };
 		CD492A0121C72CAC00C5AF81 /* ANIVideoFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD492A0021C72CAB00C5AF81 /* ANIVideoFilterViewController.swift */; };
 		CD492A0321C740FE00C5AF81 /* PryntTrimmerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD492A0221C740FE00C5AF81 /* PryntTrimmerView.framework */; };
@@ -162,8 +160,6 @@
 		CD334E8121421C7F001C6289 /* ANIReloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIReloadView.swift; sourceTree = "<group>"; };
 		CD3A64BF21A287DC0056ABA2 /* ANICellButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANICellButtonView.swift; sourceTree = "<group>"; };
 		CD3DBF96215A31F50010A219 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
-		CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIAutoLoginViewController.swift; sourceTree = "<group>"; };
-		CD4793732187F256002643E2 /* ANIAutoLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIAutoLoginView.swift; sourceTree = "<group>"; };
 		CD47937621896FD3002643E2 /* ANISplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANISplashView.swift; sourceTree = "<group>"; };
 		CD492A0021C72CAB00C5AF81 /* ANIVideoFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIVideoFilterViewController.swift; sourceTree = "<group>"; };
 		CD492A0221C740FE00C5AF81 /* PryntTrimmerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PryntTrimmerView.framework; path = Carthage/Build/iOS/PryntTrimmerView.framework; sourceTree = "<group>"; };
@@ -344,22 +340,6 @@
 				CD334E8121421C7F001C6289 /* ANIReloadView.swift */,
 			);
 			path = ReloadView;
-			sourceTree = "<group>";
-		};
-		CD47936F2187F148002643E2 /* autoLoginView */ = {
-			isa = PBXGroup;
-			children = (
-				CD4793732187F256002643E2 /* ANIAutoLoginView.swift */,
-			);
-			path = autoLoginView;
-			sourceTree = "<group>";
-		};
-		CD4793702187F161002643E2 /* AutoLoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CD4793712187F1E6002643E2 /* ANIAutoLoginViewController.swift */,
-			);
-			path = AutoLoginViewController;
 			sourceTree = "<group>";
 		};
 		CD47937521896FC1002643E2 /* Splash */ = {
@@ -618,7 +598,6 @@
 			children = (
 				CDDD04B120B50FCE0094DBFA /* InitialViewController */,
 				CDDD04BB20B539EE0094DBFA /* SignUpViewController */,
-				CD4793702187F161002643E2 /* AutoLoginViewController */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -644,7 +623,6 @@
 			children = (
 				CDDD04BE20B53A7C0094DBFA /* InitialView */,
 				CDDD04C320B53C760094DBFA /* SignUpView */,
-				CD47936F2187F148002643E2 /* autoLoginView */,
 			);
 			path = Initial;
 			sourceTree = "<group>";
@@ -1280,7 +1258,6 @@
 				CD325F6321FFF3540044ADFD /* ANIEventPopupView.swift in Sources */,
 				CDF7F174208F658E00254A0F /* ANIImageButtonView.swift in Sources */,
 				CDA32A7B20AE7007008A2AC1 /* ANIQnaImagesCell.swift in Sources */,
-				CD4793722187F1E6002643E2 /* ANIAutoLoginViewController.swift in Sources */,
 				CD334E8221421C7F001C6289 /* ANIReloadView.swift in Sources */,
 				F5DF8365207A27DC00EA7FBE /* ANIStoryViewCell.swift in Sources */,
 				F5E9E22F2079AEC30021D4CC /* ANIOrientation.swift in Sources */,
@@ -1296,7 +1273,6 @@
 				F5E9E23D2079C10C0021D4CC /* ANIStoryView.swift in Sources */,
 				CDA32A2D20ABCE5F008A2AC1 /* RecruitInfo.swift in Sources */,
 				CD529783213E17F7001609DB /* ANIPopupOptionViewCell.swift in Sources */,
-				CD4793742187F256002643E2 /* ANIAutoLoginView.swift in Sources */,
 				CD04F05D21D0AB780084AE73 /* ANIStoryVideoView.swift in Sources */,
 				CDE2F41120E4660E005E1DE1 /* FirebaseChatMessage.swift in Sources */,
 				CD492A0121C72CAC00C5AF81 /* ANIVideoFilterViewController.swift in Sources */,
