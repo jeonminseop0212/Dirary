@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,35 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBG" translatesAutoresizingMaskIntoConstraints="NO" id="YEg-0U-BAj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MYAULogo" translatesAutoresizingMaskIntoConstraints="NO" id="flB-Nw-364">
-                                <rect key="frame" x="142.5" y="252" width="100" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="P4V-OV-38F"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QB7-AS-guM">
-                                <rect key="frame" x="155" y="385" width="50" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="hcf-Wh-Wlw"/>
-                                    <constraint firstAttribute="height" constant="41" id="xqq-fz-Hr6"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="QB7-AS-guM" firstAttribute="top" secondItem="flB-Nw-364" secondAttribute="bottom" constant="50" id="Ifg-Am-N5R"/>
-                            <constraint firstItem="YEg-0U-BAj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="TpM-7O-mou"/>
-                            <constraint firstItem="flB-Nw-364" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-40" id="eS8-7B-fNG"/>
-                            <constraint firstAttribute="trailing" secondItem="YEg-0U-BAj" secondAttribute="trailing" id="eUm-K3-9FN"/>
-                            <constraint firstItem="QB7-AS-guM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-7.5" id="le8-Pl-Blh"/>
-                            <constraint firstItem="flB-Nw-364" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="5" id="nTx-pZ-kyC"/>
-                            <constraint firstAttribute="bottom" secondItem="YEg-0U-BAj" secondAttribute="bottom" id="xgT-uf-VEI"/>
-                            <constraint firstItem="YEg-0U-BAj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="yMG-7A-ML1"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -54,8 +26,4 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="MYAULogo" width="118" height="83"/>
-        <image name="splashBG" width="375" height="667"/>
-    </resources>
 </document>

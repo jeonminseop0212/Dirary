@@ -11,8 +11,6 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import Siren
-import TwitterKit
-import GoogleSignIn
 import CodableFirebase
 
 @UIApplicationMain
@@ -34,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     self.orientationLock = .portrait
     
-    _ = ANITwitter()
     ANIFirebaseRemoteConfigManager.shared.fetch()
     
     //notification
@@ -127,32 +124,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
   
-  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    let twitter =  TWTRTwitter.sharedInstance().application(app, open: url, options: options)
-    let google = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-    
-    return twitter || google
-  }
-  
   private func playTopViewControllerVideo() {
     if let topController = UIApplication.topViewController() {
       if let communityViewController = topController as? ANICommunityViewController {
         communityViewController.playVideo()
-      }
-      if let rankingStoryDetailViewController = topController as? ANIRankingStoryDetailViewController {
-        rankingStoryDetailViewController.playVideo()
-      }
-      if let notiDetailViewController = topController as? ANINotiDetailViewController {
-        notiDetailViewController.playVideo()
-      }
-      if let profileViewController = topController as? ANIProfileViewController {
-        profileViewController.playVideo()
-      }
-      if let otherProfileViewController = topController as? ANIOtherProfileViewController {
-        otherProfileViewController.playVideo()
-      }
-      if let listViewController = topController as? ANIListViewController {
-        listViewController.playVideo()
       }
     }
   }
@@ -208,58 +183,20 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
                               withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    
-    let userInfo = notification.request.content.userInfo
-    
-    if let notificationKind = userInfo[AnyHashable("notificationKind")] as? String,
-      notificationKind == PushNotificationKind.message.rawValue,
-      let chatGroupId = userInfo[AnyHashable("chatGroupId")] as? String,
-      ANISessionManager.shared.onlineChatGroupId == chatGroupId {
-      completionHandler([])
-      return
-    }
-    
-    completionHandler([.badge])
   }
 
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-    Messaging.messaging().appDidReceiveMessage(userInfo)
-    
-    completionHandler(.newData)
   }
   
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,
                               withCompletionHandler completionHandler: @escaping () -> Void) {
-    guard let tabBarController = self.tabBarController,
-          let viewControllers = tabBarController.viewControllers,
-          let notiNavigationController = viewControllers[NOTI_VIEW_CONTROLLER_INDEX] as? UINavigationController,
-          let notiViewController = notiNavigationController.viewControllers.first as? ANINotiViewController else { return }
-    
-    ANISessionManager.shared.isLaunchNoti = true
-    
-    let userInfo = response.notification.request.content.userInfo
-    if let notificationKind = userInfo[AnyHashable("notificationKind")] as? String {
-      tabBarController.selectedIndex = NOTI_VIEW_CONTROLLER_INDEX
-
-      if notificationKind == PushNotificationKind.noti.rawValue {
-        notiViewController.pushNotificationKind = .noti
-      } else if notificationKind == PushNotificationKind.message.rawValue, let sendUserId = userInfo[AnyHashable("sendUserId")] as? String {
-        notiViewController.pushNotificationKind = .message
-        notiViewController.sendPushNotificationUserId = sendUserId
-      }
-    }
-    
-    completionHandler()
   }
 }
 
 // MARK: MessagingDelegate
 extension AppDelegate: MessagingDelegate {
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-    UserDefaults.standard.set(fcmToken, forKey: KEY_FCM_TOKEN)
-    UserDefaults.standard.synchronize()
   }
   
   func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {

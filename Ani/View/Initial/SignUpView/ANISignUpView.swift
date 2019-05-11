@@ -388,8 +388,6 @@ class ANISignUpView: UIView {
           return
         }
         
-        self.pushDataAlgolia(data: userData as [String: AnyObject])
-        
         self.delegate?.signUpSuccess(adress: self.adress, password: self.password, userId: uid)
         
         self.delegate?.stopAnimating()
@@ -399,26 +397,6 @@ class ANISignUpView: UIView {
     } catch let error {
       DLog(error)
       self.delegate?.stopAnimating()
-    }
-  }
-  
-  private func pushDataAlgolia(data: [String: AnyObject]) {
-    let index = ANISessionManager.shared.client.index(withName: KEY_USERS_INDEX)
-    
-    var newData = data
-    if let objectId = data[KEY_UID] {
-      newData.updateValue(objectId, forKey: KEY_OBJECT_ID)
-    }
-    
-    DispatchQueue.global().async {
-      index.addObject(newData, completionHandler: { (content, error) -> Void in
-        if let error = error {
-          DLog("algolia error \(error)")
-        }
-        
-        guard let content = content else { return }
-        DLog("Object IDs: \(content)")
-      })
     }
   }
   

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import InstantSearchClient
 
 class ANISessionManager: NSObject {
   static let shared = ANISessionManager()
@@ -54,16 +53,4 @@ class ANISessionManager: NSObject {
   var isHiddenInitial: Bool = true
   var isHiddenSplash: Bool = false
   var isShowEvent: Bool = false
-  
-  #if DEBUG
-  let client = Client(appID: "RBJYX5VF88", apiKey: "ebf262fa4367637cd49431402d70455c")
-  #else
-  let client = Client(appID: "NF5ORAYV5G", apiKey: "e34e8cb3865dd2fe25a02fbf5b916755")
-  #endif
-  
-  #if DEBUG
-  let adminUserId = "BHvoCcfLeKdjFXcpUPxXIBft44w2"
-  #else
-  let adminUserId = "oJ3eBzIFdISyrFOFPUNjMj61jNp2"
-  #endif
 }

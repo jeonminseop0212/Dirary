@@ -14,7 +14,6 @@ protocol ANIContributionViewDelegate {
   func imageDeleteButtonTapped(index: Int)
   func videoDeleteButtonTapped()
   func contributionButtonOn(on: Bool)
-  func twitterLink()
 }
 
 class ANIContributionView: UIView {
@@ -25,11 +24,6 @@ class ANIContributionView: UIView {
   private weak var contentTextView: ANIPlaceHolderTextView?
   private let CONTENT_IMAGES_VIEW_RATIO: CGFloat = 0.5
   private weak var contentImagesView: ANIContributionImagesView?
-  
-  private weak var twitterShareBase: UIView?
-  private weak var twtiterShareImageView: UIImageView?
-  private weak var twitterShareLabel: UILabel?
-  private weak var twitterShareOnLabel: UILabel?
   
   var contentImages = [UIImage?]() {
     didSet {
@@ -131,58 +125,6 @@ class ANIContributionView: UIView {
     contentImagesView.rightToSuperview()
     contentImagesView.height(UIScreen.main.bounds.width * CONTENT_IMAGES_VIEW_RATIO)
     self.contentImagesView = contentImagesView
-    
-    //twitterShareBase
-    let twitterShareBase = UIView()
-    twitterShareBase.isUserInteractionEnabled = true
-    twitterShareBase.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(twitterShareToggle)))
-    contentView.addSubview(twitterShareBase)
-    twitterShareBase.topToBottom(of: contentImagesView, offset: 15.0)
-    twitterShareBase.leftToSuperview(offset: 15.0)
-    twitterShareBase.bottomToSuperview(offset: -10.0)
-    self.twitterShareBase = twitterShareBase
-    
-    //twtiterShareImageView
-    let twtiterShareImageView = UIImageView()
-    twtiterShareImageView.image = UIImage(named: "twitter")?.withRenderingMode(.alwaysTemplate)
-    if userDefaults.bool(forKey: KEY_IS_TWITTER_SHARE) {
-      twtiterShareImageView.tintColor = ANIColor.lightBlue
-    } else {
-      twtiterShareImageView.tintColor = ANIColor.darkGray
-    }
-    twtiterShareImageView.contentMode = .scaleAspectFit
-    twitterShareBase.addSubview(twtiterShareImageView)
-    twtiterShareImageView.topToSuperview()
-    twtiterShareImageView.leftToSuperview()
-    twtiterShareImageView.width(17.0)
-    twtiterShareImageView.height(17.0)
-    twtiterShareImageView.bottomToSuperview()
-    self.twtiterShareImageView = twtiterShareImageView
-    
-    //twitterShareLabel
-    let twitterShareLabel = UILabel()
-    twitterShareLabel.text = "Twitterにも投稿"
-    twitterShareLabel.font = UIFont.systemFont(ofSize: 15.0)
-    twitterShareLabel.textColor = ANIColor.darkGray
-    twitterShareBase.addSubview(twitterShareLabel)
-    twitterShareLabel.leftToRight(of: twtiterShareImageView, offset: 5.0)
-    twitterShareLabel.centerYToSuperview()
-    self.twitterShareLabel = twitterShareLabel
-    
-    //twitterShareOnLabel
-    let twitterShareOnLabel = UILabel()
-    if userDefaults.bool(forKey: KEY_IS_TWITTER_SHARE) {
-      twitterShareOnLabel.text = "ON"
-    } else {
-      twitterShareOnLabel.text = "OFF"
-    }
-    twitterShareOnLabel.font = UIFont.systemFont(ofSize: 15.0)
-    twitterShareOnLabel.textColor = ANIColor.darkGray
-    twitterShareBase.addSubview(twitterShareOnLabel)
-    twitterShareOnLabel.leftToRight(of: twitterShareLabel, offset: 5.0)
-    twitterShareOnLabel.rightToSuperview()
-    twitterShareOnLabel.centerYToSuperview()
-    self.twitterShareOnLabel = twitterShareOnLabel
   }
   
   func getContent() -> String {
@@ -226,42 +168,6 @@ class ANIContributionView: UIView {
   @objc private func keyboardHideButtonTapped() {
     self.endEditing(true)
     self.resignFirstResponder()
-  }
-  
-  @objc func twitterShareToggle() {
-    guard let currentUser = ANISessionManager.shared.currentUser,
-          let twtiterShareImageView = self.twtiterShareImageView,
-          let twitterShareOnLabel = self.twitterShareOnLabel,
-          !isTwitterToggleAnimation else { return }
-    
-    if let isTwitterLink = currentUser.isTwitterLink, isTwitterLink {
-      let userDefaults = UserDefaults.standard
-      if userDefaults.bool(forKey: KEY_IS_TWITTER_SHARE) {
-        isTwitterToggleAnimation = true
-
-        UIView.animate(withDuration: 0.2, animations: {
-          twtiterShareImageView.tintColor = ANIColor.darkGray
-          twitterShareOnLabel.text = "OFF"
-        }) { (complete) in
-          self.isTwitterToggleAnimation = false
-        }
-
-        userDefaults.set(false, forKey: KEY_IS_TWITTER_SHARE)
-      } else {
-        isTwitterToggleAnimation = true
-
-        UIView.animate(withDuration: 0.2, animations: {
-          twtiterShareImageView.tintColor = ANIColor.lightBlue
-          twitterShareOnLabel.text = "ON"
-        }) { (complete) in
-          self.isTwitterToggleAnimation = false
-        }
-        
-        userDefaults.set(true, forKey: KEY_IS_TWITTER_SHARE)
-      }
-    } else {
-      self.delegate?.twitterLink()
-    }
   }
 }
 

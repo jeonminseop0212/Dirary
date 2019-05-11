@@ -15,7 +15,6 @@ pod 'Firebase/Firestore'
 pod 'Firebase/Messaging'
 pod 'Firebase/RemoteConfig'
 pod 'Siren'
-pod 'GoogleSignIn'
 pod 'ActiveLabel'
 
   target 'AniTests' do

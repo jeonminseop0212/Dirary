@@ -12,7 +12,6 @@ import CodableFirebase
 import TinyConstraints
 
 protocol ANIQnaViewDelegate {
-  func qnaViewCellDidSelect(selectedQna: FirebaseQna, user: FirebaseUser)
   func reject()
   func popupOptionView(isMe: Bool, contentType: ContentType, id: String)
 }
@@ -403,7 +402,6 @@ extension ANIQnaView: ANIQnaViewCellDelegate {
   }
   
   func cellTapped(qna: FirebaseQna, user: FirebaseUser) {
-    self.delegate?.qnaViewCellDidSelect(selectedQna: qna, user: user)
   }
   
   func reject() {
